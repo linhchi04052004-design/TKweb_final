@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sushi Fuji – Hồ sơ khách hàng</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #faf7f2;
+      color: #2c2c2c;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: #8b1e1e;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: #fff;
+      font-weight: 700;
+    }
+    nav a {
+      margin: 0 14px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .user-actions button {
+      border-radius: 20px;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      margin-left: 8px;
+    }
+    .btn-light { background: #fff; color: #8b1e1e; }
+    .btn-outline { background: transparent; color: #fff; border: 1px solid #fff; }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 360px;
+      background: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding-left: 60px;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.92);
+      padding: 28px 32px;
+      border-radius: 10px;
+      max-width: 420px;
+    }
+    .hero-card h1 {
+      font-family: 'Playfair Display', serif;
+      margin: 0 0 12px;
+      color: #8b1e1e;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      padding: 50px 60px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #8b1e1e;
+      margin-top: 0;
+    }
+
+    /* ===== PROFILE ===== */
+    .profile {
+      text-align: center;
+    }
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 3px solid #8b1e1e;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 6px 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      background: #f3e6e6;
+      color: #8b1e1e;
+      border-radius: 14px;
+    }
+
+    /* ===== TABS ===== */
+    .tabs {
+      display: flex;
+      gap: 30px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 24px;
+    }
+    .tabs span {
+      padding-bottom: 10px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .tabs .active {
+      color: #8b1e1e;
+      border-bottom: 2px solid #8b1e1e;
+    }
+
+    /* ===== FORM ===== */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    label { font-size: 13px; }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    textarea { grid-column: span 2; resize: none; }
+
+    /* ===== BARCODE ===== */
+    .barcode {
+      margin-top: 24px;
+      text-align: center;
+    }
+    .barcode img {
+      max-width: 100%;
+    }
+
+    footer {
+      background: #8b1e1e;
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+      margin-top: 60px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Sushi Fuji</div>
+  <nav>
+    <a href="#">Trang chủ</a>
+    <a href="#">Menu</a>
+    <a href="#">Đặt bàn</a>
+    <a href="#">Tin tức</a>
+  </nav>
+  <div class="user-actions">
+    <button class="btn-light">Xin chào, khách</button>
+    <button class="btn-outline">Đăng xuất</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-card">
+    <h1>Hồ sơ khách hàng</h1>
+    <p>Quản lý thông tin cá nhân và trải nghiệm ẩm thực tại Sushi Fuji</p>
+  </div>
+</section>
+
+<section class="container">
+
+  <div class="card profile">
+    <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" />
+    <h3>Khách hàng Fuji</h3>
+    <div>
+      <span class="tag">Yêu Sushi</span>
+      <span class="tag">Ẩm thực Nhật</span>
+      <span class="tag">Khách quen</span>
+    </div>
+
+    <hr style="margin:20px 0">
+
+    <p><b>Tên đăng nhập:</b> sushifuji_user</p>
+    <p><b>Email:</b> user@sushifuji.vn</p>
+    
+  </div>
+
+  <div class="card">
+    <div class="tabs">
+      <span class="active">Thông tin chi tiết</span>
+      <span>Đơn hàng</span>
+      <span>Hóa đơn</span>
+      <span>Món yêu thích</span>
+    </div>
+
+    <div class="form-grid">
+      <div>
+        <label>Họ và tên</label>
+        <input value="Khách hàng Fuji" />
+      </div>
+      <div>
+        <label>Ngày sinh</label>
+        <input type="date" />
+      </div>
+      <div>
+        <label>Email</label>
+        <input value="user@sushifuji.vn" />
+      </div>
+      <div>
+        <label>Số điện thoại</label>
+        <input />
+      </div>
+      <div>
+        <label>Mật khẩu</label>
+        <input type="password" value="123456" />
+      </div>
+      <div>
+        <label>Giới tính</label>
+        <input placeholder="Nam / Nữ" />
+      </div>
+      <label>Quote ẩm thực của bạn</label>
+      <textarea rows="3" placeholder="Cảm nhận của bạn về Sushi Fuji..."></textarea>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  © 2025 Sushi Fuji – Tinh hoa ẩm thực Nhật Bản
+</footer>
+
+</body>
+</html>
