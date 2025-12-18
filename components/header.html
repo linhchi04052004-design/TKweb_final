@@ -30,7 +30,7 @@
     padding: 0 40px; /* Tăng padding hai bên cho thoáng */
     max-width: 1400px; /* Tăng độ rộng tối đa để cân đối với thanh search dài */
     margin: 0 auto;
-    height: 75px; /* Tăng nhẹ chiều cao để header sang trọng hơn */
+    height: 90px; /* Tăng nhẹ chiều cao để header sang trọng hơn */
 }
 
 .header-logo {
@@ -38,13 +38,14 @@
     display: flex;
     justify-content: flex-start;
 }
-/* Logo */
 .header-container img {
-    /* TĂNG: Logo to hơn một chút */
-    height: 45px;
-    width: auto; 
+    height: 130px; 
+    width: auto;
+    margin-top: 25px;
+    margin-left: -25px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
 }
-
 /* Thanh tìm kiếm */
 .search-box {
     display: flex;
@@ -156,7 +157,7 @@ text-decoration: none;
   <body>
     <div class="header">
         <div class="header-container">
-        <img src = "../assets/logo.png" alt ="Logo"> 
+        <img src = "../assets/logo2.png" alt ="Logo"> 
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
             <i class="fa-solid fa-magnifying-glass" id="searchIcon" style="cursor: pointer;"></i>

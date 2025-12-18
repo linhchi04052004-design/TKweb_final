@@ -16,183 +16,185 @@
 
     <title>Document</title>
     <style>
-        :root {
-            --footer-bg: #8F0707; /* Màu đỏ bạn yêu cầu */
-            --text-color: white;
-            --border-color: rgba(255, 255, 255, 0.3);
-        }
+:root {
+    --footer-bg: #8F0707;
+    --text-color: white;
+    --border-color: rgba(255, 255, 255, 0.3);
+}
 
-        body {
-            font-family: 'Lora', serif;
-            margin: 0;
-        }
+body {
+    font-family: 'Lora', serif;
+    margin: 0;
+}
 
-        /* --- Footer Styles --- */
-        .footer {
-            background-color: var(--footer-bg);
-            color: var(--text-color);
-            padding: 50px 0 25px;
-            font-size: 14px; /* Chữ nhỏ gọn */
-        }
+/* --- Footer Styles --- */
+.footer {
+    background-color: var(--footer-bg);
+    color: var(--text-color);
+    padding: 20px 0 5px;
+    font-size: 15px;
+}
+.footer .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.brand-section {
+    padding-right: 10%; /* Tạo khoảng trống lớn với các cột bên phải */
+}
 
-        /* Tiêu đề cột */
-        .footer-heading {
-            font-family: 'Judson', serif;
-            font-weight: 700;
-            font-size: 18px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-            color: white;
-        }
+/* Logo phóng to và bố cục Brand */
+.brand-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+}
 
-        /* Logo Brand */
-        .brand-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-        
-        .brand-logo-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-        }
+/* Phóng to logo gấp 3 lần so với cũ */
+.brand-logo-img {
+    width: 180px; 
+    height: auto;
+    object-fit: contain;
+}
 
-        .brand-name a {
-            font-family: 'Judson', serif;
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
-        }
+.brand-name a {
+    font-family: 'Judson', serif;
+    font-size: 28px; /* Tăng cỡ chữ thương hiệu */
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
 
-        /* Danh sách liên kết */
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+/* Tiêu đề các cột */
+.footer-heading {
+    font-family: 'Judson', serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 25px;
+    color: white;
+}
 
-        .footer-links li {
-            margin-bottom: 10px;
-        }
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
 
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+.footer-links li {
+    margin-bottom: 12px;
+}
 
-        .footer-links a:hover {
-            padding-left: 6px;
-            transform: translateX(5px); /* Hiệu ứng đẩy nhẹ sang phải khi hover */
-        }
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    opacity: 0.8;
+}
 
-        /* Contact List */
-        .contact-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
+.footer-links a:hover {
+    opacity: 1;
+    padding-left: 5px;
+}
 
-        .contact-list i {
-            margin-top: 3px; /* Căn icon thẳng hàng với dòng đầu của text */
-        }
+/* Bố cục cột Contact */
+.contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;    /* Khoảng cách giữa các dòng liên hệ */
+    line-height: 1;
+}
 
-        /* Avatar Group (Khách hàng tin tưởng) */
-        .customer-trust {
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+/* Bottom Bar cân đối */
+.footer-bottom {
+    margin-top: 20px;
+    padding: 5px 0;
+    border-top: 1px solid var(--border-color);
+}
 
-        .avatar-group {
-            display: flex;
-        }
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1320px; /* Cân lề với Container Bootstrap */
+    margin: 0 auto;
+    padding: 0 15px;
+}
 
-        .avatar-group img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            object-fit: cover;
-            margin-left: -10px; /* Tạo hiệu ứng chồng lên nhau */
-        }
+.bottom-features {
+    display: flex;
+    gap: 30px;
+    font-weight: 500;
+}
+/* --- Hiệu ứng Avatar khách hàng chồng nhau --- */
+.customer-trust {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
 
-        .avatar-group img:first-child {
-            margin-left: 0;
-        }
+.avatar-group {
+    display: flex;
+    align-items: center;
+}
 
-        .trust-text {
-            font-size: 13px;
-            font-weight: 600;
-        }
+.avatar-group img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid var(--footer-bg); /* Viền cùng màu nền tạo hiệu ứng tách biệt */
+    object-fit: cover;
+    margin-left: -12px; /* Quan trọng: Đẩy các ảnh đè lên nhau */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
 
-        /* Bottom Bar (Dòng kẻ ngang và copyright) */
-        .footer-bottom {
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            font-size: 15px;
-            color: #D9D9D9;
-        }
+    .avatar-group img:first-child {
+        margin-left: 0;
+    }
 
-        .bottom-features {
-            display: flex;
-            gap: 24px;
-        }
+    .avatar-group img:hover {
+        transform: translateY(-5px); /* Bay lên nhẹ khi di chuột */
+        z-index: 10;
+    }
 
-        .bottom-features span {
-            cursor: default;
-        }
-        
-        /* Mobile adjust */
-        @media (max-width: 768px) {
-            .footer-bottom {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            .footer-col {
-                margin-bottom: 30px;
-            }
-        }
+    .trust-text {
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.8);
+    }
     </style>
 </head>
 
 <body>
 
     <div class="footer">
-        <div class="container">
-            <div class="row align-items-start">
-                <div class="col-lg-4 col-md-6 mb-4 d-flex flex-column">
-                    <div class="brand-box">
-                        <img src="assets/logo.png" alt="Logo" class="brand-logo-img"> 
-                        <span class="brand-name"><a href="../homepage.html">SUSHI FUJI</a></span>
-                    </div>
-                    <p class="mb-3" style="opacity:0.9; line-height:1.6;">
-                       Từ nguyên liệu tươi ngon được tuyển chọn khắt khe đến nghệ thuật chế biến truyền thống, 
-                       chúng tôi mang trọn hương vị Nhật Bản đích thực đến mỗi thực khách.
-                    </p>
-                    
-                    <div class="customer-trust">
-                        <div class="avatar-group">
-                            <img src="https://i.pravatar.cc/100?img=1" alt="User 1">
-                            <img src="https://i.pravatar.cc/100?img=5" alt="User 2">
-                            <img src="https://i.pravatar.cc/100?img=9" alt="User 3">
-                        </div>
-                        <span class="trust-text">10.000+ Khách hàng tin tưởng</span>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 brand-section">
+                <div class="brand-box">
+                    <a href="../homepage.html">
+                        <img src="../assets/logo2.png" alt="Logo" class="brand-logo-img">
+                    </a>
                 </div>
+                <p style="line-height: 1.8; opacity: 0.9; max-width: 90%;">
+                    Từ nguyên liệu tươi ngon được tuyển chọn khắt khe đến nghệ thuật chế biến truyền thống, 
+                    chúng tôi mang trọn hương vị Nhật Bản đích thực đến mỗi thực khách.
+                </p>
+                <div class="customer-trust">
+                    <div class="avatar-group">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="User 1">
+                        <img src="https://i.pravatar.cc/100?img=5" alt="User 2">
+                        <img src="https://i.pravatar.cc/100?img=9" alt="User 3">
+                    </div>
+                    <span class="trust-text">10.000+ Khách hàng tin tưởng</span>
+                </div>
+            </div>
 
-                <div class="col-lg-2 col-md-6 mb-4 d-flex flex-column">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div>
                     <h5 class="footer-heading">Về chúng tôi</h5>
                     <ul class="footer-links">
                         <li><a href="../about.html">Giới thiệu</a></li>
@@ -201,8 +203,10 @@
                         <li><a href="../homepage.html">Tuyển dụng</a></li>
                     </ul>
                 </div>
+            </div>
 
-                <div class="col-lg-3 col-md-6 mb-4 d-flex flex-column">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div style="min-width: 250px;">
                     <h5 class="footer-heading">Liên hệ</h5>
                     <ul class="footer-links contact-list">
                         <li>
@@ -225,16 +229,20 @@
                 </div>
             </div>
         </div>
-            <div class="footer-bottom">
-                <div class="copyright">
-                    &copy; 2025 SUSHI FUJI. All rights reserved.
-                </div>
-                <div class="bottom-features">
-                    <span>Giao hàng nhanh chóng</span>
-                    <span>Phản hồi kịp thời</span>
-                    <span>Uy tín - Chất lượng</span>
-                </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="bottom-container">
+            <div class="copyright">
+                &copy; 2025 SUSHI FUJI. All rights reserved.
+            </div>
+            <div class="bottom-features">
+                <span>Giao hàng nhanh chóng</span>
+                <span>Phản hồi kịp thời</span>
+                <span>Uy tín - Chất lượng</span>
             </div>
         </div>
+    </div>
+    </div>
 </body>
 </html>
