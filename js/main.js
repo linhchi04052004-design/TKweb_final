@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
         //nhúng header và footer 
     fetch("./components/header.html")
-        .then(res => res.text())
-        .then(data => {
+    .then(res => res.text())
+    .then(data => {
         document.getElementById("header").innerHTML = data;
-        })
-        .catch(err => console.error("Không load được header", err));
+        
+        // CHỈNH SỬA Ở ĐÂY: Phát một sự kiện để báo rằng Header đã sẵn sàng
+        document.dispatchEvent(new Event("headerLoaded"));
+    })
+    .catch(err => console.error("Không load được header", err));
 
     fetch("./components/footer.html")
     .then(res => res.text())
@@ -13,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("footer").innerHTML = data;
     })
     .catch(error => console.error("Lỗi load footer:", error));
+
     //chỉnh banner
     let slider = document.querySelector('.slider .list');
     let items = document.querySelectorAll('.slider .list .item');
@@ -82,4 +86,102 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     });
 
+// Tạo một hàm riêng để khởi tạo slider ngay khi gọi
+function initHotSlider() {
+    const trackHot = document.querySelector('.hot-slider-track');
+    const itemsHot = document.querySelectorAll('.item-hot');
+    const nextBtnHot = document.getElementById('next-hot');
+    const prevBtnHot = document.getElementById('prev-hot');
+    const dotsHot = document.querySelectorAll('.dots-hot li');
+
+    if (!trackHot || itemsHot.length === 0) return;
+
+    let indexHot = 0;
+    const itemsVisible = 3;
+    const totalRealItems = itemsHot.length;
+    const gap = 15;
+    let isTransitioning = false;
+    let autoPlay;
+
+    // 1. NHÂN BẢN NGAY LẬP TỨC
+    for (let i = 0; i < itemsVisible; i++) {
+        const cloneFirst = itemsHot[i].cloneNode(true);
+        const cloneLast = itemsHot[totalRealItems - 1 - i].cloneNode(true);
+        trackHot.appendChild(cloneFirst);
+        trackHot.insertBefore(cloneLast, trackHot.firstChild);
+    }
+
+    // 2. THIẾT LẬP VỊ TRÍ TỨC THỜI (Không dùng transition ở bước này)
+    const updatePosition = () => {
+        const itemWidth = document.querySelector('.item-hot').offsetWidth + gap;
+        trackHot.style.transition = "none";
+        trackHot.style.transform = `translateX(${-indexHot * itemWidth}px) translateZ(0)`;
+    };
+
+    indexHot = itemsVisible;
+    updatePosition();
+
+    // 3. HÀM CẬP NHẬT TRƯỢT
+    function moveSlider(hasAnim = true) {
+        const itemWidth = document.querySelector('.item-hot').offsetWidth + gap;
+        trackHot.style.transition = hasAnim ? "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)" : "none";
+        trackHot.style.transform = `translateX(${-indexHot * itemWidth}px) translateZ(0)`;
+        
+        let dotIndex = (indexHot - itemsVisible) % totalRealItems;
+        if (dotIndex < 0) dotIndex = totalRealItems + dotIndex;
+        
+        dotsHot.forEach((dot, i) => {
+            dot.classList.toggle('active-hot', i === dotIndex);
+        });
+    }
+
+    // 4. CHẠY VÒNG TRÒN VÔ TẬN
+    trackHot.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        if (indexHot >= totalRealItems + itemsVisible) {
+            indexHot = itemsVisible;
+            moveSlider(false);
+        }
+        if (indexHot <= 0) {
+            indexHot = totalRealItems;
+            moveSlider(false);
+        }
+    });
+
+    const nextSlide = () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        indexHot++;
+        moveSlider();
+    };
+
+    nextBtnHot.onclick = () => { nextSlide(); startTimer(); };
+    prevBtnHot.onclick = () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        indexHot--;
+        moveSlider();
+        startTimer();
+    };
+
+    // 5. QUẢN LÝ THỜI GIAN CHẠY TỰ ĐỘNG
+    const startTimer = () => {
+        clearInterval(autoPlay);
+        autoPlay = setInterval(nextSlide, 3000);
+    };
+
+    // Khởi động chạy ngay
+    startTimer();
+
+    // Tạm dừng khi rê chuột
+    trackHot.parentElement.onmouseenter = () => clearInterval(autoPlay);
+    trackHot.parentElement.onmouseleave = startTimer;
+}
+
+// Gọi hàm khởi tạo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHotSlider);
+} else {
+    initHotSlider(); // Nếu trang đã load xong thì chạy luôn
+}
 });

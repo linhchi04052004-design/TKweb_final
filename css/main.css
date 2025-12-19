@@ -1,4 +1,73 @@
-
+.slider {
+    width: 100%;
+    max-width: 100vw;
+    /* Giả sử header+footer của bạn chiếm khoảng 250px, chỉnh lại số này cho khớp */
+    height: calc(100vh - 10px); 
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+.slider .list{
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.slider .list .item {
+    width: 100vw;
+    height: 100%;
+}
+.slider .list video, 
+.slider .list img {
+    width: 100vw;
+    height: 100%;
+    /* Quan trọng: phủ kín khung nhưng giữ đúng tỷ lệ không bị méo/khuất */
+    object-fit: cover; 
+}
+.slider .buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.slider .buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.slider .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.slider .dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.slider .dots li.active{
+    width: 30px;
+}
 #header {
     position: fixed;
     top: 0;
@@ -81,8 +150,131 @@ body{
 .slider .dots li.active{
     width: 30px;
 }
-@media screen and (max-width: 768px){
-    .slider{
-        height: 400px;
-    }
+/* Container tiêu đề */
+.section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Kiểu dáng chữ h2 */
+.section-title h2 {
+    font-family: 'Judson', serif; 
+    font-size: 40px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    text-transform: none; /* Giữ nguyên kiểu chữ hoa/thường như mẫu */
+}
+
+/* Họa tiết trang trí 2 bên (Dùng ký tự hoặc icon) */
+.decor-left, .decor-right {
+    font-size: 24px;
+    color: #333;
+    opacity: 0.8;
+}
+
+/* Đảm bảo toàn bộ vùng này nằm trên nền kem */
+.hot-products {
+    background-color: #FEF6EB; 
+    padding: 50px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.list-hot {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Tăng khoảng cách giữa banner và slider cho thoáng */
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+
+.product-banner {
+    flex: 0 0 40%;
+}
+.product-banner img {
+    width: 100%;
+    height: 400px; /* Tăng chiều cao cố định hoặc để auto tùy hình của bạn */
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hot-slider-container {
+    flex: 0 0 50%; /* Thu hẹp vùng chứa sản phẩm */
+    overflow: hidden;
+}
+
+.hot-slider-track {
+    display: flex;
+gap: 15px;
+    will-change: transform;
+}
+
+/* Mỗi sản phẩm chiếm 1/3 vùng hiển thị (để hiện đúng 3 cái) */
+.item-hot {
+    /* Chia 3 sản phẩm trong vùng 50% sẽ làm mỗi cái trông bé lại đáng kể */
+    flex: 0 0 calc(33.33% - 15px); 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.item-hot img {
+    width: 100%;
+    height: 180px; /* Giảm chiều cao ảnh sản phẩm để trông nhỏ nhắn hơn */
+    object-fit: cover;
+}
+
+.item-info {
+    padding: 15px;
+}
+.item-info h3 {
+    font-size: 1rem; /* Giảm cỡ chữ tiêu đề sản phẩm */
+    margin-bottom: 5px;
+}
+
+/* CSS cho cụm nút điều hướng ở giữa */
+.controls-hot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-left: 48%; 
+    width: 50%;
+}
+
+.controls-hot button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.dots-hot {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+    list-style: none;
+}
+
+.dots-hot li {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.dots-hot li.active-hot {
+    background: #000;
+    transform: scale(1.2);
 }
