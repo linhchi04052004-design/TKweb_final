@@ -1,4 +1,16 @@
 
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Đảm bảo header luôn nằm trên video slider và ảnh sản phẩm */
+    transition: all 0.3s ease;
+}
+body{
+   background-color: #FEF6EB; 
+   padding-top: 140px;
+}
 .slider {
     width: 100%;
     max-width: 100vw;
