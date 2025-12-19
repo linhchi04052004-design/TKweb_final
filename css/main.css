@@ -1,5 +1,84 @@
+.slider {
+    width: 100%;
+    max-width: 100vw;
+    /* Giả sử header+footer của bạn chiếm khoảng 250px, chỉnh lại số này cho khớp */
+    height: calc(100vh - 10px); 
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+.slider .list{
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.slider .list .item {
+    width: 100vw;
+    height: 100%;
+}
+.slider .list video, 
+.slider .list img {
+    width: 100vw;
+    height: 100%;
+    /* Quan trọng: phủ kín khung nhưng giữ đúng tỷ lệ không bị méo/khuất */
+    object-fit: cover; 
+}
+.slider .buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.slider .buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.slider .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.slider .dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.slider .dots li.active{
+    width: 30px;
+}
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Đảm bảo header luôn nằm trên video slider và ảnh sản phẩm */
+    transition: all 0.3s ease;
+}
 body{
    background-color: #FEF6EB; 
+   padding-top: 140px;
 }
 .slider {
     width: 100%;
@@ -114,13 +193,13 @@ body{
     margin: 0 auto;
 }
 
-/* Banner bên trái chiếm khoảng 25-30% */
+
 .product-banner {
-    flex: 0 0 45%;
+    flex: 0 0 40%;
 }
 .product-banner img {
     width: 100%;
-    height: 500px; /* Tăng chiều cao cố định hoặc để auto tùy hình của bạn */
+    height: 400px; /* Tăng chiều cao cố định hoặc để auto tùy hình của bạn */
     object-fit: cover;
     border-radius: 15px;
 }
@@ -132,7 +211,7 @@ body{
 
 .hot-slider-track {
     display: flex;
-    gap: 15px;
+gap: 15px;
     will-change: transform;
 }
 
@@ -198,78 +277,4 @@ body{
 .dots-hot li.active-hot {
     background: #000;
     transform: scale(1.2);
-}
-/* Tổng thể khu vực giới thiệu */
-.sushi-intro {
-    background-color: #FEF6EB; /* Màu kem chuẩn mẫu */
-    padding: 60px 0;
-    width: 100%;
-}
-
-.intro-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center; /* Căn giữa nội dung theo chiều dọc */
-    justify-content: space-between;
-    gap: 40px;
-}
-
-/* Khối nội dung bên trái */
-.intro-content {
-    flex: 1; /* Chiếm 50% độ rộng */
-    text-align: center; /* Căn giữa văn bản theo chiều ngang */
-    padding: 20px;
-}
-
-.intro-brand {
-    font-family: 'Judson', serif; /* Font chữ có chân thanh lịch */
-    font-size: 36px;
-    color: #E64A19; /* Màu cam đỏ đặc trưng của thương hiệu */
-    margin-bottom: 15px;
-}
-
-.intro-slogan {
-    font-style: italic;
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 25px;
-}
-
-.intro-description {
-    line-height: 1.8;
-    font-size: 16px;
-    color: #444;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/* Khối hình ảnh bên phải */
-.intro-image {
-    flex: 1; /* Chiếm 50% độ rộng */
-}
-
-.intro-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-
-/* Responsive cho điện thoại */
-@media screen and (max-width: 768px) {
-    .intro-container {
-        flex-direction: column; /* Chuyển thành hàng dọc trên di động */
-    }
-    .intro-content {
-        order: 1;
-    }
-    .intro-image {
-        order: 2;
-    }
-}
-@media screen and (max-width: 768px){
-    .slider{
-        height: 400px;
-    }
 }
