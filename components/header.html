@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Document</title>
+    <style>
+.header {
+    background-color: #961e1e;
+    padding: 0;
+    font-family: "Judson", serif;
+}
+
+/* --- Hàng 1: Header Container --- */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px; /* Tăng padding hai bên cho thoáng */
+    max-width: 1400px; /* Tăng độ rộng tối đa để cân đối với thanh search dài */
+    margin: 0 auto;
+    height: 90px; /* Tăng nhẹ chiều cao để header sang trọng hơn */
+}
+
+.header-logo {
+    flex: 1; /* Chiếm 1 phần không gian bên trái */
+    display: flex;
+    justify-content: flex-start;
+}
+.header-container img {
+    height: 130px; 
+    width: auto;
+    margin-top: 25px;
+    margin-left: -25px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+/* Thanh tìm kiếm */
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 25px;
+    padding: 0 20px;
+    height: 42px;
+    
+    /* Cố định chiều rộng để nó nằm chính giữa */
+    width: 550px; 
+    margin: 0 10px; 
+    flex-shrink: 1; /* Không cho phép thanh search bị co lại */
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px; /* Tăng nhẹ cỡ chữ input */
+}
+
+.search-box i {
+    font-size: 16px;
+}
+
+/* --- Nút Đăng nhập & Giỏ hàng --- */
+.account-cart {
+    display: flex;
+    gap: 15px;            /* Tăng khoảng cách giữa nút Login và Giỏ hàng */
+}
+
+.account, #cart {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 20px; 
+    
+    /* TĂNG: Nút bấm dày hơn một chút */
+    padding: 6px 18px; /* (Cũ: 4px 15px) */
+    
+    color: white;
+    cursor: pointer;
+    font-size: 16px; /* Tăng nhẹ cỡ chữ */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.account a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+/* Hover: Nền trắng, Chữ đỏ */
+.account:hover, #cart:hover {
+    background-color: white;
+    border-color: white;
+    text-decoration: none;
+}
+
+.account:hover, .account:hover a, .account:hover i,
+#cart:hover, #cart:hover span, #cart:hover i {
+    color: #961e1e;
+    text-decoration: none;
+}
+
+/* --- Hàng 2: Menu Bar --- */
+.menu-bar {
+    display: flex;
+    justify-content: space-around;;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* TĂNG: Khoảng cách menu thoáng hơn */
+    padding: 10px 50px; /* (Cũ: 5px 50px) */
+}
+
+.menu-bar a {
+    text-decoration: none;
+    color: #D9D9D9; 
+    font-size: 16px; /* Tăng nhẹ font chữ menu */
+    text-transform: uppercase;
+    font-weight: bold;
+    
+    /* TĂNG: Box menu to hơn */
+    padding: 8px 25px; /* (Cũ: 6px 20px) */
+    
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng Hover/Active: Nền trắng, Chữ đỏ */
+.menu-bar a:hover, 
+.menu-bar a.active {
+text-decoration: none;
+    background-color: white;
+    color: #8F0707; 
+    /* Đổ bóng chữ và box để giống hình mẫu */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    font-weight: 800;
+}
+  
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+        <div class="header-container">
+        <img src = "../assets/logo2.png" alt ="Logo"> 
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+            <i class="fa-solid fa-magnifying-glass" id="searchIcon" style="cursor: pointer;"></i>
+       </div>
+        <div class="account-cart">
+            <div class="account">
+                <i class="fa-regular fa-user"></i>
+                <div id="accountSection">
+                    <a href="../login.html" id="login-link">Đăng nhập / Đăng ký</a>
+                    <span id="usernameDisplay" style="display: none;"></span>
+                    <button id="logoutBtn" style="display: none;">Đăng xuất</button>
+                </div>
+            </div>
+            <!-- Nút Giỏ Hàng -->
+            <button id="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Giỏ hàng</span>
+            </button>
+        </div>
+
+      </div>
+      <div class="menu-bar">
+        <a href="../homepage.html" class="active">TRANG CHỦ</a>
+        <a href="../menu.html">THỰC ĐƠN</a>
+        <a href="../restaurants.html">ĐẶT BÀN</a>
+        <a href="../blog.html">TIN TỨC</a>
+        <a href="../promotion.html">KHUYẾN MÃI</a>
+        <a href="../about.html">VỀ CHÚNG TÔI</a>
+      </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuIcon = document.querySelector(".inner-icon");
+      const menu = document.querySelector(".inner-menu");
+      const regist = document.querySelector(".inner-regist");
+
+      menuIcon.addEventListener("click", () => {
+        regist.classList.toggle("show-regist");
+        menu.classList.toggle("show-menu");
+      });
+
+      const currentUser = localStorage.getItem("currentUser");
+
+      const loginButton = document.querySelector(".button-dn a");
+      const registerButton = document.querySelector(".button-dk a");
+
+      if (currentUser) {
+        const user = JSON.parse(currentUser);
+        loginButton.setAttribute("href", "#");
+        registerButton.setAttribute("href", "#");
+
+        loginButton.textContent = `Xin chào, ${user.username}`;
+        registerButton.textContent = "Đăng xuất";
+
+        registerButton.addEventListener("click", (event) => {
+          event.preventDefault(); // Ngăn nhảy trang
+          localStorage.removeItem("currentUser");
+          window.location.reload();
+        });
+      } else {
+        loginButton.textContent = "Đăng nhập";
+        loginButton.setAttribute("href", "./login.html");
+
+        registerButton.textContent = "Đăng ký";
+        registerButton.setAttribute("href", "./register.html");
+      }
+    });
+    </script>
+  </body>
+</html>
