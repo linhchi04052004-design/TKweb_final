@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            rgba(231, 222, 222, 0.1),
+            rgba(77, 11, 74, 0.6)
+        ),
+        url('../assets/images/signupp.jpg') no-repeat center center fixed;
+
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.register-box {
+   background: linear-gradient(
+        to top,
+        rgba(122, 74, 135, 0.85) 0%,
+        rgba(154, 125, 201, 0.65) 45%,
+        rgba(255, 255, 255, 0.1) 80%
+    );
+    padding: 40px;
+    border-radius: 20px;
+    width: 400px;
+    color: white;
+     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+    position: relative;
+    z-index: 2;
+    
+}
+.register-box:hover ~ #sakura-container .sakura {
+    animation-duration: 6s;
+    opacity: 0.9;
+    filter: brightness(1.2);
+}
+
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    box-sizing: border-box;
+    outline: none;
+}
+
+
+.password-requirements {
+    background: #fff9f0; /* Màu nền kem nhạt của hình bên phải */
+    color: #5d4037;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+
+.password-requirements h3 { margin: 0 0 10px 0; font-size: 1.1em; }
+
+
+ul { list-style: none; padding: 0; }
+
+
+li::before {
+    content: "✔";
+    margin-right: 10px;
+}
+
+
+/* Hiệu ứng khi thỏa mãn điều kiện */
+.invalid { color: #888; }
+.valid { color: #5d4037; font-weight: bold; }
+.valid::before { color: #795548; }
+
+.btn-register::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    opacity: 0;
+    box-shadow: 0 0 20px rgba(255, 183, 197, 0.8);
+    transition: opacity 0.3s ease;
+}
+
+.btn-register:hover::after {
+    opacity: 1;
+}
+
+.btn-register {
+    width: 150px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    color: #9b73c8;
+    font-weight: bold;
+    display: block;
+    margin: 20px auto 0;
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        
+        color 0.25s ease;
+}
+
+.btn-register:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: linear-gradient(135deg, #f7c1d9, #d9b6f2);
+    color: white;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35),
+        0 0 15px rgba(255, 183, 197, 0.6);
+}
+
+.btn-register:active {
+    transform: scale(0.97);
+}
+
+
+
+/* ===== HIỆU ỨNG HOA ANH ĐÀO ===== */
+#sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Để không ghi đè lên các nút bấm */
+    z-index: 4; /* Nằm dưới khung login (z-index: 2) nhưng trên lớp overlay */
+    overflow: visible;
+}
+
+.sakura {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    border-radius: 100% 0 50% 10%;
+    opacity: 0.7;
+    transform-style: preserve-3d;
+    animation: fall 2s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) translateX(80px) rotate(720deg);
+        opacity: 0.9;
+    }
+}
+
+@keyframes swirl {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateX(120px) rotate(1080deg);
+    }
+}
+

@@ -273,3 +273,140 @@ body{
         height: 400px;
     }
 }
+
+/* Dàn trang dạng lưới */
+.promotion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Định dạng thẻ voucher */
+.promo-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Đảm bảo các card trong cùng một hàng có chiều cao bằng nhau */
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.promo-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng bay lên khi di chuột */
+}
+
+.promo-image {
+    position: relative;
+    height: 200px;
+}
+
+.promo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.promo-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ff4757;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.promo-content {
+    padding: 20px;
+    
+}
+
+.promo-content h3 {
+    margin: 0 0 10px 0;
+    color: #2f3542;
+}
+
+.btn-detail {
+    background: #3aab6d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    /* Dàn trang dạng lưới */
+.promotion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Định dạng thẻ voucher */
+.promo-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.promo-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng bay lên khi di chuột */
+}
+
+.promo-image {
+    position: relative;
+    height: 200px;
+}
+
+.promo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.promo-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ff4757;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.promo-content {
+    padding: 20px;
+}
+
+.promo-content h3 {
+    margin: 0 0 10px 0;
+    color: #2f3542;
+}
+
+.btn-detail {
+    font-weight: 900 !important;
+    font-family: Arial, sans-serif;
+    background: #7b662e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    
+}
+}

@@ -1,0 +1,46 @@
+{
+  "sushi_vouchers": [
+    {
+      "id": 1,
+      "title": "NGÀY HỘI HOA ANH ĐÀO",
+      "description": "Ưu đãi đặc biệt mùa hoa anh đào tại Sushi Fuji.",
+      "image": "../assets/images/Promo1.jpg",
+      "tag": "COUPON 99K"
+    },
+    {
+      "id": 2,
+      "title": "VOUCHER ƯU ĐÃI BẠN MỚI",
+      "description": "Quà tặng bạn mới cho hóa đơn đầu tiên từ 500.000đ.",
+      "image": "../assets/images/Promo2.jpg",
+      "tag": "NEW GUEST"
+    },
+    {
+      "id": 3,
+      "title": "GIÁNG SINH GIÁ XINH",
+      "description": "Giảm trực tiếp 15% cho mọi hóa đơn trong tháng 12.",
+      "image": "../assets/images/Promo3.jpg",
+      "tag": "-15%"
+    },
+    {
+      "id": 4,
+      "title": "ƯU ĐÃI 20% OFF",
+      "description": "Áp dụng cho khách hàng đặt bàn trước qua Hotline.",
+      "image": "../assets/images/Promo4.jpg",
+      "tag": "20% OFF"
+    },
+    {
+      "id": 5,
+      "title": "COMBO GIA ĐÌNH",
+      "description": "Thưởng thức set sushi đa dạng dành cho 4 người.",
+      "image": "../assets/images/Promo5.jpg",
+      "tag": "FAMILY SET"
+    },
+    {
+      "id": 6,
+      "title": "TẶNG NƯỚC MIỄN PHÍ",
+      "description": "Tưng bừng khai trương, tặng nước miễn phí ",
+      "image": "../assets/images/Promo6.jpg",
+      "tag": "FREE DRINK"
+    }
+  ]
+}
