@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
         //nhúng header và footer 
     fetch("./components/header.html")
-        .then(res => res.text())
-        .then(data => {
+    .then(res => res.text())
+    .then(data => {
         document.getElementById("header").innerHTML = data;
-        })
-        .catch(err => console.error("Không load được header", err));
+        
+        // CHỈNH SỬA Ở ĐÂY: Phát một sự kiện để báo rằng Header đã sẵn sàng
+        document.dispatchEvent(new Event("headerLoaded"));
+    })
+    .catch(err => console.error("Không load được header", err));
 
     fetch("./components/footer.html")
     .then(res => res.text())
