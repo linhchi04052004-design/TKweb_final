@@ -410,4 +410,25 @@ body{
     color: #2f3542;
 }
 
+
+/* --- PHẦN CSS CHO TRANG CHI TIẾT --- */
+.detail-body {
+    background-color: #232a5e !important; /* Xanh đậm sang trọng */
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    border-left: 4px solid #f1b74a;
+}
+
+.btn-back-home {
+    background: #f1b74a;
+    color: #232a5e;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
 }

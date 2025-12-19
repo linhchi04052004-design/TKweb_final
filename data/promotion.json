@@ -1,46 +1,70 @@
 {
   "sushi_vouchers": [
     {
-      "id": 1,
+      "id": "1",
       "title": "NGÀY HỘI HOA ANH ĐÀO",
-      "description": "Ưu đãi đặc biệt mùa hoa anh đào tại Sushi Fuji.",
       "image": "../assets/images/Promo1.jpg",
-      "tag": "COUPON 99K"
+      "tag": "COUPON 99K",
+      "description": "Ưu đãi đặc biệt mùa hoa anh đào tại Sushi Fuji.",
+      "content": "Thưởng thức các loại Sushi hoa anh đào đặc trưng với mức giá ưu đãi chỉ từ 99.000đ.",
+      "time": "Thứ 7 & Chủ Nhật hàng tuần",
+      "condition": "Không áp dụng kèm các chương trình khuyến mãi khác.",
+      "link": "promotion_detail.html?id=1"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "VOUCHER ƯU ĐÃI BẠN MỚI",
-      "description": "Quà tặng bạn mới cho hóa đơn đầu tiên từ 500.000đ.",
       "image": "../assets/images/Promo2.jpg",
-      "tag": "NEW GUEST"
+      "tag": "NEW GUEST",
+      "description": "Quà tặng bạn mới cho hóa đơn đầu tiên từ 500.000đ.",
+      "content": "Tặng ngay Voucher hoặc món quà bất ngờ cho khách hàng lần đầu ghé thăm.",
+      "time": "Áp dụng đến hết năm 2025",
+      "condition": "Hóa đơn từ 500.000đ trở lên.",
+      "link": "promotion_detail.html?id=2"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "GIÁNG SINH GIÁ XINH",
-      "description": "Giảm trực tiếp 15% cho mọi hóa đơn trong tháng 12.",
       "image": "../assets/images/Promo3.jpg",
-      "tag": "-15%"
+      "tag": "-15%",
+      "description": "Giảm trực tiếp 15% cho mọi hóa đơn trong tháng 12.",
+      "content": "Giảm giá trực tiếp trên tổng hóa đơn cho mọi thực khách.",
+      "time": "Từ 01/12 đến hết 31/12",
+      "condition": "Áp dụng khi dùng bữa tại nhà hàng.",
+      "link": "promotion_detail.html?id=3"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "ƯU ĐÃI 20% OFF",
-      "description": "Áp dụng cho khách hàng đặt bàn trước qua Hotline.",
       "image": "../assets/images/Promo4.jpg",
-      "tag": "20% OFF"
+      "tag": "20% OFF",
+      "description": "Áp dụng cho khách hàng đặt bàn trước qua Hotline.",
+      "content": "Giảm ngay 20% khi quý khách đặt lịch trước ít nhất 1 giờ.",
+      "time": "Hàng ngày, khung giờ 10:00 - 22:00",
+      "condition": "Liên hệ Hotline đặt bàn trước.",
+      "link": "promotion_detail.html?id=4"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "COMBO GIA ĐÌNH",
-      "description": "Thưởng thức set sushi đa dạng dành cho 4 người.",
       "image": "../assets/images/Promo5.jpg",
-      "tag": "FAMILY SET"
+      "tag": "FAMILY SET",
+      "description": "Thưởng thức set sushi đa dạng dành cho 4 người.",
+      "content": "Set ăn tiết kiệm được thiết kế riêng cho nhóm gia đình 4-6 người.",
+      "time": "Mọi ngày trong tuần",
+      "condition": "Giảm thêm 15% vào cuối tuần.",
+      "link": "promotion_detail.html?id=5"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "TẶNG NƯỚC MIỄN PHÍ",
-      "description": "Tưng bừng khai trương, tặng nước miễn phí ",
       "image": "../assets/images/Promo6.jpg",
-      "tag": "FREE DRINK"
+      "tag": "FREE DRINK",
+      "description": "Tặng nước miễn phí, nhân dịp khai trương cửa hàng. ",
+      "content": "Tặng 01 ly đồ uống bất kỳ cho mỗi phần Combo đặt tại quán.",
+      "time": "Tuần lễ khai trương chi nhánh mới",
+      "condition": "Áp dụng tại cơ sở mới.",
+      "link": "promotion_detail.html?id=6"
     }
   ]
 }

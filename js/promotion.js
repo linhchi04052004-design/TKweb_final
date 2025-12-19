@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('promotion-container');
 
-    // Đường dẫn từ file HTML đi vào thư mục data
     fetch('./data/promotion.json')
         .then(response => {
             if (!response.ok) throw new Error('Không tìm thấy file JSON');
@@ -9,14 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             const vouchers = data.sushi_vouchers;
-
             if (vouchers && container) {
-                container.innerHTML = ''; // Xóa trắng trước khi nạp dữ liệu
-
+                container.innerHTML = ''; 
                 vouchers.forEach(item => {
-                    // Sửa lại đường dẫn ảnh để phù hợp với file HTML ở thư mục gốc
+                    // Chuyển đổi đường dẫn ảnh cho khớp với thư mục gốc
                     const imagePath = item.image.replace('../', './');
-
+                    
                     const cardHTML = `
                         <div class="promo-card">
                             <div class="promo-image">
@@ -24,11 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="promo-tag">${item.tag}</span>
                             </div>
                             <div class="promo-content">
-                                <h3>${item.title}</h3>
-                                <p>${item.description}</p>
-                                <a href="promotion_detail.html" class="btn-detail" style="text-decoration: none; display: inline-block; text-align: center;">
-                <b>XEM CHI TIẾT</b>
-            </a>
+                                <div class="promo-info">
+                                    <h3>${item.title}</h3>
+                                    <p>${item.description}</p>
+                                </div>
+                                <div class="btn-wrapper">
+                                    <a href="${item.link}" class="btn-detail">
+                                        <b>XEM CHI TIẾT</b>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -36,5 +37,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         })
-        .catch(error => console.error("Lỗi:", error));
+        .catch(error => console.error("Lỗi nạp dữ liệu:", error));
 });
