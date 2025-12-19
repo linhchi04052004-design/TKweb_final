@@ -1,4 +1,6 @@
-
+body{
+   background-color: #FEF6EB; 
+}
 .slider {
     width: 100%;
     max-width: 100vw;
@@ -68,6 +70,203 @@
 }
 .slider .dots li.active{
     width: 30px;
+}
+/* Container tiêu đề */
+.section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Kiểu dáng chữ h2 */
+.section-title h2 {
+    font-family: 'Judson', serif; 
+    font-size: 40px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    text-transform: none; /* Giữ nguyên kiểu chữ hoa/thường như mẫu */
+}
+
+/* Họa tiết trang trí 2 bên (Dùng ký tự hoặc icon) */
+.decor-left, .decor-right {
+    font-size: 24px;
+    color: #333;
+    opacity: 0.8;
+}
+
+/* Đảm bảo toàn bộ vùng này nằm trên nền kem */
+.hot-products {
+    background-color: #FEF6EB; 
+    padding: 50px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.list-hot {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Tăng khoảng cách giữa banner và slider cho thoáng */
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Banner bên trái chiếm khoảng 25-30% */
+.product-banner {
+    flex: 0 0 45%;
+}
+.product-banner img {
+    width: 100%;
+    height: 500px; /* Tăng chiều cao cố định hoặc để auto tùy hình của bạn */
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hot-slider-container {
+    flex: 0 0 50%; /* Thu hẹp vùng chứa sản phẩm */
+    overflow: hidden;
+}
+
+.hot-slider-track {
+    display: flex;
+    gap: 15px;
+    will-change: transform;
+}
+
+/* Mỗi sản phẩm chiếm 1/3 vùng hiển thị (để hiện đúng 3 cái) */
+.item-hot {
+    /* Chia 3 sản phẩm trong vùng 50% sẽ làm mỗi cái trông bé lại đáng kể */
+    flex: 0 0 calc(33.33% - 15px); 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.item-hot img {
+    width: 100%;
+    height: 180px; /* Giảm chiều cao ảnh sản phẩm để trông nhỏ nhắn hơn */
+    object-fit: cover;
+}
+
+.item-info {
+    padding: 15px;
+}
+.item-info h3 {
+    font-size: 1rem; /* Giảm cỡ chữ tiêu đề sản phẩm */
+    margin-bottom: 5px;
+}
+
+/* CSS cho cụm nút điều hướng ở giữa */
+.controls-hot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-left: 48%; 
+    width: 50%;
+}
+
+.controls-hot button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.dots-hot {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+    list-style: none;
+}
+
+.dots-hot li {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.dots-hot li.active-hot {
+    background: #000;
+    transform: scale(1.2);
+}
+/* Tổng thể khu vực giới thiệu */
+.sushi-intro {
+    background-color: #FEF6EB; /* Màu kem chuẩn mẫu */
+    padding: 60px 0;
+    width: 100%;
+}
+
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Căn giữa nội dung theo chiều dọc */
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Khối nội dung bên trái */
+.intro-content {
+    flex: 1; /* Chiếm 50% độ rộng */
+    text-align: center; /* Căn giữa văn bản theo chiều ngang */
+    padding: 20px;
+}
+
+.intro-brand {
+    font-family: 'Judson', serif; /* Font chữ có chân thanh lịch */
+    font-size: 36px;
+    color: #E64A19; /* Màu cam đỏ đặc trưng của thương hiệu */
+    margin-bottom: 15px;
+}
+
+.intro-slogan {
+    font-style: italic;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.intro-description {
+    line-height: 1.8;
+    font-size: 16px;
+    color: #444;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Khối hình ảnh bên phải */
+.intro-image {
+    flex: 1; /* Chiếm 50% độ rộng */
+}
+
+.intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Responsive cho điện thoại */
+@media screen and (max-width: 768px) {
+    .intro-container {
+        flex-direction: column; /* Chuyển thành hàng dọc trên di động */
+    }
+    .intro-content {
+        order: 1;
+    }
+    .intro-image {
+        order: 2;
+    }
 }
 @media screen and (max-width: 768px){
     .slider{
