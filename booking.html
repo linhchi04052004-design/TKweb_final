@@ -2,133 +2,105 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Đặt bàn | iSushi</title>
+  <title>Chi tiết đặt bàn | Sushi Fuji</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-
-  <!-- Tailwind CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { fujiRed: '#8b1e1e', fujiGold: '#d4af37', fujiCream: '#faf7f2' }, fontFamily: { playfair: ['Playfair Display', 'serif'], inter: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-fujiCream font-inter text-gray-800">
 
+  <header class="bg-fujiRed text-white py-4 shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="font-playfair text-2xl tracking-wider">Sushi Fuji</h1>
+      <a href="booking.html" class="text-xs border border-white/30 px-4 py-2 rounded-full hover:bg-white/10 transition">Quay lại</a>
+    </div>
+  </header>
 
-
-
-  <!-- MAIN -->
-  <main class="max-w-7xl mx-auto px-4 mt-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-
-      <!-- LEFT: BRANCH LIST -->
-      <div class="space-y-5 overflow-y-auto max-h-[75vh] pr-2">
-
-
-        <!-- Branch item -->
-        <div class="bg-white rounded-xl shadow p-5">
-          <h3 class="font-semibold text-lg">Sushi Fuji Nguyễn Chí Thanh</h3>
-          <p class="text-sm text-gray-600 mt-1">
-            Số 12–18 Nguyễn Chí Thanh, Ba Đình, Hà Nội
-          </p>
-          <p class="text-sm mt-1">
-            Open – Close: 09:00 – 22:00
-          </p>
-
-
-          <div class="flex gap-4 mt-4">
-            <a
-              href="tel:02473007675"
-              class="border border-orange-500 text-orange-500 px-4 py-2 rounded-lg text-sm"
-            >
-              📞 0247 300 7675
-            </a>
-            <a
-              href="booking.html"
-              class="bg-orange-500 text-white px-6 py-2 rounded-lg text-sm"
-            >
-              Đặt bàn
-            </a>
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <div class="lg:col-span-2 space-y-8">
+        
+        <section class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+          <div class="flex items-center mb-6">
+            <span class="w-8 h-8 bg-fujiRed text-white rounded-full flex items-center justify-center text-xs mr-3 font-bold">1</span>
+            <h3 class="font-playfair text-xl text-fujiRed uppercase tracking-wide">Số lượng khách</h3>
           </div>
-        </div>
-
-
-        <!-- Branch item -->
-        <div class="bg-white rounded-xl shadow p-5">
-          <h3 class="font-semibold text-lg">Sushi Fuji Thái Hà</h3>
-          <p class="text-sm text-gray-600 mt-1">
-            Lô S1, Tầng 2, Viet Tower, Thái Hà, Hà Nội
-          </p>
-          <p class="text-sm mt-1">
-            Open – Close: 09:00 – 22:00
-          </p>
-
-
-          <div class="flex gap-4 mt-4">
-            <a
-              href="tel:02473007673"
-              class="border border-orange-500 text-orange-500 px-4 py-2 rounded-lg text-sm"
-            >
-              📞 0247 300 7673
-            </a>
-            <a
-              href="booking.html"
-              class="bg-orange-500 text-white px-6 py-2 rounded-lg text-sm"
-            >
-              Đặt bàn
-            </a>
+          <div class="flex items-center justify-center space-x-8 py-4">
+            <button onclick="changeGuest(-1)" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-fujiRed hover:text-fujiRed transition text-2xl">-</button>
+            <div class="text-center min-w-[100px]">
+              <span id="guestCount" class="text-4xl font-bold text-fujiRed">2</span>
+              <p class="text-[10px] text-gray-400 uppercase mt-1">Khách người lớn</p>
+            </div>
+            <button onclick="changeGuest(1)" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-fujiRed hover:text-fujiRed transition text-2xl">+</button>
           </div>
-        </div>
+        </section>
 
-
-        <!-- Branch item -->
-        <div class="bg-white rounded-xl shadow p-5">
-          <h3 class="font-semibold text-lg">Sushi Fuji Triệu Việt Vương</h3>
-          <p class="text-sm text-gray-600 mt-1">
-            158 Triệu Việt Vương, Hai Bà Trưng, Hà Nội
-          </p>
-          <p class="text-sm mt-1">
-            Open – Close: 09:00 – 22:00
-          </p>
-
-
-          <div class="flex gap-4 mt-4">
-            <a
-              href="tel:02473069588"
-              class="border border-orange-500 text-orange-500 px-4 py-2 rounded-lg text-sm"
-            >
-              📞 0247 306 9588
-            </a>
-            <a
-              href="booking.html"
-              class="bg-orange-500 text-white px-6 py-2 rounded-lg text-sm"
-            >
-              Đặt bàn
-            </a>
+        <section class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+          <div class="flex items-center mb-6">
+            <span class="w-8 h-8 bg-fujiRed text-white rounded-full flex items-center justify-center text-xs mr-3 font-bold">2</span>
+            <h3 class="font-playfair text-xl text-fujiRed uppercase tracking-wide">Thời gian đến</h3>
           </div>
-        </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <label class="text-xs font-bold text-gray-400 uppercase mb-3 block">Chọn ngày</label>
+              <input type="date" id="bookingDate" class="w-full p-3.5 rounded-xl border border-gray-100 bg-gray-50 focus:bg-white outline-none transition">
+            </div>
+            <div>
+              <label class="text-xs font-bold text-gray-400 uppercase mb-3 block">Chọn khung giờ</label>
+              <div id="timeSlotsContainer" class="grid grid-cols-3 gap-2">
+                </div>
+            </div>
+          </div>
+        </section>
 
-
+        <section class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+          <div class="flex items-center mb-6">
+            <span class="w-8 h-8 bg-fujiRed text-white rounded-full flex items-center justify-center text-xs mr-3 font-bold">3</span>
+            <h3 class="font-playfair text-xl text-fujiRed uppercase tracking-wide">Thông tin liên hệ</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <input type="text" id="custName" placeholder="Họ và tên *" class="w-full p-4 rounded-xl border border-gray-100 bg-gray-50 focus:bg-white outline-none focus:border-fujiRed transition">
+            <input type="tel" id="custPhone" placeholder="Số điện thoại *" class="w-full p-4 rounded-xl border border-gray-100 bg-gray-50 focus:bg-white outline-none focus:border-fujiRed transition">
+            <textarea id="custNote" placeholder="Ghi chú (Vd: Ghế trẻ em, dị ứng...)" rows="3" class="w-full p-4 rounded-xl border border-gray-100 bg-gray-50 focus:bg-white outline-none focus:border-fujiRed transition md:col-span-2"></textarea>
+          </div>
+        </section>
       </div>
 
-
-      <!-- RIGHT: MAP -->
-      <div class="bg-white rounded-xl shadow overflow-hidden h-[75vh]">
-        <iframe
-          src="https://www.google.com/maps?q=Hà%20Nội&output=embed"
-          class="w-full h-full border-0"
-          loading="lazy"
-        ></iframe>
-      </div>
-
-
+      <aside class="lg:col-span-1">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-50 p-8 sticky top-24 text-center">
+          <p class="text-xs text-gray-400 mb-6 italic">* Vui lòng kiểm tra kỹ thông tin liên hệ và khung giờ trước khi đặt.</p>
+          <button onclick="handleConfirm()" class="w-full bg-fujiRed text-white py-4 rounded-2xl font-bold hover:bg-red-800 transition uppercase tracking-widest shadow-lg shadow-red-200">
+            Xác nhận đặt bàn
+          </button>
+        </div>
+      </aside>
     </div>
   </main>
 
+  <div id="summaryModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl">
+      <div class="bg-fujiRed p-6 text-white text-center">
+        <h4 class="font-playfair text-2xl italic tracking-wide">Xác nhận thông tin</h4>
+      </div>
+      <div id="modalBody" class="p-8 space-y-4 text-sm leading-relaxed">
+        </div>
+      <div class="p-6 bg-gray-50 border-t border-gray-100 flex gap-3">
+        <button onclick="closeModal()" class="flex-1 py-3 border border-gray-200 rounded-xl font-bold text-gray-500 hover:bg-gray-100 transition">Sửa lại</button>
+        <button onclick="alert('Cảm ơn bạn! Đơn đặt bàn đã được gửi.')" class="flex-[2] py-3 bg-fujiRed text-white rounded-xl font-bold hover:bg-red-800 shadow-lg shadow-red-100 transition">Gửi đơn đặt bàn</button>
+      </div>
+    </div>
+  </div>
 
- 
+  <footer class="text-center py-10 text-gray-300 text-[10px] tracking-widest uppercase">
+    © 2025 Sushi Fuji – Japanese Dining
+  </footer>
 
-
+  <script src="js/booking.js" defer></script>
 </body>
 </html>
-
-
-
