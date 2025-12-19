@@ -1,137 +1,95 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     const DANH_SACH_ANH = [
-
-        "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80", // Ảnh 1
-
-        "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80", // Ảnh 2
-
-        "https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80", // Ảnh 3
-
-        "https://images.unsplash.com/photo-1615361200141-f45040f367be?w=600&q=80", // Ảnh 4
-
-        "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=600&q=80", // Ảnh 5
-
-        "https://images.unsplash.com/photo-1558985250-27a406d64cb3?w=600&q=80"  // Ảnh 6
-
+        "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80",
+        "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80",
+        "https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80",
+        "https://images.unsplash.com/photo-1615361200141-f45040f367be?w=600&q=80",
+        "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=600&q=80",
+        "https://images.unsplash.com/photo-1558985250-27a406d64cb3?w=600&q=80"
     ];
 
-
-
-    // --- 2. TÍNH TOÁN KÍCH THƯỚC TRANG ---
-
-    // Yêu cầu: Mỗi trang ~ 1/2 chiều rộng và 1/2 chiều cao màn hình
-
+    // --- TÍNH TOÁN KÍCH THƯỚC (GIỮ NGUYÊN) ---
     const screenWidth = window.innerWidth;
-
     const screenHeight = window.innerHeight;
-
-    // Chiều rộng 1 trang = 40% màn hình (để khi mở đôi là 80%, chừa lề 2 bên)
-
     const pageWidth = Math.floor(screenWidth * 0.43);
-
-    // Chiều cao = 60% màn hình
-
     const pageHeight = Math.floor(screenHeight * 0.60);
 
-
-
-    // --- 3. TẠO HTML VÀ NHÂN BẢN (LOOP) ---
-
     const bookContainer = document.getElementById('book');
-
-    const REPEAT_TIMES = 10; // Nhân bản 10 lần để tạo cảm giác vô tận
-
-
-
+    const REPEAT_TIMES = 10;
     let htmlContent = "";
 
-
-
-    // Vòng lặp nhân bản nội dung
-
+    // --- TẠO HTML ---
+    // Mẹo nhỏ: Để ảnh không bị méo khi lật, ta thêm CSS inline cho ảnh
     for (let i = 0; i < REPEAT_TIMES; i++) {
-
         DANH_SACH_ANH.forEach(imgUrl => {
-
-            // Tạo thẻ div chứa ảnh full
-
             htmlContent += `
-
-                <div class="page">
-
-                    <img src="${imgUrl}" alt="Menu Page">
-
+                <div class="page" style="background-color: #fdfdfd;">
+                    <div class="page-content" style="width: 100%; height: 100%; overflow: hidden;">
+                        <img src="${imgUrl}" alt="Menu" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
                 </div>
-
             `;
-
         });
-
     }
-
-
-
-    // Chèn vào HTML
-
     bookContainer.innerHTML = htmlContent;
 
-
-
-    // --- 4. KHỞI TẠO HIỆU ỨNG LẬT ---
-
+    // --- CẤU HÌNH HIỆU ỨNG (QUAN TRỌNG) ---
     const pageFlip = new St.PageFlip(bookContainer, {
-
-        width: pageWidth,   // Kích thước đã tính ở trên
-
-        height: pageHeight, // Kích thước đã tính ở trên
-
-       
-
-        // Cấu hình hiển thị
-
-        size: "fixed",      // Cố định theo kích thước tính toán
-
-        usePortrait: false, // Bắt buộc chế độ Ngang (2 trang)
-
-        showCover: false,   // Không dùng chế độ bìa cứng (để mở sẵn 2 trang)
-
-       
-
-        maxShadowOpacity: 0.5, // Độ đậm bóng đổ
-
-        flippingTime: 1200,    // Tốc độ lật (ms)
-
-        startPage: 0
-
+        width: pageWidth,
+        height: pageHeight,
+        
+        // Cấu hình vật lý cho giống giấy 
+        size: "fixed",
+        usePortrait: false,
+        showCover: false,      // Bật bìa lên để trang đầu có độ dày đẹp hơn
+        
+        // Tinh chỉnh hiệu ứng Visual
+        minWidth: 300,        // Độ rộng tối thiểu để không bị vỡ layout
+        maxWidth: 1000,
+        minHeight: 400,
+        
+        maxShadowOpacity: 0.2, // 
+        showPageCorners: true, // Hiển thị góc cong để gợi ý người dùng lật
+        flippingTime: 1200,     // Tốc độ 800ms: Nhanh và dứt khoát như lật tay
+        
+        // Cho phép dùng chuột kéo thả (quan trọng để tạo cảm giác thực)
+        useMouseEvents: true, 
+        swipeDistance: 30,    // Khoảng cách vuốt để lật
     });
-
-
-
-    // Load các trang vừa tạo vào thư viện
 
     pageFlip.loadFromHTML(document.querySelectorAll('.page'));
 
+    // --- XỬ LÝ AUTO PLAY THÔNG MINH ---
+    // Tự động lật, NHƯNG nếu người dùng đang xem (di chuột vào) thì dừng lại
+    
+    let autoPlayInterval;
+    let isUserInteracting = false;
 
+    // Hàm bắt đầu chạy
+    const startAutoPlay = () => {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+        
+        autoPlayInterval = setInterval(() => {
+            if (isUserInteracting) return; // Nếu đang tương tác thì bỏ qua lượt này
 
-    // --- 5. TỰ ĐỘNG LẬT (AUTO PLAY) ---
+            // Logic lặp vô tận
+            if (pageFlip.getCurrentPageIndex() < pageFlip.getPageCount() - 2) {
+                pageFlip.flipNext();
+            } else {
+                // Khi hết sách, thay vì nhảy bụp về 0, ta lật về trang 0 (có hiệu ứng lật ngược)
+                // hoặc dùng turnToPage(0) nếu muốn reset nhanh.
+                pageFlip.turnToPage(0); 
+            }
+        }, 4000); // Tăng lên 4s để người xem kịp nhìn ảnh
+    };
 
-    setInterval(() => {
+    // Bắt sự kiện người dùng tương tác để tạm dừng
+    bookContainer.addEventListener('mouseenter', () => { isUserInteracting = true; });
+    bookContainer.addEventListener('mouseleave', () => { isUserInteracting = false; });
+    bookContainer.addEventListener('touchstart', () => { isUserInteracting = true; });
+    bookContainer.addEventListener('touchend',   () => { isUserInteracting = false; });
 
-        // Nếu chưa đến những trang cuối cùng của bản copy
-
-        if (pageFlip.getCurrentPageIndex() < pageFlip.getPageCount() - 2) {
-
-            pageFlip.flipNext(); // Lật tiếp
-
-        } else {
-
-            // Khi chạy hết 10 vòng lặp -> Nhảy về trang đầu tiên
-
-            pageFlip.turnToPage(0);
-
-        }
-
-    }, 3500);
-
+    // Khởi chạy
+    startAutoPlay();
 });
