@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+    <div id="sakura-container"></div> 
 
     <div class="login-container">
         <h2>LOGIN</h2>
@@ -21,5 +22,36 @@
         </p>
     </div>
 
+   <script>
+    function createSakura() {
+        const container = document.getElementById('sakura-container');
+        if (!container) return;
+
+        const leaf = document.createElement('div');
+        leaf.classList.add('sakura');
+
+        // 1. ĐỔI KÍCH THƯỚC (Cánh hoa to nhỏ ngẫu nhiên)
+        const size = Math.random() * 8 + 7 + 'px'; 
+        leaf.style.width = size;
+        leaf.style.height = size;
+
+        leaf.style.left = Math.random() * 100 + 'vw';
+
+        // 2. TĂNG TỐC ĐỘ: Giảm thời gian từ (5-10s) xuống còn (2-5s) để hoa rơi nhanh hơn
+        const duration = Math.random() * 3 + 2 + 's'; 
+        leaf.style.animationDuration = duration;
+
+        leaf.style.opacity = Math.random() * 0.5 + 0.5;
+
+        container.appendChild(leaf);
+
+        setTimeout(() => {
+            leaf.remove();
+        }, parseFloat(duration) * 1000);
+    }
+
+    // 3. TĂNG ĐỘ DÀY: Giảm thời gian chờ từ 200ms xuống 50ms (tạo hoa liên tục hơn)
+    setInterval(createSakura, 60); 
+</script>
 </body>
 </html>
