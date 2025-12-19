@@ -8,7 +8,7 @@ body {
             rgba(231, 222, 222, 0.1),
             rgba(77, 11, 74, 0.6)
         ),
-        url('../images/signupp.jpg') no-repeat center center fixed;
+        url('../assets/images/signupp.jpg') no-repeat center center fixed;
 
     background-size: cover;
 
