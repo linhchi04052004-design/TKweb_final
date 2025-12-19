@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Khuyến mãi Sushi</title>
+    <style>
+        /* CSS gốc từ dự án của bạn và phần trang chi tiết */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fdf5e6; /* Màu nền kem nhạt hợp với style Sushi */
+        }
+
+        .sushi-detail-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .promo-header {
+            position: relative;
+            height: 400px;
+        }
+
+        .promo-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .status-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #27ae60; /* Màu xanh lá từ nút "Xem chi tiết" của bạn */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .promo-body {
+            padding: 40px;
+        }
+
+        .promo-title {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .promo-desc {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .info-section, .terms-section {
+            margin-bottom: 25px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .info-section h3, .terms-section h3 {
+            color: #d35400; /* Màu cam đậm của Sushi Fuji */
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-list li::before {
+            content: "🍣";
+            margin-right: 10px;
+        }
+
+        .action-footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: #888;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            color: #d35400;
+        }
+
+        .btn-order {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-order:hover {
+            background: #1e8449;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 768px) {
+            .promo-header { height: 250px; }
+            .promo-title { font-size: 1.8rem; }
+            .action-footer { flex-direction: column; gap: 20px; }
+            .btn-order { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sushi-detail-container">
+    <div class="promo-header">
+        <img src="assets/images/Promo1.jpg" alt="Ngày hội hoa anh đào">
+        <div class="status-tag">ĐANG DIỄN RA</div>
+    </div>
+
+    <div class="promo-body">
+        <h1 class="promo-title">NGÀY HỘI HOA ANH ĐÀO</h1>
+        <p class="promo-desc">Ưu đãi đặc biệt mùa hoa anh đào tại Sushi Fuji - Thưởng thức hương vị chuẩn Nhật.</p>
+
+        <div class="info-section">
+            <h3>Nội dung ưu đãi</h3>
+            <ul class="benefit-list">
+                <li>Sử dụng <strong>Coupon 99K</strong> cho các set Sushi cá hồi đặc biệt.</li>
+                <li>Tặng 01 bình rượu Sake nhỏ cho hóa đơn từ 500.000đ.</li>
+                <li>Check-in tại cửa hàng để nhận thêm 01 phần bánh mochi tráng miệng.</li>
+                <li>Áp dụng vào khung giờ vàng: <strong>11:00 - 14:00</strong> và <strong>18:00 - 21:00</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="terms-section">
+            <h3>Điều kiện áp dụng</h3>
+            <p>• Áp dụng cho khách hàng dùng bữa trực tiếp tại nhà hàng.</p>
+            <p>• Không áp dụng đồng thời với các chương trình giảm giá 20% OFF khác.</p>
+            <p>• Voucher có giá trị sử dụng 01 lần duy nhất trên mỗi hóa đơn.</p>
+        </div>
+
+        <div class="action-footer">
+            <a href="promotion.html" class="btn-back">← Quay lại danh sách khuyến mãi</a>
+            <button class="btn-order">ĐẶT BÀN NGAY</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

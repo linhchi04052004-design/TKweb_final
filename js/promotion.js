@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="promo-content">
                                 <h3>${item.title}</h3>
                                 <p>${item.description}</p>
-                                <button class="btn-detail"><b>XEM CHI TIẾT </b></button>
+                                <a href="promotion_detail.html" class="btn-detail" style="text-decoration: none; display: inline-block; text-align: center;">
+                <b>XEM CHI TIẾT</b>
+            </a>
                             </div>
                         </div>
                     `;

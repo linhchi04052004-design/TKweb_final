@@ -332,23 +332,37 @@ body{
     color: #2f3542;
 }
 
-.btn-detail {
-    background: #3aab6d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+.btn-container {
     width: 100%;
-    margin-top: 10px;
-    /* Dàn trang dạng lưới */
-.promotion-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    margin-top: auto; /* Đẩy nút xuống đáy nếu nội dung p ngắn dài khác nhau */
+    padding-top: 15px;
+}.btn-detail {
+    display: block;           /* Biến thẻ a thành khối để nhận width 100% */
+    width: 100%;              /* Phủ kín chiều ngang của promo-content */
+    background-color: #4fcb87; /* Màu xanh lá chuẩn mẫu của bạn */
+    color: white !important;  /* Đảm bảo chữ luôn trắng */
+    text-align: center;       /* Căn giữa chữ */
+    padding: 12px 0;          /* Khoảng cách trên dưới cho nút dày lên */
+    border-radius: 5px;       /* Bo góc nhẹ */
+    text-decoration: none;    /* Bỏ gạch chân mặc định của liên kết */
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;   /* Quan trọng: Để padding không làm tràn khung */
+}
+
+.btn-detail:hover {
+    background-color: #3eb473; /* Tối màu hơn một chút khi di chuột */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Đảm bảo nội dung card không bị dính sát mép */
+.promo-content {
     padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Giúp các card cao bằng nhau */
 }
 
 /* Định dạng thẻ voucher */
@@ -396,17 +410,4 @@ body{
     color: #2f3542;
 }
 
-.btn-detail {
-    font-weight: 900 !important;
-    font-family: Arial, sans-serif;
-    background: #7b662e;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-    
-}
 }
