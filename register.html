@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng Ký Hoàn Chỉnh</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="register-container">
+        <div class="register-box">
+            <h1>REGISTER</h1>
+
+            <div class="input-group">
+                <label>Số điện thoại</label>
+                <input type="text" id="phone" placeholder="Nhập số điện thoại..." maxlength="10">
+            </div>
+
+            <div class="input-group">
+                <label>Tên đăng nhập</label>
+                <input type="text" id="username" placeholder="Ít nhất 5 ký tự...">
+            </div>
+
+            <div class="input-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="password" placeholder="Nhập mật khẩu...">
+            </div>
+
+            <div class="password-requirements">
+                <h3>Yêu cầu mật khẩu:</h3>
+                <ul>
+                    <li id="length" class="invalid">Ít nhất 8 ký tự</li>
+                    <li id="uppercase" class="invalid">Ít nhất 1 chữ cái in hoa</li>
+                    <li id="lowercase" class="invalid">Ít nhất 1 chữ cái in thường</li>
+                    <li id="number" class="invalid">Ít nhất 1 chữ số</li>
+                </ul>
+            </div>
+
+            <button class="btn-register">ĐĂNG KÝ</button>
+            <p style="text-align: center; margin-top: 20px; font-size: 16px; color: white;">
+    Bạn đã có tài khoản? 
+    <a href="login.html" style="color: #ffd54f; text-decoration: none; font-weight: bold;">Đăng nhập ngay</a>
+</p>
+        </div>
+    </div>
+
+    <div id="sakura-container"></div>
+
+    <script src="js/register.js"></script>
+</body>
+</html>
