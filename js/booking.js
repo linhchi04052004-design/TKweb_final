@@ -4,12 +4,27 @@ const getLocalTodayString = () => {
 };
 
 // Biến lưu trữ trạng thái đặt bàn
+// DATA: Thông tin các chi nhánh
+const BRANCH_INFO = {
+    "nct": {
+        name: "Sushi Fuji Nguyễn Chí Thanh",
+        address: "Số 12–18 Nguyễn Chí Thanh, Ba Đình, Hà Nội",
+        phone: "02473007675"
+    },
+    "thaiha": {
+        name: "Sushi Fuji Thái Hà",
+        address: "Lô S1, Tầng 2, Viet Tower, Thái Hà, Hà Nội",
+        phone: "02473007673"
+    }
+};
+
+// Biến lưu trữ trạng thái đặt bàn
 let bookingState = {
-    guests: 1,
+    guests: 2, // Mặc định 2 khách
     date: getLocalTodayString(),
     time: "",
-    restaurant: "Sushi Fuji Nguyễn Chí Thanh",
-    finalData: {} // Lưu dữ liệu cuối cùng để hiển thị trang chi tiết
+    branchKey: "nct", // Mặc định chọn NCT
+    finalData: {} 
 };
 
 // --- QUẢN LÝ SỐ KHÁCH ---
@@ -44,9 +59,38 @@ const setupTimeDropdown = () => {
 
 document.addEventListener('DOMContentLoaded', async () => {
     setupTimeDropdown();
+    
+    // --- LOGIC MỚI: TỰ ĐỘNG CHỌN CHI NHÁNH ---
+    const branchSelect = document.getElementById('branchSelect');
+    
+    // 1. Ưu tiên đọc từ URL (khi click từ trang Restaurant)
+    const urlParams = new URLSearchParams(window.location.search);
+    const branchFromUrl = urlParams.get('branch');
+
+    // 2. Nếu không có URL, đọc từ bộ nhớ lần trước
+    const branchFromStorage = localStorage.getItem('chon_co_so');
+
+    // Quyết định chọn cái nào (ưu tiên URL > Storage > Mặc định 'nct')
+    const finalBranch = branchFromUrl || branchFromStorage || 'nct';
+
+    // Cập nhật biến trạng thái
+    bookingState.branchKey = finalBranch;
+
+    // Cập nhật giao diện ô select
+    if (branchSelect) {
+        branchSelect.value = finalBranch;
+        
+        // Lắng nghe sự kiện nếu khách đổi ý chọn lại
+        branchSelect.onchange = (e) => {
+            bookingState.branchKey = e.target.value;
+            localStorage.setItem('chon_co_so', e.target.value); // Lưu lại lựa chọn mới
+        };
+    }
+    // ------------------------------------------
+
     const config = await loadConfig();
     if (config) {
-        bookingState.restaurant = config.restaurantName || "Sushi Fuji Nguyễn Chí Thanh";
+        // Không gán cứng tên nhà hàng ở đây nữa, tên sẽ được lấy động khi submit
         initDate(config);
         generateTimeSlots(config);
     }
@@ -117,14 +161,14 @@ window.handleConfirm = () => {
     const name = document.getElementById('custName').value.trim();
     const phone = document.getElementById('custPhone').value.trim();
     const note = document.getElementById('custNote').value.trim();
-
+    const currentBranch = BRANCH_INFO[bookingState.branchKey] || BRANCH_INFO['nct'];
     if (!bookingState.time || bookingState.time === "") return alert("Vui lòng chọn khung giờ!");
     if (!name || !phone) return alert("Vui lòng điền Họ tên và Số điện thoại!");
 
     const body = document.getElementById('modalBody');
     body.innerHTML = `
         <div class="space-y-3">
-            <div class="flex justify-between border-b pb-2"><span class="text-gray-400">Nhà hàng</span><span class="font-bold text-fujiRed">${bookingState.restaurant}</span></div>
+            <div class="flex justify-between border-b pb-2"><span class="text-gray-400">Nhà hàng</span><span class="font-bold text-fujiRed">${currentBranch.name}</span></div>
             <div class="flex justify-between border-b pb-2"><span class="text-gray-400">Thời gian</span><span class="font-bold">${bookingState.time} | ${bookingState.date}</span></div>
             <div class="flex justify-between border-b pb-2"><span class="text-gray-400">Số lượng</span><span class="font-bold">${bookingState.guests} khách</span></div>
             <div class="flex justify-between border-b pb-2"><span class="text-gray-400">Họ tên</span><span class="font-bold uppercase">${name}</span></div>
@@ -145,7 +189,7 @@ window.submitBooking = () => {
     const bookingID = Math.floor(10000000 + Math.random() * 90000000);
     const now = new Date();
     const timeCreated = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-
+    const currentBranch = BRANCH_INFO[bookingState.branchKey] || BRANCH_INFO['nct'];
     // 2. Gom toàn bộ thông tin vào một biến Object
     const dataToSave = {
         id: bookingID,
@@ -157,7 +201,9 @@ window.submitBooking = () => {
         phone: document.getElementById('custPhone').value.trim(),
         email: "hwanyi@gmail.com", // Giả lập vì form của bạn chưa có ô email
         note: document.getElementById('custNote').value.trim(),
-        restaurantName: bookingState.restaurant
+        restaurantName: currentBranch.name,
+        restaurantAddress: currentBranch.address,
+        restaurantPhone: currentBranch.phone
     };
 
     // 3. LƯU VÀO LOCAL STORAGE (Quan trọng nhất)
