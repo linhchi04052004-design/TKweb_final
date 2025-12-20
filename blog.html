@@ -197,16 +197,21 @@
                 
                 // Render HTML
                 container.innerHTML = data.map(blog => `
-                    <article class="blog-card">
-                        <img src="${blog.image}" alt="${blog.title}" 
-                             onerror="this.src='https://via.placeholder.com/400x250?text=Loi+Anh'">
-                        <div class="blog-content">
-                            <h3>${blog.title}</h3>
-                            <p>${blog.description}</p>
-                        </div>
-                    </article>
-                `).join('');
-                
+    <article class="blog-card" 
+             onclick="window.location.href='blog_detail.html?id=${blog.id}'" 
+             style="cursor: pointer;">
+             
+        <img src="${blog.image}" alt="${blog.title}" 
+             onerror="this.src='https://via.placeholder.com/400x250?text=Loi+Anh'">
+             
+        <div class="blog-content">
+            <h3>${blog.title}</h3>
+            <p>${blog.description}</p>
+            <p style="color: #0091ea; font-size: 0.85rem; font-weight: bold;">Xem chi tiết...</p>
+        </div>
+    </article>
+`).join('');
+
             } catch (error) {
                 console.error("Lỗi Fetch:", error);
                 document.getElementById('blog-container').innerHTML = 
