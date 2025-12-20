@@ -184,4 +184,49 @@ if (document.readyState === 'loading') {
 } else {
     initHotSlider(); // Nếu trang đã load xong thì chạy luôn
 }
+
+//review
+
+ const track = document.getElementById('track');
+  const prev1 = document.getElementById('prevreview');
+  const next2 = document.getElementById('nextreview');
+
+  let index = 0;
+
+  function itemWidth() {
+    return track.children[0].offsetWidth + 24;
+  }
+
+  function update() {
+    track.style.transform = `translateX(-${index * itemWidth()}px)`;
+  }
+
+  nextreview.onclick = () => {
+    const max = track.children.length - 3;
+    if (index < max) {
+      index++;
+      update();
+    }
+  };
+
+  prevreview.onclick = () => {
+    if (index > 0) {
+      index--;
+      update();
+    }
+  };
+
+  window.addEventListener('resize', update);
+
+  // COLLAPSE REVIEW
+  document.querySelectorAll('.toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.previousElementSibling;
+      text.classList.toggle('line-clamp-2');
+      btn.textContent = text.classList.contains('line-clamp-2')
+        ? 'Xem thêm'
+        : 'Thu gọn';
+    });
+  });
+
 });
