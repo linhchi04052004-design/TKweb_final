@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "ƯU ĐÃI NHẬT BẢN - GIẢM GIÁ 20%",
+    "description": "Thưởng thức tinh hoa ẩm thực Nhật Bản với chương trình ưu đãi đặc biệt giảm ngay 20% cho các set menu được yêu thích nhất.",
+    "image": "./assets/images/Blog 1.png"
+  },
+  {
+    "id": 2,
+    "title": "HAPPY HOUR - TIỆC VUI KHÔNG GIỚI HẠN",
+    "description": "Khám phá không gian ấm cúng và các món ăn đặc sắc trong khung giờ vàng tại nhà hàng của chúng tôi.",
+    "image": "./assets/images/Blog 2.png"
+  },
+  {
+    "id": 3,
+    "title": "THƯỞNG THỨC TRỌN VỊ TINH TÚY BIỂN CẢ",
+    "description": "Nguyên liệu tươi sống được nhập khẩu trực tiếp, mang đến hương vị nguyên bản của đại dương.",
+    "image": "./assets/images/Blog 3.png"
+  },
+  {
+    "id": 4,
+    "title": "KHÔNG GIAN NHÀ HÀNG CHUẨN NHẬT",
+    "description": "Thiết kế tinh tế, sang trọng nhưng không kém phần gần gũi, phù hợp cho các buổi gặp mặt đối tác và gia đình.",
+    "image": "./assets/images/Blog 4.png"
+  },
+  {
+    "id": 5,
+    "title": "QUY TRÌNH CHẾ BIẾN TỈ MỈ",
+    "description": "Mỗi món ăn là một tác phẩm nghệ thuật được chăm chút kỹ lưỡng từ đôi bàn tay của những đầu bếp tâm huyết.",
+    "image": "./assets/images/Blog 5.png"
+  },
+  {
+    "id": 6,
+    "title": "TRẢI NGHIỆM OMAKASE ĐẲNG CẤP",
+    "description": "Để đầu bếp dẫn dắt vị giác của bạn qua hành trình ẩm thực bất ngờ và đầy thú vị.",
+    "image": "./assets/images/Blog 6.png"
+  },
+  {
+    "id": 7,
+    "title": "TẢI APP IN DINING - NHẬN NGAY ƯU ĐÃI",
+    "description": "Trải nghiệm đặt bàn thông minh và nhận hàng ngàn voucher hấp dẫn ngay trên ứng dụng di động.",
+    "image": "./assets/images/blog 7.png"
+  }
+]
