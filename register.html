@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Đăng Ký</title>
+    <title>Trang Đăng Ký Hoàn Chỉnh</title>
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
 
-    <!-- KHUNG ĐĂNG KÝ -->
+    <div class="overlay"></div>
+
     <div class="register-container">
         <div class="register-box">
             <h1>REGISTER</h1>
 
             <div class="input-group">
                 <label>Số điện thoại</label>
-                <input type="text" id="phone">
+                <input type="text" id="phone" placeholder="Nhập số điện thoại..." maxlength="10">
             </div>
 
             <div class="input-group">
                 <label>Tên đăng nhập</label>
-                <input type="text" id="username">
+                <input type="text" id="username" placeholder="Ít nhất 5 ký tự...">
             </div>
 
             <div class="input-group">
                 <label>Mật khẩu</label>
-                <input type="password" id="password" onkeyup="checkPassword()">
+                <input type="password" id="password" placeholder="Nhập mật khẩu...">
             </div>
 
             <div class="password-requirements">
@@ -39,62 +40,15 @@
             </div>
 
             <button class="btn-register">ĐĂNG KÝ</button>
+            <p style="text-align: center; margin-top: 20px; font-size: 16px; color: white;">
+    Bạn đã có tài khoản? 
+    <a href="login.html" style="color: #ffd54f; text-decoration: none; font-weight: bold;">Đăng nhập ngay</a>
+</p>
         </div>
     </div>
 
-    <!-- HOA ANH ĐÀO -->
     <div id="sakura-container"></div>
 
-    <!-- SCRIPT -->
-    <script src="script.js"></script>
-
-    <!-- TẠO HOA + HOVER -->
-    <script>
-        function createSakura() {
-        const container = document.getElementById('sakura-container');
-        if (!container) return;
-
-        const leaf = document.createElement('div');
-        leaf.classList.add('sakura');
-
-        // 1. ĐỔI KÍCH THƯỚC (Cánh hoa to nhỏ ngẫu nhiên)
-        const size = Math.random() * 8 + 7 + 'px'; 
-        leaf.style.width = size;
-        leaf.style.height = size;
-
-        leaf.style.left = Math.random() * 100 + 'vw';
-
-        // 2. TĂNG TỐC ĐỘ: Giảm thời gian từ (5-10s) xuống còn (2-5s) để hoa rơi nhanh hơn
-        const duration = Math.random() * 3 + 2 + 's'; 
-        leaf.style.animationDuration = duration;
-
-        leaf.style.opacity = Math.random() * 0.5 + 0.5;
-
-        container.appendChild(leaf);
-
-        setTimeout(() => {
-            leaf.remove();
-        }, parseFloat(duration) * 1000);
-    }
-
-    // 3. TĂNG ĐỘ DÀY: Giảm thời gian chờ từ 200ms xuống 50ms (tạo hoa liên tục hơn)
-    setInterval(createSakura, 60); 
-    
-        // Hover nút đăng ký → hoa xoáy
-        const btn = document.querySelector(".btn-register");
-
-        btn.addEventListener("mouseenter", () => {
-            document.querySelectorAll(".sakura").forEach(petal => {
-                petal.style.animation = "swirl 4s linear infinite";
-            });
-        });
-
-        btn.addEventListener("mouseleave", () => {
-            document.querySelectorAll(".sakura").forEach(petal => {
-                petal.style.animation = "fall linear infinite";
-            });
-        });
-    </script>
-
+    <script src="js/register.js"></script>
 </body>
 </html>
