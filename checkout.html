@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh toán</title>
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+<div class="checkout-container">
+
+    <!-- LEFT: DANH SÁCH SẢN PHẨM -->
+    <div class="checkout-left">
+        <h2>Danh sách sản phẩm</h2>
+        <div id="checkout-products"></div>
+    </div>
+
+    <!-- RIGHT: THÔNG TIN ĐƠN HÀNG -->
+    <div class="checkout-right">
+        <h2>Đơn hàng</h2>
+
+        <label>Họ và tên</label>
+        <input type="text" id="fullname">
+
+        <label>Số điện thoại</label>
+        <input type="text" id="phone">
+
+        <label>Tỉnh / Thành phố</label>
+        <select id="province">
+            <option value="">Chọn tỉnh / thành</option>
+        </select>
+
+        <label>Xã / Phường</label>
+        <select id="ward">
+            <option value="">Chọn xã / phường</option>
+        </select>
+
+        <label>Địa chỉ chi tiết</label>
+        <input type="text" id="addressDetail" placeholder="Số nhà, tên đường...">
+
+        <hr>
+
+        <div class="summary">
+            <div>
+                <span>Tổng sản phẩm:</span>
+                <span id="total-qty">0</span>
+            </div>
+            <div>
+                <span>Thành tiền:</span>
+                <span id="total-price">0 VND</span>
+            </div>
+        </div>
+
+        <button id="btn-order">Đặt hàng</button>
+    </div>
+
+</div>
+
+<script src="js/checkout.js"></script>
+</body>
+</html>

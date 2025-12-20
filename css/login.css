@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== ẢNH NỀN ===== */
+body {
+    height: 100vh;
+    background: url("../assets/images/anh-login.jpg") no-repeat center top / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*padding-right: 80px;*/
+}
+/* OVERLAY TỐI */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0,0.12); /* chỉnh độ tối */
+    z-index: 1;
+}
+
+/* ===== KHUNG LOGIN ===== */
+.login-container {
+    width: 500px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 60px;
+    color: #fff;
+
+     position: relative;
+    z-index: 2;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+
+.login-container:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 35px 70px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ===== INPUT ===== */
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    color: #fff;
+    font-size: 20px;
+      transition: border-color 0.3s ease;
+}
+            .login-container input:focus {
+                border-bottom-color: #ffd54f;
+}
+
+.login-container input::placeholder {
+    color: #eee;
+}
+
+/* ===== BUTTON ===== */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #fff;
+    color: #007acc;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+
+    transition: all 0.3s ease;
+}
+
+.login-container button:hover {
+    background: #e6e6e6;
+ background: #007acc;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 122, 204, 0.5);
+}
+
+/* ===== LINK ===== */
+.login-container p {
+    text-align: center;
+    font-size: 18px;
+}
+
+.login-container a {
+    color: #ffd54f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+#sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3; /* Phải lớn hơn z-index của body::before */
+    overflow: hidden;
+}
+
+.sakura {
+    position: absolute;
+    background-color: rgb(193, 131, 166);
+    border-radius: 100% 0 50% 10%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        top: 110%;
+        /* Tăng độ lệch ngang để hoa bay tạt mạnh hơn */
+        transform: translateX(200px) rotate(720deg);
+    }
+}
+
+/* Lưu ý: Đảm bảo .login-container có z-index cao hơn để hoa không đè lên chữ */
+.login-container {
+    position: relative;
+    z-index: 4; 
+
+}

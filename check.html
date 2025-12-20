@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Ảnh - Auto Flip</title>
+    <style>
+        * { box-sizing: border-box; }
+       body {
+            margin: 0;
+            padding: 0;
+            background-color: #faf8f8;
+            min-height: 100vh; /* Cho phép chiều cao dài hơn màn hình */
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden; /* Chỉ chặn cuộn ngang */
+            overflow-y: auto;   /* Mở lại cuộn dọc khi cần */
+        }
+
+        #menu {
+            margin-top: 20px;
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            z-index: 999;
+        }
+
+        .book-wrapper {
+            flex: 1; /* Chiếm không gian còn lại ở giữa */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .page {
+            background-color: #fff;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- CSS CHO DANH MỤC (CATEGORY) --- */
+        .category-title{
+            width: 95%;
+            max-width: 1400px;
+            text-align: center;
+            color: #444;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0 10px 0;
+            padding-left: 15px;
+        }
+
+        .category-container {
+            width: 95%;
+            padding: 20px 0 40px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: transparent;
+        }
+
+        .category-item {
+            flex: 1;
+            max-width: 180px;
+            height: 160px;
+            background: #f0f0f0;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+           transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+
+        .category-item:hover {
+            transform: translateY(-5px);
+            background: #ffffff;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .category-item img {
+            width: 70%;
+            max-width: 90px;
+            aspect-ratio: 1/1;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .category-item span {
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        .category-item.active span {
+            color: #0e0b0a;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="menu">MENU</h1>
+
+    <div class="book-wrapper">
+        <div id="book"></div>
+    </div>
+    <h2 class="category-title">Danh mục món ăn</h2>
+    <div class="category-container">
+    <a href="sushi.html" class="category-link">
+        <div class="category-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/2252/2252030.png" alt="Sushi">
+            <span>Sushi</span>
+        </div>
+    </a>
+
+    <a href="donong.html" class="category-link">
+        <div class="category-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/2276/2276931.png" alt="Đồ Nóng">
+            <span>Đồ Nóng</span>
+        </div>
+    </a>
+
+    <a href="mi.html" class="category-link">
+        <div class="category-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/2718/2718224.png" alt="Mì">
+            <span>Mì</span>
+        </div>
+    </a>
+
+    <a href="lau.html" class="category-link">
+        <div class="category-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/8065/8065261.png" alt="Lẩu">
+            <span>Lẩu</span>
+        </div>
+    </a>
+
+    <a href="com.html" class="category-link">
+        <div class="category-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/11516/11516335.png" alt="Cơm">
+            <span>Cơm</span>
+        </div>
+    </a>
+
+    <a href="douong.html" class="category-link">
+        <div class="category-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/3130/3130323.png" alt="Đồ Uống">
+            <span>Đồ Uống</span>
+        </div>
+    </a>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+    <script src="js/menu.js"></script>
+    <h2 class="category-title">Tất cả sản phẩm</h2>
+
+<div class="product-grid">
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/futomaki-box-1.jpg" alt="Futomaki Box">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Futomaki Box</h3>
+            <p class="product-price">150.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2025/01/Spicy-Grilled-Scallop-03.jpg" alt="Spicy Grilled Scallop">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Spicy Grilled Scallop</h3>
+            <p class="product-price">120.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2025/01/fresh-prawn-03.jpg" alt="Fresh Prawn">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Fresh Prawn</h3>
+            <p class="product-price">95.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2025/01/Grilled-pink-prawn-03-03.jpg" alt="Grilled Pink Prawn">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Grilled Pink Prawn</h3>
+            <p class="product-price">95.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2025/01/pink-chili-prawn-03-03-03.jpg" alt="Pink Chili Prawn">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Pink Chili Prawn</h3>
+            <p class="product-price">95.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/fresh-salmon-03-03.jpg" alt="Fresh Salmon">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Fresh Salmon</h3>
+            <p class="product-price">110.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/salmon-avo-03-03-03.jpg" alt="Salmon Avo">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Salmon Avo</h3>
+            <p class="product-price">105.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/salmon-onion-nigiri-03-03.jpg" alt="Salmon Onion Nigiri">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Salmon Onion Nigiri</h3>
+            <p class="product-price">100.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/salmon-belly-nigiri-03.jpg" alt="Salmon Belly Nigiri">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Salmon Belly Nigiri</h3>
+            <p class="product-price">130.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/spicy-salmon-03-03-03.jpg" alt="Spicy Salmon">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Spicy Salmon</h3>
+            <p class="product-price">115.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/spicy-Grilled-salmon-nigiri-03.jpg" alt="Spicy Grilled Salmon">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Spicy Grilled Salmon</h3>
+            <p class="product-price">125.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/spicy-king-crab-03-03.jpg" alt="Spicy King Crab">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Spicy King Crab</h3>
+            <p class="product-price">140.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/wagyu-nigiri-03.jpg" alt="Wagyu Nigiri">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Wagyu Nigiri</h3>
+            <p class="product-price">160.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/tamago-nigiri-03.jpg" alt="Tamago Nigiri">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Tamago Nigiri</h3>
+            <p class="product-price">80.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/king-fish-03-1.jpg" alt="King Fish">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">King Fish</h3>
+            <p class="product-price">135.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+
+    <div class="product-item">
+        <div class="product-img-wrapper">
+            <img src="https://herosushi.com.au/wp-content/uploads/2024/05/tuna-nigiri-03-03.jpg" alt="Tuna Nigiri">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">Tuna Nigiri</h3>
+            <p class="product-price">145.000đ</p>
+            <button class="add-btn" title="Thêm vào giỏ hàng">+</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* --- HỆ THỐNG CĂN CHỈNH TỔNG THỂ --- */
+    /* Đảm bảo danh mục và sản phẩm có cùng độ rộng và căn giữa */
+    .category-container, 
+    .product-grid {
+        width: 95%;           /* Chiếm 95% chiều rộng màn hình */
+        max-width: 1200px;    /* Giới hạn độ rộng tối đa để khớp với danh mục */
+        margin: 0 auto;       /* Căn giữa tuyệt đối */
+    }
+
+    /* --- TIÊU ĐỀ SẢN PHẨM --- */
+    .category-title {
+        width: 95%;
+        max-width: 1200px;
+        margin: 40px auto 20px auto;
+        color: #444;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-left: 4px solid #d4af37;
+        padding-left: 15px;
+    }
+
+    /* --- LƯỚI SẢN PHẨM (CỐ ĐỊNH 5 CỘT) --- */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* ÉP BUỘC ĐÚNG 5 CỘT */
+        gap: 15px;                             /* Khoảng cách giữa các thẻ */
+        padding-bottom: 80px;                  /* Khoảng cách với đáy trang */
+    }
+
+    /* --- THẺ SẢN PHẨM CHI TIẾT --- */
+    .product-item {
+        background: #fff;
+        border-radius: 10px;
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #eee;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        height: 250px;       /* Chiều cao thu nhỏ lại cho thanh thoát */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: hidden;
+    }
+
+    /* Hiệu ứng khi di chuột vào thẻ */
+    .product-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-color: #d4af37;
+    }
+
+    /* Vùng chứa ảnh sản phẩm */
+    .product-img-wrapper {
+        width: 100%;
+        height: 110px;       /* Chiều cao ảnh nhỏ gọn */
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+
+    .product-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Giữ nguyên tỉ lệ ảnh món ăn */
+        transition: transform 0.5s ease;
+    }
+
+    /* Hover phóng to ảnh */
+    .product-item:hover img {
+        transform: scale(1.15);
+    }
+
+    /* Tên sản phẩm */
+    .product-name {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #333;
+        margin: 5px 0;
+        line-height: 1.3;
+        height: 2.6em;       /* Giới hạn độ cao cho tối đa 2 dòng chữ */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* Giá sản phẩm */
+    .product-price {
+        color: #ff7a5c;
+        font-weight: bold;
+        font-size: 0.95rem;
+        margin-top: auto;    /* Luôn nằm sát dưới cùng phần nội dung */
+        padding-bottom: 5px;
+    }
+
+    /* --- NÚT THÊM (+) --- */
+    .add-btn {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        width: 26px;
+        height: 26px;
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        font-size: 1.1rem;
+        color: #666;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .add-btn:hover {
+        background-color: #d4af37;
+        color: white;
+        border-color: #d4af37;
+        transform: scale(1.1) rotate(90deg);
+    }
+
+    /* Tooltip hiện ra khi di chuột vào dấu + */
+    .add-btn:hover::after {
+        content: "Thêm vào giỏ";
+        position: absolute;
+        bottom: 35px;
+        right: 0;
+        background: #333;
+        color: #fff;
+        padding: 4px 8px;
+        font-size: 0.65rem;
+        border-radius: 4px;
+        white-space: nowrap;
+    }
+
+    /* --- RESPONSIVE (Cho màn hình nhỏ) --- */
+    @media (max-width: 900px) {
+        .product-grid {
+            grid-template-columns: repeat(3, 1fr); /* 3 món khi màn hình vừa */
+        }
+    }
+    @media (max-width: 600px) {
+        .product-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 món khi màn hình nhỏ */
+        }
+    }
+</style>
+</body>
+</html>

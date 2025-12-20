@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực đơn Sushi</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        .back-nav {
+            width: 95%;
+            max-width: 1200px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #555;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #d4af37;
+        }
+
+        .back-btn span {
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="menu">SUSHI MENU</h1>
+
+    <div class="back-nav">
+        <a href="menu.html" class="back-btn">
+            <span>&#8592;</span> Quay lại trang chủ
+        </a>
+    </div>
+
+    <div class="container-box">
+        <h2 class="category-title" style="margin-left: 0;">Các món Sushi</h2>
+        
+        <div class="product-grid">
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/Sò điệp nướng cay.jpg"></div>
+                <h3 class="product-name"> Sushi sò điệp nướng cay </h3>
+                <p class="product-price">35.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi bò goawu nướng.jpg"></div>
+                <h3 class="product-name">Sushi bò Wagyu nướng</h3>
+                <p class="product-price">52.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/Sushi bụng cá hồi.jpg"></div>
+                <h3 class="product-name">Sushi bụng cá hồi</h3>
+                <p class="product-price">32.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi cá hồi bơ.jpg"></div>
+                <h3 class="product-name">Sushi cá hồi bơ</h3>
+                <p class="product-price">35.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi cá hồi nướng cay.jpg"></div>
+                <h3 class="product-name">Sushi cá hồi nướng cay</h3>
+                <p class="product-price">37.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi cá hồi nướng.jpg"></div>
+                <h3 class="product-name">Sushi cá hồi nướng</h3>
+                <p class="product-price">35.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi cá hồi.jpg"></div>
+                <h3 class="product-name">Sushi cá hồi</h3>
+                <p class="product-price">28.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi cà ngừ.jpg"></div>
+                <h3 class="product-name">Sushi cá ngừ</h3>
+                <p class="product-price">32.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi cua cua cay.jpg"></div>
+                <h3 class="product-name">Sushi cua cay</h3>
+                <p class="product-price">40.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi tôm đỏ nướng.jpg"></div>
+                <h3 class="product-name">Sushi tôm đỏ nướng</h3>
+                <p class="product-price">35.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi tôm sống.jpg"></div>
+                <h3 class="product-name">Sushi tôm sống</h3>
+                <p class="product-price">30.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-item">
+                <div class="product-img-wrapper"><img src="assets/sushi/sushi trứng cuộn.jpg"></div>
+                <h3 class="product-name">Sushi trứng cuộn</h3>
+                <p class="product-price">25.000đ</p>
+                <button class="add-btn">+</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.add-btn');
+            
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Lấy tên sản phẩm từ thẻ h3 cùng cấp
+                    const productItem = this.closest('.product-item');
+                    const productName = productItem.querySelector('.product-name').innerText;
+                  
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

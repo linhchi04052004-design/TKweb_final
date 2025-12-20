@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "ƯU ĐÃI NHẬT BẢN - GIẢM GIÁ 20% TẠI SUSHI WORLD",
+    "summary": "Cơ hội thưởng thức tinh hoa ẩm thực xứ Phù Tang với mức giá cực kỳ ưu đãi dành cho mọi khách hàng.",
+    "content_part1": "Nhằm tri ân khách hàng đã đồng hành cùng Sushi World, chúng tôi ra mắt chương trình 'Ngày hội Hoa Anh Đào' với ưu đãi giảm 20% trên tổng hóa đơn. Đây là dịp tuyệt vời để bạn cùng gia đình thưởng thức những khay Sashimi tươi rói được tuyển chọn kỹ lưỡng.",
+    "content_part2": "Chương trình áp dụng cho tất cả các set menu từ Sashimi, Sushi Roll đến các món lẩu nóng hổi. Đặc biệt, những nguyên liệu như cá hồi, cá ngừ đại dương được nhập khẩu trực tiếp trong ngày để đảm bảo độ tươi ngon nhất.",
+    "content_part3": "Đừng bỏ lỡ cơ hội trải nghiệm không gian sang trọng và cung cách phục vụ tận tình tại hệ thống của chúng tôi. Chương trình kéo dài đến hết tháng này, hãy đặt bàn ngay để giữ vị trí đẹp nhất!",
+    "image1": "./assets/images/blog1detail1.png",
+    "image2": "./assets/images/blog1detail2.png"
+  },
+  {
+    "id": 2,
+    "title": "HAPPY HOUR - TIỆC VUI KHÔNG GIỚI HẠN",
+    "summary": "Khám phá không gian ấm cúng và các món ăn đặc sắc trong khung giờ vàng hàng ngày tại Sushi Fuji.",
+    "content_part1": "Khung giờ Happy Hour tại Sushi Fuji không chỉ là về giá cả, mà còn là về trải nghiệm cảm xúc. Từ 16:00 đến 18:00 mỗi ngày, bạn sẽ được đắm chìm trong thế giới Sushi đầy màu sắc với mức giá vô cùng hấp dẫn.",
+    "content_part2": "Chúng tôi mang đến thực đơn đa dạng từ các loại maki truyền thống đến những món fusion hiện đại. Đội ngũ đầu bếp của chúng tôi luôn sẵn sàng phục vụ những đĩa Sushi vừa ra lò, giữ trọn vẹn hương vị nồng nàn của gạo Nhật.",
+    "content_part3": "Hãy ghé thăm chi nhánh gần nhất để tận hưởng những phút giây thư giãn sau giờ làm việc căng thẳng cùng bạn bè và đồng nghiệp nhé.",
+    "image1": "./assets/images/Blog 2.png",
+    "image2": "./assets/images/blog2de2.webp"
+  },
+  {
+    "id": 3,
+    "title": "THƯỞNG THỨC TRỌN VỊ TINH TÚY BIỂN CẢ",
+    "summary": "Nguyên liệu tươi sống được nhập khẩu trực tiếp, mang đến hương vị nguyên bản của đại dương.",
+    "content_part1": "Tại nhà hàng của chúng tôi, chất lượng nguyên liệu luôn được đặt lên hàng đầu. Mỗi miếng Sashimi bạn thưởng thức đều là kết quả của quy trình chọn lọc khắt khe từ những chợ hải sản danh tiếng tại Nhật Bản.",
+    "content_part2": "Vị ngọt thanh của cá trích ép trứng, sự béo ngậy của cá hồi Nauy hay độ giòn sần sật của bạch tuộc sẽ khiến vị giác của bạn bùng nổ. Chúng tôi tin rằng sự đơn giản chính là đỉnh cao của hương vị.",
+    "content_part3": "Hãy để thực đơn Sashimi của chúng tôi kể cho bạn nghe câu chuyện về biển cả bao la qua từng lát cắt điêu luyện của người nghệ nhân đầu bếp.",
+    "image1": "./assets/images/blog3de1.jpg",
+    "image2": "./assets/images/blog3de2.jpg"
+  },
+  {
+    "id": 4,
+    "title": "QUY TRÌNH CHẾ BIẾN TỈ MỈ TẠI BẾP NHẬT",
+    "summary": "Mỗi món ăn là một tác phẩm nghệ thuật được thực hiện bởi đôi bàn tay khéo léo của các đầu bếp.",
+    "content_part1": "Ẩm thực Nhật Bản không chỉ là món ăn, đó là một nghệ thuật trình diễn. Các đầu bếp tại Sushi World phải trải qua nhiều năm đào tạo để có thể xử lý cá và nắm cơm đạt đến độ hoàn hảo.",
+    "content_part2": "Từ cách mài dao, cách chọn sớ thịt cá cho đến nhiệt độ của bàn tay khi nắm cơm đều được tính toán tỉ mỉ. Điều này đảm bảo mỗi miếng Sushi khi đến tay thực khách vẫn giữ được cấu trúc và hương vị chuẩn nhất.",
+    "content_part3": "Đến với chúng tôi, bạn không chỉ ăn ngon mà còn được chiêm ngưỡng quy trình chế biến công phu ngay tại quầy bar của nhà hàng.",
+    "image1": "./assets/images/blog4de1.jpg",
+    "image2": "./assets/images/blog4de2.jpg"
+  },
+  {
+    "id": 5,
+    "title": "TRẢI NGHIỆM OMAKASE ĐẲNG CẤP",
+    "summary": "Để đầu bếp dẫn dắt vị giác của bạn qua một hành trình ẩm thực đầy bất ngờ và tinh tế.",
+    "content_part1": "Omakase - nghĩa là 'Hãy cứ để tôi quyết định'. Đây là hình thức thưởng thức đỉnh cao nơi thực khách hoàn toàn tin tưởng vào sự lựa chọn của đầu bếp dựa trên những nguyên liệu tốt nhất trong ngày.",
+    "content_part2": "Bạn sẽ được phục vụ từng món một, quan sát trực tiếp kỹ thuật điêu luyện và lắng nghe những câu chuyện đằng sau mỗi món ăn. Mỗi bữa tiệc Omakase là một trải nghiệm độc bản, không bao giờ lặp lại.",
+    "content_part3": "Một không gian riêng tư, sang trọng cùng những món ăn độc đáo đang chờ đón bạn. Hãy đặt chỗ trước ít nhất 24 giờ để chúng tôi có sự chuẩn bị tốt nhất.",
+    "image1": "./assets/images/blog5de1.jpg",
+    "image2": "./assets/images/blog5de2.jpg"
+  },
+  {
+    "id": 6,
+    "title": "KHÁM PHÁ KHÔNG GIÁN ẤM CÚNG TẠI SUSHI WORLD",
+    "summary": "Sự kết hợp hoàn hảo giữa kiến trúc truyền thống Nhật Bản và phong cách hiện đại.",
+    "content_part1": "Không gian tại hệ thống nhà hàng được thiết kế tinh tế với vật liệu chủ đạo là gỗ và ánh sáng vàng ấm áp. Chúng tôi tạo ra nhiều khu vực khác nhau từ phòng VIP riêng tư đến quầy bar mở năng động.",
+    "content_part2": "Từng góc nhỏ đều được chăm chút với những bức tranh thủy mặc và đèn lồng thủ công, mang lại cảm giác bình yên ngay giữa lòng thành phố nhộn nhịp. Đây là nơi lý tưởng cho các buổi họp mặt gia đình hoặc đối tác.",
+    "content_part3": "Chúng tôi tin rằng một không gian đẹp sẽ làm tăng thêm hương vị cho bữa ăn. Hãy đến và tự mình cảm nhận sự khác biệt này.",
+    "image1": "./assets/images/blog6de1.jpg",
+    "image2": "./assets/images/blog6de2.jpg"
+  },
+  {
+    "id": 7,
+    "title": "TẢI APP IN DINING - NHẬN NGAY ƯU ĐÃI",
+    "summary": "Trải nghiệm đặt bàn thông minh và nhận nhiều đặc quyền hấp dẫn dành riêng cho thành viên.",
+    "content_part1": "Công nghệ hiện đại nay đã được áp dụng để phục vụ thực khách tốt hơn. Với ứng dụng In Dining, việc đặt bàn hay đặt món về nhà chưa bao giờ dễ dàng và nhanh chóng đến thế chỉ với vài lượt chạm.",
+    "content_part2": "Thành viên mới sẽ nhận ngay voucher giảm giá trực tiếp cho lần trải nghiệm đầu tiên. Hệ thống tích điểm linh hoạt giúp bạn quy đổi thành những món quà hoặc giảm giá cho các hóa đơn tiếp theo tại toàn bộ hệ thống.",
+    "content_part3": "Tải app ngay hôm nay trên App Store hoặc Google Play để không bỏ lỡ bất kỳ chương trình khuyến mãi độc quyền nào từ Sushi World!",
+    "image1": "./assets/images/blog7de1.png",
+    "image2": "./assets/images/blog7de2.png"
+  }
+]

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi Tiết Khuyến Mãi</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+    /* 1. Nền trang màu kem sáng giống trang danh sách */
+    body { 
+        background-color: #FEF6EB; 
+        color: #333; 
+        font-family: 'Segoe UI', Arial, sans-serif; 
+        margin: 0; 
+        padding: 20px;
+    }
+
+    /* 2. Card trắng bo góc, đổ bóng nhẹ */
+    .detail-card { 
+        max-width: 800px; 
+        margin: 40px auto; 
+        background: #ffffff; 
+        border-radius: 15px; 
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    }
+
+    .detail-img { 
+        width: 100%; 
+        max-height: 400px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .detail-content-wrapper {
+        padding: 30px;
+        text-align: left;
+    }
+
+    /* 3. Tiêu đề màu tối sang trọng */
+    .detail-title { 
+        color: #2c3e50; 
+        font-size: 2rem; 
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* 4. Hộp thông tin chi tiết */
+    .info-box { 
+        background: #f9f9f9; 
+        padding: 20px; 
+        border-radius: 10px; 
+        margin-top: 15px;
+        border-top: 3px solid #4fcb87; /* Điểm nhấn xanh lá */
+    }
+
+    .info-box p { 
+        margin: 12px 0; 
+        font-size: 1.05rem;
+        color: #555;
+    }
+
+    .info-box strong {
+        color: #2c3e50;
+    }
+
+    /* 5. Nút Quay lại màu Xanh lá (Emerald) giống nút Xem chi tiết */
+   .btn-wrapper {
+    display: flex;          /* Sử dụng Flexbox */
+    /* Căn giữa theo chiều ngang */
+    width: 100%;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+    .btn-back-wrapper {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .btn-back { 
+    display: table; /* Giúp căn giữa chính xác với margin auto */
+    margin: 30px auto 10px auto; /* Căn giữa nút */
+    background-color: #4fcb87; 
+    color: white !important; 
+    padding: 14px 50px; 
+    border-radius: 50px; /* Bo tròn kiểu viên thuốc cho đẹp */
+    text-decoration: none; 
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 203, 135, 0.3);
+}
+
+    .btn-back:hover { 
+        background-color: #3eb374; 
+    }
+</style>
+</head>
+<body>
+    <div class="detail-card">
+        <img id="image" src="" alt="" class="detail-img">
+        <h1 id="title" class="detail-title">Đang tải...</h1>
+        
+        <div class="info-box">
+            <p id="content"></p>
+            <p><strong>📅 Thời gian:</strong> <span id="time"></span></p>
+            <p><strong>⚠️ Điều kiện:</strong> <span id="condition"></span></p>
+            <p><strong>📍 Địa điểm:</strong> Áp dụng tại toàn bộ hệ thống Sushi Fuji.</p>
+        </div>
+
+        <a href="promotion.html" class="btn-back">← QUAY LẠI TRANG CHỦ</a>
+    </div>
+
+    <script>
+  const urlParams = new URLSearchParams(window.location.search);
+const promoId = urlParams.get('id');
+
+fetch('./data/promotion.json')
+    .then(res => res.json())
+    .then(data => {
+        const item = data.sushi_vouchers.find(v => v.id === promoId);
+        if (item) {
+            document.getElementById('title').innerText = item.title;
+            document.getElementById('image').src = item.image.replace('../', './');
+            
+            // Sử dụng || để hiện chữ thay thế nếu dữ liệu bị trống
+            document.getElementById('content').innerText = item.content || "Nội dung đang được cập nhật...";
+            document.getElementById('time').innerText = item.time || "Liên hệ";
+            document.getElementById('condition').innerText = item.condition || "Áp dụng tại hệ thống Sushi Fuji.";
+            
+            document.title = item.title;
+        }
+    });
+    </script>
+</body>
+</html>

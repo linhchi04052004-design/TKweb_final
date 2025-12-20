@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f6ebe2;
+}
+
+.checkout-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    gap: 30px;
+}
+
+.checkout-left,
+.checkout-right {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.checkout-left {
+    flex: 2;
+}
+
+.checkout-right {
+    flex: 1;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* PRODUCT ITEM */
+.product-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+.product-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h4 {
+    margin: 0 0 8px;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #333;
+}
+
+/* FORM */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.summary {
+    margin-top: 15px;
+}
+
+.summary div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#btn-order {
+    width: 100%;
+    padding: 12px;
+    background: #5a3a1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#btn-order:hover {
+    opacity: 0.9;
+}
