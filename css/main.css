@@ -1,0 +1,469 @@
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Đảm bảo header luôn nằm trên video slider và ảnh sản phẩm */
+    transition: all 0.3s ease;
+}
+body{
+   background-color: #FEF6EB; 
+   padding-top: 140px;
+}
+.slider {
+    width: 100%;
+    max-width: 100vw;
+    /* Giả sử header+footer của bạn chiếm khoảng 250px, chỉnh lại số này cho khớp */
+    height: calc(100vh - 10px); 
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+.slider .list{
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.slider .list .item {
+    width: 100vw;
+    height: 100%;
+}
+.slider .list video, 
+.slider .list img {
+    width: 100vw;
+    height: 100%;
+    /* Quan trọng: phủ kín khung nhưng giữ đúng tỷ lệ không bị méo/khuất */
+    object-fit: cover; 
+}
+.slider .buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.slider .buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.slider .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.slider .dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.slider .dots li.active{
+    width: 30px;
+}
+.slider {
+    width: 100%;
+    max-width: 100vw;
+    /* Giả sử header+footer của bạn chiếm khoảng 250px, chỉnh lại số này cho khớp */
+    height: calc(100vh - 150px); 
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+.slider .list{
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.slider .list .item {
+    width: 100vw;
+    height: 100%;
+}
+.slider .list video, 
+.slider .list img {
+    width: 100vw;
+    height: 100%;
+    /* Quan trọng: phủ kín khung nhưng giữ đúng tỷ lệ không bị méo/khuất */
+    object-fit: cover; 
+}
+.slider .buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.slider .buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.slider .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.slider .dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.slider .dots li.active{
+    width: 30px;
+}
+/* Container tiêu đề */
+.section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Kiểu dáng chữ h2 */
+.section-title h2 {
+    font-family: 'Judson', serif; 
+    font-size: 40px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0;
+    text-transform: none; /* Giữ nguyên kiểu chữ hoa/thường như mẫu */
+}
+
+/* Họa tiết trang trí 2 bên (Dùng ký tự hoặc icon) */
+.decor-left, .decor-right {
+    font-size: 24px;
+    color: #333;
+    opacity: 0.8;
+}
+
+/* Đảm bảo toàn bộ vùng này nằm trên nền kem */
+.hot-products {
+    background-color: #FEF6EB; 
+    padding: 50px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.list-hot {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Tăng khoảng cách giữa banner và slider cho thoáng */
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+
+.product-banner {
+    flex: 0 0 40%;
+}
+.product-banner img {
+    width: 100%;
+    height: 400px; /* Tăng chiều cao cố định hoặc để auto tùy hình của bạn */
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hot-slider-container {
+    flex: 0 0 50%; /* Thu hẹp vùng chứa sản phẩm */
+    overflow: hidden;
+}
+
+.hot-slider-track {
+    display: flex;
+gap: 15px;
+    will-change: transform;
+}
+
+/* Mỗi sản phẩm chiếm 1/3 vùng hiển thị (để hiện đúng 3 cái) */
+.item-hot {
+    /* Chia 3 sản phẩm trong vùng 50% sẽ làm mỗi cái trông bé lại đáng kể */
+    flex: 0 0 calc(33.33% - 15px); 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.item-hot img {
+    width: 100%;
+    height: 180px; /* Giảm chiều cao ảnh sản phẩm để trông nhỏ nhắn hơn */
+    object-fit: cover;
+}
+
+.item-info {
+    padding: 15px;
+}
+.item-info h3 {
+    font-size: 1rem; /* Giảm cỡ chữ tiêu đề sản phẩm */
+    margin-bottom: 5px;
+}
+
+/* CSS cho cụm nút điều hướng ở giữa */
+.controls-hot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-left: 48%; 
+    width: 50%;
+}
+
+.controls-hot button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.dots-hot {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+    list-style: none;
+}
+
+.dots-hot li {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.dots-hot li.active-hot {
+    background: #000;
+    transform: scale(1.2);
+}
+/* Carousel Doanh Nghiệp Hợp Tác */
+.partner-section {
+  background-color: #FEF6EB;
+  padding: 35px 0;
+}
+.carousel-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-logo {
+  width: 90%;
+  background: #ffffff;
+  border-radius: 70px;
+  padding: 12px 0;
+  overflow: hidden;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: slide 20s linear infinite;
+  will-change: transform;
+}
+
+.carousel img {
+  width: 150px;
+  height: 100px;
+  margin: 0 10px;
+  object-fit: contain;
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 1280px) {
+
+  body {
+    padding-top: 120px;
+  }
+
+  .slider {
+    height: calc(100vh - 120px);
+  }
+
+  .product-banner img {
+    height: 360px;
+  }
+
+  .hot-slider-container {
+    flex: 0 0 55%;
+  }
+
+  .item-hot img {
+    height: 160px;
+  }
+
+  .controls-hot {
+    margin-left: 45%;
+    width: 55%;
+  }
+
+  .carousel img {
+    width: 130px;
+    height: 90px;
+  }
+}
+@media (max-width: 1024px) {
+
+  body {
+    padding-top: 100px;
+  }
+
+  .slider {
+    height: calc(100vh - 100px);
+  }
+
+  /* HOT PRODUCTS */
+  .list-hot {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .product-banner {
+    flex: 0 0 100%;
+  }
+
+  .product-banner img {
+    height: 320px;
+  }
+
+  .hot-slider-container {
+    flex: 0 0 100%;
+  }
+
+  .item-hot {
+    flex: 0 0 calc(33.33% - 10px);
+  }
+
+  .controls-hot {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* PARTNER */
+  .carousel-logo {
+    width: 95%;
+    border-radius: 50px;
+  }
+
+  .carousel img {
+    width: 120px;
+    height: 80px;
+  }
+}
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 90px;
+  }
+
+  /* SLIDER */
+  .slider {
+    height: 70vh;
+  }
+
+  .slider .buttons {
+    top: 50%;
+  }
+
+  .slider .buttons button {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* SECTION TITLE */
+  .section-title h2 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  /* HOT PRODUCTS */
+  .list-hot {
+    padding: 0 16px;
+  }
+
+  .product-banner img {
+    height: 260px;
+  }
+
+  .item-hot {
+    flex: 0 0 80%;
+  }
+
+  .item-hot img {
+    height: 150px;
+  }
+
+  .controls-hot {
+    margin-top: 20px;
+    gap: 12px;
+  }
+
+  /* PARTNER LOGO */
+  .carousel-logo {
+    width: 95%;
+    padding: 8px 0;
+    border-radius: 40px;
+  }
+
+  .carousel img {
+    width: 100px;
+    height: 70px;
+    margin: 0 8px;git checkout chi_ng
+
+  }
+}
+
+
+
+

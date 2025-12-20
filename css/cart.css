@@ -1,0 +1,225 @@
+/* ===============================
+   1. MODAL OVERLAY
+================================ */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===============================
+   2. MODAL CONTENT
+================================ */
+.modal-content {
+  background: #fff;
+  width: 450px; /* Thu nhỏ chiều rộng */
+  max-width: 50%;
+  margin: 10vh auto;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  font-family: 'Lora', serif;
+}
+
+/* ===============================
+   3. HEADER
+================================ */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #961e1e; /* Màu đỏ đô giống header */
+  color: #fff;
+  font-family: "Judson", serif; /* Đồng bộ font */
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close {
+  font-size: 26px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close:hover {
+  color: #ff4d4d;
+}
+
+/* ===============================
+   4. BODY
+================================ */
+.modal-body {
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.cart-items p {
+  color: #777;
+  font-style: italic;
+}
+
+/* ===============================
+   5. CART ROW
+================================ */
+.cart-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item img {
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* ===============================
+   6. PRICE & QUANTITY
+================================ */
+.cart-row span {
+  font-weight: 500;
+}
+
+.cart-row input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ===============================
+   7. BUTTONS
+================================ */
+.cart-row .remove {
+  background: #961e1e; /* Màu chủ đạo */
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-row .remove:hover {
+  background: #7a1818; /* Màu đậm hơn khi hover */
+}
+
+/* ===============================
+   8. TOTAL
+================================ */
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* ===============================
+   9. FOOTER
+================================ */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #f5f5f5;
+}
+
+.modal-footer .btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.modal-footer .close-footer {
+  background: #ccc;
+}
+
+.modal-footer .close-footer:hover {
+  background: #b3b3b3;
+}
+
+.modal-footer .order {
+  background: #961e1e; /* Nút đặt hàng màu đỏ đô */
+  color: #fff;
+  font-family: "Judson", serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.modal-footer .order:hover {
+  background: pink;
+}
+
+/* ===============================
+   10. CART BUTTON + BADGE
+================================ */
+#cart {
+  position: relative;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+#cart .badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #961e1e;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* ===============================
+   11. ANIMATION
+================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ===============================
+   12. RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+  .modal-content {
+    margin: 30px auto;
+  }
+
+  .cart-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

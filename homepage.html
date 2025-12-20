@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sushi Fuji</title>
+    <link rel="icon" type="image/png" href="assets/SushiFuji.png">
+    <link rel="apple-touch-icon" href="assets/SushiFuji.png" sizes="180x180">
+
+
+     <!--nhúng font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!--nhúng css-->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/search.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!--nhúng js-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <script src="./js/main.js"></script>
+    <script src="./js/cart.js"></script>
+    <script src="./js/search.js"></script>
+
+    <!--nhúng bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+            extend: {
+                colors: {
+                cream: '#FEF6EB',
+                brand: '#961e1e'
+                },
+                fontFamily: {
+                judson: ['Judson', 'serif'],
+                lora: ['Lora', 'serif']
+                }
+            }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Nhúng header -->
+  <div
+    id="header"
+    class="fixed top-0 left-0 w-full z-[9999] transition-all duration-300"
+  ></div>
+
+
+<div class="slider">
+        <div class="list">
+            <div class="item">
+                <video id="introVideo" class="intro-media active" muted playsinline preload="auto">
+                    <source src="assets/video-intro.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="item">
+                <img src="assets/banner t1.jpeg" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/banner t2.jpeg" alt="">
+            </div>
+            <div class="item">
+                <img src="assets/banner 2.jpg" alt="">
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+ <div class="hot-products">
+    <div class="section-title">
+        <span class="decor-left">❧</span>
+        <h2>SẢN PHẨM NỔI BẬT</h2>
+        <span class="decor-right">☙</span>
+    </div>
+    <div class="list-hot">
+        <div class="product-banner">
+            <img src="assets/monhot.png" alt="sushi banner">
+        </div>
+        
+        <div class="hot-slider-container">
+            <div class="hot-slider-track">
+                <div class="item-hot">
+                    <img src="https://cdn.pixabay.com/photo/2024/07/26/01/21/sushi-8922468_1280.png" alt="">
+                    <div class="item-info">
+                        <h3>Mộc Hoa (Trà Sữa Quế Hoa)</h3>
+                    </div>
+                </div>
+                <div class="item-hot">
+                    <img src="https://cdn.pixabay.com/photo/2024/07/26/01/21/sushi-8922468_1280.png" alt="">
+                    <div class="item-info">
+                        <h3>Mộc Hoa (Trà Sữa Quế Hoa)</h3>
+                    </div>
+                </div>
+                <div class="item-hot">
+                    <img src="https://cdn.pixabay.com/photo/2024/07/26/01/21/sushi-8922468_1280.png" alt="">
+                    <div class="item-info">
+                        <h3>Mộc Hoa (Trà Sữa Quế Hoa)</h3>
+                    </div>
+                </div>
+                <div class="item-hot">
+                    <img src="https://cdn.pixabay.com/photo/2024/07/26/01/21/sushi-8922468_1280.png" alt="">
+                    <div class="item-info">
+                        <h3>Mộc Hoa (Trà Sữa Quế Hoa)</h3>
+                    </div>
+                </div>
+                    <div class="item-hot">
+                    <img src="https://cdn.pixabay.com/photo/2024/07/26/01/21/sushi-8922468_1280.png" alt="">
+                    <div class="item-info">
+                        <h3>Mộc Hoa (Trà Sữa Quế Hoa)</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-hot">
+        <button id="prev-hot"><i class="fa-solid fa-chevron-left"></i></button>
+        <ul class="dots-hot">
+            <li class="active-hot"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <button id="next-hot"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+</div>
+
+
+<section class="w-full bg-cream py-6 pb-8">
+  <!-- TIÊU ĐỀ -->
+  <div class="flex items-center justify-center gap-4 mb-2">
+    <span class="text-xl opacity-80">❧</span>
+    <h2 class="font-judson text-[40px] font-normal text-black">
+      SẢN PHẨM MỚI RA MẮT
+    </h2>
+    <span class="text-xl opacity-80">☙</span>
+  </div>
+
+  <!-- NỘI DUNG -->
+    <div class="grid grid-cols-[700px_420px]
+                items-center gap-8
+                px-[120px]
+                max-lg:grid-cols-1 max-lg:px-6">
+
+    <!-- ẢNH -->
+    <div class="flex justify-center">
+        <img
+        src="assets/newfood.png"
+        class="w-full object-contain scale-[1.5]"
+        >
+    </div>
+
+    <!-- TEXT -->
+    <div>
+        <h2 class="font-judson text-4xl text-brand mb-2">Sushi Fuji</h2>
+        <p class="italic text-xl text-gray-700 mb-4">
+         Chúng tôi không phải tiệm ăn “chuẩn Nhật”!
+        </p>
+        <p class="font-lora leading-[1.8] text-gray-700 text-justify">
+         Điều níu chân khách hàng ở Sushi Fuji không nằm ở những khuôn khổ chuẩn mực, mà chính
+          là sự giao thoa mộc mạc giữa tinh thần ẩm thực Việt và nét mỹ vị tinh tế của Nhật.
+        </p>
+    </div>
+
+    </div>
+
+
+  <!-- NỘI DUNG -->
+    <div class="grid grid-cols-[700px_420px]
+                items-center gap-8
+                px-[120px]
+                max-lg:grid-cols-1 max-lg:px-6">
+
+    <!-- ẢNH -->
+    <div class="flex justify-center">
+        <img
+        src="assets/monmoi.png"
+        class="w-full object-contain scale-[1.5]"
+        >
+    </div>
+
+    <!-- TEXT -->
+    <div>
+        <h2 class="font-judson text-4xl text-brand mb-2">Sushi Fuji</h2>
+        <p class="italic text-xl text-gray-700 mb-4">
+         Hương vị Nhật Bản theo cách rất riêng.
+        </p>
+        <p class="font-lora leading-[1.8] text-gray-700 text-justify">
+        Tại Sushi Fuji, mỗi món ăn là một câu chuyện được kể bằng sự chỉn chu trong nguyên liệu,
+            tinh tế trong cách kết hợp và chân thành trong từng chi tiết nhỏ.
+            Chúng tôi tin rằng ẩm thực không cần cầu kỳ để gây ấn tượng,
+            chỉ cần đủ trọn vẹn để người thưởng thức muốn quay lại thêm lần nữa.       
+        </p>
+    </div>
+  </div>
+
+  
+  <!-- NỘI DUNG -->
+    <div class="grid grid-cols-[700px_420px]
+                items-center gap-8
+                px-[120px]
+                max-lg:grid-cols-1 max-lg:px-6">
+
+    <!-- ẢNH -->
+    <div class="flex justify-center">
+        <img
+        src="assets/monmoi2.png"
+        class="w-full object-contain scale-[1.3]"
+        >
+    </div>
+
+    <!-- TEXT -->
+    <div>
+        <h2 class="font-judson text-4xl text-brand mb-2">Sushi Fuji</h2>
+        <p class="italic text-xl text-gray-700 mb-4">
+         Nơi những bữa ăn không chỉ là thưởng thức, mà là trở về nhà.
+        </p>
+        <p class="font-lora leading-[1.8] text-gray-700 text-justify">
+        Chúng tôi hiểu rằng một món ăn ngon không chỉ đến từ cá tươi hay gạo dẻo, mà còn từ hơi ấm 
+        của sự tận tâm. Tại Sushi Fuji, mỗi cuộn sushi được làm ra bằng sự tỉ mỉ của người đầu bếp dành
+         cho người thân yêu. 
+        </p>
+    </div>
+    </div>
+</section>
+
+<!--đặt bàn-->
+<section class="bg-cream py-16 px-4 md:px-[120px]">
+  <div class="flex items-center justify-center gap-4 mb-4">
+    <span class="text-xl opacity-70">❧</span>
+    <h2 class="font-judson text-[36px] font-normal text-black">
+        ĐẶT BÀN NGAY
+    </h2>
+    <span class="text-xl opacity-70">☙</span>
+  </div>
+
+  <div class="max-w-[1100px] mx-auto bg-white rounded-sm shadow-sm overflow-hidden p-8 md:p-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      
+      <div class="relative flex justify-start items-center">
+        <div class="w-[280px] h-[450px] rounded-full overflow-hidden border-4 border-white shadow-lg ">
+          <img 
+            src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?q=80&w=2070&auto=format&fit=crop" 
+            alt="Sushi Fuji Space" 
+            class="w-full h-full object-cover"
+          >
+        </div>
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/6 z-20 w-[280px]">
+          <img 
+            src="assets/monmoi.png" 
+            alt="Sushi Platter" 
+            class="w-full h-full object-contain drop-shadow-2xl scale-[3]"
+          >
+        </div>
+      </div>
+
+      <div class="text-center md:text-left flex flex-col items-center md:items-start">
+        <h3 class="font-judson text-5xl text-brand mb-6 tracking-tight">
+          DINE WITH US
+        </h3>
+        <p class="font-lora text-gray-700 leading-relaxed mb-8 text-lg text-left md:text-justify">
+        Mỗi bữa ăn tại Sushi Fuji không chỉ là thưởng thức ẩm thực, mà còn là khoảng thời gian thư giãn và gắn kết 
+        bên những người thân yêu - hãy đặt bàn trước để chúng tôi có thể chuẩn bị cho bạn một trải nghiệm trọn vẹn và chu đáo nhất.
+        </p>
+        
+        <a href="restaurants.html" class="rrelative z-30 inline-block border-2 border-brand px-10 py-3
+          text-brand font-judson text-xl
+          hover:bg-brand hover:text-white
+          transition-all duration-300 no-underline">
+          ĐẶT BÀN NGAY
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--review-->
+<section class="bg-[#FEF6EB] py-14">
+  <!-- TIÊU ĐỀ -->
+  <div class="flex items-center justify-center gap-4 mb-4">
+    <span class="text-xl opacity-70">❧</span>
+    <h2 class="font-judson text-[36px] font-normal text-black">
+      KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI
+    </h2>
+    <span class="text-xl opacity-70">☙</span>
+  </div>
+
+  <!-- BOX REVIEW -->
+    <div class="max-w-[1320px] mx-auto bg-white px-10 py-9 rounded-md">
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8 text-sm leading-relaxed">
+      Suốt hành trình 10 năm, tài sản quý giá nhất của Sushi Fuji chính là sự yêu
+      mến và tin tưởng từ khách hàng. Mỗi bữa ăn ngon miệng, mỗi nụ cười hài lòng của
+      quý khách chính là động lực để chúng tôi không ngừng hoàn thiện.
+    </p>
+
+    <!-- SLIDER -->
+    <div class="relative">
+      <!-- NÚT TRÁI -->
+      <button id="prevreview"
+        class="absolute -left-12 top-1/2 -translate-y-1/2
+               w-10 h-10 rounded-full
+               bg-black text-white
+               flex items-center justify-center
+               shadow-lg hover:bg-gray-800
+               transition z-50">
+        ‹
+      </button>
+
+      <!-- TRACK -->
+      <div class="overflow-hidden">
+        <div id="track" class="flex gap-6 transition-transform duration-500 rounded-lg">
+          
+          <!-- ITEM -->
+          <div class="w-1/3 shrink-0">
+            <div class="aspect-[4/3] overflow-hidden rounded-md">
+              <img src="https://www.elle.vn/app/uploads/2024/01/21/567142/HIEUTHUHAI-3-scaled.jpg"
+                   class="w-full h-full object-cover">
+            </div>
+            <h4 class="mt-3 font-judson text-lg">Anh Minh Hiếu</h4>
+            <p class="review-text text-sm text-gray-600 line-clamp-2">
+              Gia đình mình đã ăn ở Sushi Fuji từ rất lâu, đây thực sự là nơi
+              khiến mình luôn quay lại vì chất lượng món ăn đạt chuẩn và nhân viên phục vụ rất thân thiện.
+            </p>
+            <button class="toggle text-xs text-black underline mt-1">
+              Xem thêm
+            </button>
+          </div>
+
+          <!-- COPY ITEM KHÁC TƯƠNG TỰ -->
+          <div class="w-1/3 shrink-0">
+            <div class="aspect-[4/3] overflow-hidden rounded-md">
+              <img src="https://i.pinimg.com/736x/75/c6/4e/75c64e6dcab1b65bceedb5fddec3f028.jpg"
+                   class="w-full h-full object-cover">
+            </div>
+            <h4 class="mt-3 font-judson text-lg">Chị Hồng Thơ</h4>
+            <p class="review-text text-sm text-gray-600 line-clamp-2">
+              Mỗi khi thèm đồ Nhật, gia đình mình đều nghĩ ngay đến nơi này vì không gian ấm cúng cùng 
+              cách phục vụ chu đáo, tận tâm như người nhà.
+            </p>
+            <button class="toggle text-xs text-black underline mt-1">
+              Xem thêm
+            </button>
+          </div>
+
+          <div class="w-1/3 shrink-0">
+            <div class="aspect-[4/3] overflow-hidden rounded-md">
+              <img src="https://media.yeah1.com/files/ngoctran/2022/07/01/289693821_582015943280803_2102006602626651935_n-205941.jpg"
+                   class="w-full h-full object-cover">
+            </div>
+            <h4 class="mt-3 font-judson text-lg">Anh Thanh Tùng</h4>
+            <p class="review-text text-sm text-gray-600 line-clamp-2">
+              Đây là địa điểm ăn uống yêu thích của nhóm bạn mình suốt mấy năm qua nhờ nguyên liệu 
+              luôn tươi mới và giá cả cực kỳ hợp lý với chất lượng.
+            </p>
+            <button class="toggle text-xs text-black underline mt-1">
+              Xem thêm
+            </button>
+          </div>
+
+            <div class="w-1/3 shrink-0">
+            <div class="aspect-[4/3] overflow-hidden rounded-md">
+              <img src="https://tse2.mm.bing.net/th/id/OIP.8f6ZADd27M83Nyzc6EZaIwHaKO?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=474&h=654&rs=1&o=7&rm=3"
+                   class="w-full h-full object-cover">
+            </div>
+            <h4 class="mt-3 font-judson text-lg">Chị Thùy Chi</h4>
+            <p class="review-text text-sm text-gray-600 line-clamp-2">
+                Gia đình mình luôn tin tưởng lựa chọn quán cho các buổi kỷ niệm vì đồ 
+                ăn không chỉ ngon mà trình bày còn rất đẹp mắt và sang trọng.
+            </p>
+            <button class="toggle text-xs text-black underline mt-1">
+              Xem thêm
+            </button>
+          </div>
+
+            <div class="w-1/3 shrink-0">
+            <div class="aspect-[4/3] overflow-hidden rounded-md">
+              <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2024/10/29/1414416/Anh-Tu-Atus9.jpg"
+                   class="w-full h-full object-cover">
+            </div>
+            <h4 class="mt-3 font-judson text-lg">Anh Anh Tú</h4>
+            <p class="review-text text-sm text-gray-600 line-clamp-2">
+             Mình đã thử qua nhiều nơi nhưng vẫn quay lại đây vì sự tỉ mỉ trong cách chế biến
+              và thái độ nhiệt tình, niềm nở của các bạn nhân viên.
+            </p>
+            <button class="toggle text-xs text-black underline mt-1">
+              Xem thêm
+            </button>
+          </div>
+
+            <div class="w-1/3 shrink-0">
+            <div class="aspect-[4/3] overflow-hidden rounded-md">
+              <img src="https://cdn2.tuoitre.vn/471584752817336320/2025/7/19/jsol-2-1752889661086436279305.jpg"
+                   class="w-full h-full object-cover">
+            </div>
+            <h4 class="mt-3 font-judson text-lg">Anh Thái Sơn</h4>
+            <p class="review-text text-sm text-gray-600 line-clamp-2">
+              Không gian yên tĩnh và phong cách phục vụ chuyên nghiệp là 
+              điều khiến mình gắn bó với quán bấy lâu nay mỗi khi muốn tìm cảm giác thư giãn.
+            </p>
+            <button class="toggle text-xs text-black underline mt-1">
+              Xem thêm
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- NÚT PHẢI -->
+      <button id="nextreview"
+        class="absolute -right-12 top-1/2 -translate-y-1/2
+               w-10 h-10 rounded-full
+               bg-black text-white
+               flex items-center justify-center
+               shadow-lg hover:bg-gray-800
+               transition z-50">
+        ›
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!--đối tác-->
+  <!-- TIÊU ĐỀ -->
+<section class="partner-section">
+  <div class="flex items-center justify-center gap-4 mb-6">
+    <span class="text-xl opacity-80">❧</span>
+    <h2 class="font-judson text-[40px] font-normal text-black">
+      ĐỐI TÁC CỦA CHÚNG TÔI
+    </h2>
+    <span class="text-xl opacity-80">☙</span>
+  </div>
+
+  <div class="carousel-wrapper">
+    <div class="carousel-logo">
+      <div class="carousel">
+        <img src="https://static.vecteezy.com/system/resources/previews/011/618/136/original/shopee-element-symbol-shopee-food-shopee-icon-free-vector.jpg">
+        <img src="https://www.gamaseafood.com/gamav02/assets/images/gama/icon-gofood.png">
+        <img src="https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwacwsqt3bo993@resize_ss640x400">
+        <img src="https://vinadesign.vn/uploads/images/2023/05/vnpay-logo-vinadesign-25-12-57-55.jpg">
+        <img src="https://thuvienvector.vn/wp-content/uploads/2025/05/logo-grabfood.jpg">
+        <img src="https://yt3.googleusercontent.com/qlej-BPZlb5QogAjq4CbtPOUCOVTqQdVubOnk1Bl2BM8hrngxj6VH2TC5M5oavYLQ9192V9FPfA=s900-c-k-c0x00ffffff-no-rj">
+        <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-MoMo-Circle.png">
+        <img src="https://static.vecteezy.com/ti/vetor-gratis/p3/13109754-simbolo-do-elemento-shopee-shopeepay-icone-shopeepay-gratis-vetor.jpg">
+        <img src="https://files.merca20.com/uploads/2014/05/image-7.jpg.png">
+        <img src="https://static.ybox.vn/2020/6/5/1593144273098-BrandingLogomoi-01.png">
+
+        <img src="https://static.vecteezy.com/system/resources/previews/011/618/136/original/shopee-element-symbol-shopee-food-shopee-icon-free-vector.jpg">
+        <img src="https://www.gamaseafood.com/gamav02/assets/images/gama/icon-gofood.png">
+        <img src="https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwacwsqt3bo993@resize_ss640x400">
+        <img src="https://vinadesign.vn/uploads/images/2023/05/vnpay-logo-vinadesign-25-12-57-55.jpg">
+        <img src="https://thuvienvector.vn/wp-content/uploads/2025/05/logo-grabfood.jpg">
+        <img src="https://yt3.googleusercontent.com/qlej-BPZlb5QogAjq4CbtPOUCOVTqQdVubOnk1Bl2BM8hrngxj6VH2TC5M5oavYLQ9192V9FPfA=s900-c-k-c0x00ffffff-no-rj">
+        <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-MoMo-Circle.png">
+        <img src="https://static.vecteezy.com/ti/vetor-gratis/p3/13109754-simbolo-do-elemento-shopee-shopeepay-icone-shopeepay-gratis-vetor.jpg">
+        <img src="https://files.merca20.com/uploads/2014/05/image-7.jpg.png">
+        <img src="https://static.ybox.vn/2020/6/5/1593144273098-BrandingLogomoi-01.png">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Nhúng footer -->
+<div id="footer"></div>
+</body>
+</html>
