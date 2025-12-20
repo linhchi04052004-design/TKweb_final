@@ -28,6 +28,9 @@
       color: #fff;
       font-weight: 700;
     }
+
+
+    
     nav a {
       margin: 0 14px;
       color: #fff;
@@ -73,7 +76,7 @@
     }
 
     .card {
-      background: #fff;
+      background: #8b1e1e;
       border-radius: 12px;
       padding: 28px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
@@ -90,12 +93,12 @@
       text-align: center;
     }
     .avatar {
-      width: 110px;
-      height: 110px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 12px;
-      border: 3px solid #8b1e1e;
+      
     }
 
     .tag {
@@ -159,6 +162,131 @@
       margin-top: 60px;
       font-size: 13px;
     }
+    /* 1. Font & General Smoothness */
+body {
+    -webkit-font-smoothing: antialiased !important;;
+    letter-spacing: -0.01em !important;;
+}
+
+/* 2. Hiệu ứng Card sang trọng */
+section {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;;
+    border: 1px solid rgba(139, 30, 30, 0.05) /* Viền đỏ siêu mảnh */ !important;
+}
+
+section:hover {
+    transform: translateY(-4px) !important;;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05) !important;;
+    border-color: rgba(139, 30, 30, 0.2) !important;;
+}
+
+/* 3. Tùy chỉnh các ô Input */
+input, textarea, #timeTrigger {
+    transition: all 0.3s ease !important;;
+    border: 1.5px solid #f3f4f6 !important; /* Mặc định viền rất nhạt */
+}
+
+input:focus, textarea:focus {
+    background-color: #fff !important;
+    border-color: #8b1e1e !important;
+    box-shadow: 0 0 0 4px rgba(139, 30, 30, 0.05)!important;;
+}
+
+/* 4. Nút bấm xác nhận kiểu "Premium" */
+button[onclick="handleConfirm()"] {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #8b1e1e 0%, #b32626 100%);
+    transition: all 0.3s ease;
+}
+
+button[onclick="handleConfirm()"]:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+    box-shadow: 0 15px 30px rgba(139, 30, 30, 0.3);
+}
+
+button[onclick="handleConfirm()"]:active {
+    transform: scale(0.98);
+}
+
+/* 5. Custom lại bộ đếm khách (Guest Counter) */
+#guestCount {
+    text-shadow: 2px 2px 0px rgba(139, 30, 30, 0.05) !important;;
+}
+
+button[onclick^="changeGuest"] {
+    background-color: #fff;
+    font-weight: 300;
+}
+
+button[onclick^="changeGuest"]:hover {
+    background-color: #8b1e1e;
+    color: #fff !important;
+}
+
+/* 6. Hiệu ứng cho Time Picker Dropdown */
+#timeOptions {
+    backdrop-filter: blur(8px) !important;;
+    background-color: rgba(255, 255, 255, 0.95) !important;;
+    border: 1px solid rgba(139, 30, 30, 0.1) !important;;
+}
+
+#timeOptions div:hover {
+    background-color: #8b1e1e!important;
+    color: white !important;
+}
+
+/* 7. Họa tiết chìm kiểu Nhật (Omi-pattern) - Thêm vào background chính */
+body::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1 !important;
+    background-image: radial-gradient(#8b1e1e 0.5px, transparent 0.5px) !important;
+    background-size: 30px 30px !important;
+    opacity: 0.03 !important; /* Cực kỳ mờ để tạo texture */
+}
+/* Chuyển tất cả chữ trong thẻ Card (khung đỏ) thành màu trắng */
+.card {
+    color: white !important;
+}
+
+/* Chỉnh màu cho các nhãn (label) của ô nhập liệu */
+.card label {
+    color: rgba(255, 255, 255, 0.9) !important; /* Trắng hơi mờ một chút cho sang */
+}
+
+/* Chỉnh màu cho các tiêu đề h3, p bên trong khung */
+.card h3, 
+.card p, 
+.card b,
+.card span {
+    color: white !important;
+}
+
+/* Tùy chỉnh các Tab (Thông tin, Đơn hàng...) */
+.tabs span {
+    color: rgba(255, 255, 255, 0.7) !important; /* Tab không hoạt động màu trắng mờ */
+}
+
+.tabs span.active {
+    color: white !important;
+    border-bottom-color: white !important; /* Gạch chân tab active màu trắng */
+}
+
+/* Đảm bảo chữ bên trong ô Input vẫn màu đen để dễ đọc trên nền trắng */
+input, textarea {
+    color: #2c2c2c !important;
+}
+
+/* Chỉnh lại đường kẻ ngang (hr) cho hợp với nền đỏ */
+hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+
   </style>
 </head>
 <body>
@@ -187,13 +315,9 @@
 <section class="container">
 
   <div class="card profile">
-    <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" />
+    <img src="assets/user.png" class="avatar" alt="Avatar" />
     <h3>Khách hàng Fuji</h3>
-    <div>
-      <span class="tag">Yêu Sushi</span>
-      <span class="tag">Ẩm thực Nhật</span>
-      <span class="tag">Khách quen</span>
-    </div>
+  
 
     <hr style="margin:20px 0">
 
@@ -207,7 +331,6 @@
       <span class="active">Thông tin chi tiết</span>
       <span>Đơn hàng</span>
       <span>Hóa đơn</span>
-      <span>Món yêu thích</span>
     </div>
 
     <div class="form-grid">

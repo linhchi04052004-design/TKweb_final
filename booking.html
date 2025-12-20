@@ -12,29 +12,48 @@
       theme: { extend: { colors: { fujiRed: '#8b1e1e', fujiGold: '#d4af37', fujiCream: '#faf7f2' }, fontFamily: { playfair: ['Playfair Display', 'serif'], inter: ['Inter', 'sans-serif'] } } }
     }
   </script>
-  <style>
-   
+ <style>
+  body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), 
+                      url('assets/restaurant.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
 
-    /* 5. Tùy chỉnh Input & Dropdown */
-    input, textarea, #timeTrigger {
-      transition: all 0.3s ease;
-      border: 1.5px solid #f3f4f6 !important;
-    }
-    input:focus, textarea:focus {
-      background-color: #fff !important;
-      border-color: #8b1e1e !important;
-      box-shadow: 0 0 0 4px rgba(139, 30, 30, 0.05);
-    }
+  .main-card {
+    /* Đã chỉnh trong suốt hơn (0.😎 */
+    background-color: rgba(255, 255, 255, 0.5) !important; 
+    backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
 
-    #timeOptions {
-      max-height: 250px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #8b1e1e #f3f4f6;
-      backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(139, 30, 30, 0.1);
-    }
-    .dropdown-open #timeOptions { opacity: 1; visibility: visible; transform: translateY(0); }
-    .dropdown-closed #timeOptions { opacity: 0; visibility: hidden; transform: translateY(-10px); }
+  /* Làm chữ "Khách người lớn" đậm hơn */
+  #guestCount + p {
+    color: #1f2937 !important; 
+    font-weight: 900 !important;
+    font-size: 15px ;
+  }
 
-  </style>
+  /* Các CSS giữ nguyên bên dưới... */
+  input, textarea, #timeTrigger {
+    transition: all 0.3s ease;
+    border: 1.5px solid rgba(0,0,0,0.1) !important;
+    background: rgba(255,255,255,0.5) !important;
+  }
+  input:focus, textarea:focus {
+    background-color: #fff !important;
+    border-color: #8b1e1e !important;
+  }
+  #timeOptions {
+    max-height: 250px; overflow-y: auto;
+    backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(139, 30, 30, 0.1);
+  }
+  .dropdown-open #timeOptions { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown-closed #timeOptions { opacity: 0; visibility: hidden; transform: translateY(-10px); }
+</style>
 </head>
 
 <body class="bg-fujiCream font-inter text-gray-800">
@@ -74,11 +93,11 @@
             </div>
             <div class="grid grid-cols-1 gap-4">
               <div>
-                <label class="text-[10px] font-bold text-gray-400 uppercase mb-2 block ml-1">Chọn ngày</label>
+                <label class="text-[10px] font-bold text-black-400 uppercase mb-2 block ml-1">Chọn ngày</label>
                 <input type="date" id="bookingDate" class="w-full p-3.5 rounded-xl bg-gray-50 outline-none">
               </div>
               <div class="relative" id="timeDropdownContainer">
-                <label class="text-[10px] font-bold text-gray-400 uppercase mb-2 block ml-1">Chọn khung giờ</label>
+                <label class="text-[10px] font-bold text-black-400 uppercase mb-2 block ml-1">Chọn khung giờ</label>
                 <div id="timeTrigger" class="w-full p-3.5 rounded-xl bg-gray-50 cursor-pointer flex justify-between items-center">
                   <span id="selectedTimeText" class="text-sm">Thời gian</span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
