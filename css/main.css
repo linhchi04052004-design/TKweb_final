@@ -1,4 +1,3 @@
-
 #header {
     position: fixed;
     top: 0;
@@ -80,7 +79,6 @@ body{
 }
 .slider .dots li.active{
     width: 30px;
-
 }
 .slider {
     width: 100%;
@@ -195,13 +193,13 @@ body{
     margin: 0 auto;
 }
 
-/* Banner bên trái chiếm khoảng 25-30% */
+
 .product-banner {
-    flex: 0 0 45%;
+    flex: 0 0 40%;
 }
 .product-banner img {
     width: 100%;
-    height: 500px; /* Tăng chiều cao cố định hoặc để auto tùy hình của bạn */
+    height: 400px; /* Tăng chiều cao cố định hoặc để auto tùy hình của bạn */
     object-fit: cover;
     border-radius: 15px;
 }
@@ -213,7 +211,7 @@ body{
 
 .hot-slider-track {
     display: flex;
-    gap: 15px;
+gap: 15px;
     will-change: transform;
 }
 
@@ -280,7 +278,6 @@ body{
     background: #000;
     transform: scale(1.2);
 }
-
 /* Carousel Doanh Nghiệp Hợp Tác */
 .partner-section {
   background-color: #FEF6EB;
@@ -466,7 +463,3 @@ body{
 
   }
 }
-
-
-
-
