@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết tin tức - Sushi World</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.8; color: #333; margin: 0; background: #cfe3f0; }
+        .container { max-width: 900px; margin: 40px auto; background: white; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 12px; }
+        
+        
+        
+        h1 { color: #1a237e; font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2; text-align: center; }
+        .summary { font-size: 1.25rem; font-weight: 600; color: #444; border-left: 6px solid #bc1515; padding: 10px 20px; margin: 30px 0; background: #fff5f5; }
+        .detail-img { width: 100%; height: 500px; object-fit: cover; border-radius: 8px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .content-text { font-size: 1.15rem; text-align: justify; margin-bottom: 25px; color: #444; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #0091ea; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="blog.html" class="back-link">← Quay lại danh sách tin tức</a>
+        
+        <h1 id="detail-title">Đang tải...</h1>
+        
+        <img id="detail-img1" class="detail-img" src="" alt="Ảnh minh họa 1">
+        
+        <div id="detail-summary" class="summary"></div>
+        
+        <div id="detail-content1" class="content-text"></div>
+
+        <img id="detail-img2" class="detail-img" src="" alt="Ảnh minh họa 2">
+
+        <div id="detail-content2" class="content-text"></div>
+        <div id="detail-content3" class="content-text"></div>
+    </div>
+
+    <script>
+       async function loadBlogDetail() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogId = urlParams.get('id');
+
+    if (!blogId) {
+        document.getElementById('detail-title').innerText = "Thiếu ID bài viết!";
+        return;
+    }
+
+    try {
+        // Đảm bảo đường dẫn này khớp 100% với tên file trong thư mục data của bạn
+        const response = await fetch('./data/blog_detail.json'); 
+        
+        if (!response.ok) {
+            throw new Error("Không tìm thấy tệp tin JSON tại /data/blog_details.json");
+        }
+        
+        const data = await response.json();
+        const blog = data.find(item => item.id == blogId);
+
+        if (blog) {
+            // Đổ nội dung vào các thẻ HTML
+            document.getElementById('detail-title').innerText = blog.title;
+            document.getElementById('detail-summary').innerText = blog.summary;
+            document.getElementById('detail-content1').innerText = blog.content_part1;
+            document.getElementById('detail-content2').innerText = blog.content_part2;
+            document.getElementById('detail-content3').innerText = blog.content_part3;
+            
+            // Đổ ảnh 1 và ảnh 2
+            document.getElementById('detail-img1').src = blog.image1;
+            document.getElementById('detail-img2').src = blog.image2;
+        } else {
+            document.getElementById('detail-title').innerText = "Không tìm thấy nội dung bài viết!";
+        }
+    } catch (error) {
+        console.error("Lỗi:", error.message);
+        document.getElementById('detail-title').innerText = "Lỗi tải dữ liệu (404 Not Found)!";
+    }
+}
+window.onload = loadBlogDetail;
+    </script>
+</body>
+</html>

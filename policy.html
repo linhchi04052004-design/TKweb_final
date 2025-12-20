@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính Sách & Quy Định | Sushi Fuji</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: Lora, sans-serif; background-color: #0c436a; color: #1a1a1a; margin: 0; }
+        .serif { font-family: 'Playfair Display', serif; }
+        
+        /* Nền núi Phú Sĩ rõ nét */
+        .fuji-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("./assets/images/signuppp.jpg");
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* Hiệu ứng kính mờ cho nội dung */
+        .policy-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+        .policy-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Tùy chỉnh Responsive thủ công cho các mốc thiết bị */
+        @media (max-width: 1280px) {
+            .container-custom { max-width: 90%; }
+            h1 { font-size: 3.5rem !important; }
+        }
+
+        @media (max-width: 1024px) {
+            .policy-card { padding: 2rem !important; }
+            h1 { font-size: 3rem !important; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem !important; line-height: 1.2; }
+            .policy-card { padding: 1.5rem !important; border-radius: 15px; }
+            header { padding-top: 3rem !important; padding-bottom: 2rem !important; }
+            .text-3xl { font-size: 1.5rem !important; }
+        }
+
+        /* Thanh cuộn */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
+        ::-webkit-scrollbar-thumb { background: #b91c1c; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="fuji-bg"></div>
+
+    <header class="py-16 text-center px-4" data-aos="fade-down">
+        <h1 class="serif text-6xl text-gray-900 tracking-tight">
+            Chính Sách và Quy Định
+        </h1>
+        <p class="mt-4 text-gray-700 tracking-[0.2em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs font-bold">
+            Sushi Fuji - Tận tâm vì khách hàng
+        </p>
+    </header>
+
+    <main class="container-custom max-w-4xl mx-auto px-4 md:px-6 pb-20">
+        
+        <div class="policy-card p-10 mb-6 shadow-lg" data-aos="fade-up">
+            <div class="flex items-center mb-5">
+                <span class="text-3xl mr-4 text-red-700"><i class="fas fa-calendar-check"></i></span>
+                <h2 class="serif text-2xl md:text-3xl text-gray-900 font-bold">1. Chính Sách Đặt Bàn</h2>
+            </div>
+            <div class="space-y-3 text-gray-800 leading-relaxed text-sm md:text-base">
+                <p>• Quý khách vui lòng đặt bàn trước ít nhất <strong>2 tiếng</strong> để bếp chuẩn bị nguyên liệu tươi nhất.</p>
+                <p>• Nhóm trên 10 người hoặc tiệc riêng, vui lòng liên hệ trước <strong>24 tiếng</strong> và đặt cọc 30%.</p>
+                <p>• Thời gian giữ bàn tối đa: <strong>15 phút</strong>. Sau thời gian này hệ thống tự động hủy lịch.</p>
+            </div>
+        </div>
+
+        <div class="policy-card p-10 mb-6 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-5">
+                <span class="text-3xl mr-4 text-red-700"><i class="fas fa-undo-alt"></i></span>
+                <h2 class="serif text-2xl md:text-3xl text-gray-900 font-bold">2. Chính Sách Hoàn/Hủy</h2>
+            </div>
+            <div class="space-y-3 text-gray-800 leading-relaxed text-sm md:text-base">
+                <p>• Hủy trước 12 tiếng: Hoàn trả <strong>100%</strong> tiền cọc.</p>
+                <p>• Hủy dưới 6 tiếng: Thu phí <strong>50%</strong> tiền cọc do nguyên liệu đã được sơ chế.</p>
+                <p>• Khách không đến và không thông báo: Không hoàn lại tiền cọc.</p>
+            </div>
+        </div>
+
+        <div class="policy-card p-10 mb-6 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center mb-5">
+                <span class="text-3xl mr-4 text-red-700"><i class="fas fa-fish"></i></span>
+                <h2 class="serif text-2xl md:text-3xl text-gray-900 font-bold">3. Cam Kết Chất Lượng</h2>
+            </div>
+            <div class="space-y-3 text-gray-800 leading-relaxed text-sm md:text-base">
+                <p>• Nguyên liệu hải sản nhập khẩu chính ngạch, kiểm định mỗi ngày.</p>
+                <p>• Quý khách có tiền sử <strong>dị ứng</strong> vui lòng báo cho nhân viên khi đặt món để đảm bảo an toàn tuyệt đối.</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-16 px-4" data-aos="zoom-in">
+            <p class="italic text-white-900 font-bold text-sm md:text-base">
+                Mọi thắc mắc vui lòng liên hệ: <span class="text-red-700 font-bold">1900-FUJI-SUHI</span>
+            </p>
+            
+            <a href="homepage.html" class="inline-block mt-8 bg-gray-900 text-white px-8 md:px-12 py-3 md:py-4 rounded-full hover:bg-red-700 transition duration-300 shadow-2xl uppercase tracking-widest text-[11px] md:text-sm font-bold no-underline">
+                Quay lại trang chủ
+            </a>
+        </div>
+
+    </main>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            disable: 'mobile' // Tắt animation trên điện thoại nếu muốn mượt hơn
+        });
+    </script>
+</body>
+</html>
