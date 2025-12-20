@@ -1,0 +1,7 @@
+{
+  "restaurantName": "Sushi Fuji Nguyễn Chí Thanh",
+  "openingHour": 8,
+  "closingHour": 22,
+  "bufferMinutes": 30,
+  "defaultGuests": 1
+}
