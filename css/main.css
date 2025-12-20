@@ -228,10 +228,12 @@ gap: 15px;
     width: 100%;
     height: 180px; /* Giảm chiều cao ảnh sản phẩm để trông nhỏ nhắn hơn */
     object-fit: cover;
+    border-radius: 50px;
 }
 
 .item-info {
     padding: 15px;
+    text-align: center;
 }
 .item-info h3 {
     font-size: 1rem; /* Giảm cỡ chữ tiêu đề sản phẩm */

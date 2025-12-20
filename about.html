@@ -2,8 +2,29 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sushi Fuji | Câu Chuyện Của Chúng Tôi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sushi Fuji</title>
+    <link rel="icon" type="image/png" href="assets/SushiFuji.png">
+    <link rel="apple-touch-icon" href="assets/SushiFuji.png" sizes="180x180">
+
+    <!--nhúng font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!--nhúng css-->
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/search.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+     <!--nhúng js-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/cart.js"></script>
+    <script src="./js/search.js"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -24,6 +45,7 @@
         /* Canvas Sushi phủ toàn màn hình */
         #sushiCanvas {
             position: fixed;
+            margin-top: 150px;
             top: 0;
             left: 0;
             width: 100%;
@@ -34,6 +56,11 @@
     </style>
 </head>
 <body class="parallax-bg">
+    <!-- Nhúng header -->
+    <div
+        id="header"
+        class="fixed top-0 left-0 w-full z-[9999] transition-all duration-300"
+    ></div>
 
     <canvas id="sushiCanvas"></canvas>
 
@@ -150,5 +177,7 @@
         }
         animate();
     </script>
+<!-- Nhúng footer -->
+    <div id="footer"></div> 
 </body>
 </html>

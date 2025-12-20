@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => console.error("Lỗi load footer:", error));
 
+
     //chỉnh banner
     let slider = document.querySelector('.slider .list');
     let items = document.querySelectorAll('.slider .list .item');
@@ -227,6 +228,20 @@ if (document.readyState === 'loading') {
         ? 'Xem thêm'
         : 'Thu gọn';
     });
+  });
+});
+
+document.addEventListener("headerLoaded", () => {
+
+  const currentPage =
+    window.location.pathname.split("/").pop() || "homepage.html";
+
+  const menuLinks = document.querySelectorAll(".menu-bar a");
+
+  menuLinks.forEach(link => {
+    const linkPage = link.getAttribute("href").split("/").pop();
+
+    link.classList.toggle("active", linkPage === currentPage);
   });
 
 });

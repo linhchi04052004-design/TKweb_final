@@ -1,7 +1,7 @@
 /* --- RESET & NỀN TẢNG --- */
 * { box-sizing: border-box; }
 body {
-    margin: 0;
+    margin-top: 0;
     padding: 0;
     background-color: #faf8f8; /* Giữ nền xám nhạt hoặc đổi thành #fff nếu muốn trắng tinh */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,22 +13,31 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 }
+#footer {
+    width: 100%;            /* Đổi từ 100vw thành 100% để tránh lỗi thanh cuộn ngang */
+    margin: 0;              /* Xóa bỏ margin-left: 50% */
+    transform: none;        /* Xóa bỏ transform */
+    align-self: stretch;    /* Ép phần tử con của Flexbox (body) phải trải dài hết chiều ngang */
+    position: relative;
+    background-color: #8b1e1e; /* Đảm bảo màu nền đỏ bao phủ */
+}
+
 
 h1, h2, h3, p { margin: 0; }
 
 #menu {
-    margin-top: 30px;
     color: #d4af37;
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     letter-spacing: 15px;
     text-transform: uppercase;
     text-align: center;
+    margin-top: 160px;
 }
 
 /* --- SÁCH MENU (FLIP BOOK) --- */
 .book-wrapper {
-    margin: 20px 0;
+    margin: 150px 0 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,7 +54,7 @@ h1, h2, h3, p { margin: 0; }
 /* Tiêu đề mục */
 .category-title {
     width: 100%;
-    margin: 40px 0 20px 0;
+    margin: 10px 0 10px 0;
     color: #444;
     font-size: 1.4rem;
     text-transform: uppercase;
@@ -106,10 +115,6 @@ h1, h2, h3, p { margin: 0; }
     font-weight: 700;
     color: #555;
 }
-
-/* ================================================= */
-/* --- LƯỚI SẢN PHẨM (ĐÃ CHỈNH SỬA THEO YÊU CẦU) --- */
-/* ================================================= */
 
 .product-grid {
     display: grid;

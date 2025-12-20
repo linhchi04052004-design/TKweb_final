@@ -1,6 +1,6 @@
-/* ===============================
-   1. MODAL OVERLAY
-================================ */
+
+  /*1. MODAL OVERLAY*/
+
 .modal {
   display: none;
   position: fixed;
@@ -10,9 +10,7 @@
   animation: fadeIn 0.3s ease;
 }
 
-/* ===============================
-   2. MODAL CONTENT
-================================ */
+/*  2. MODAL CONTENT */
 .modal-content {
   background: #fff;
   width: 450px; /* Thu nhỏ chiều rộng */
@@ -25,9 +23,7 @@
   font-family: 'Lora', serif;
 }
 
-/* ===============================
-   3. HEADER
-================================ */
+/* 3. HEADER */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -53,9 +49,7 @@
   color: #ff4d4d;
 }
 
-/* ===============================
-   4. BODY
-================================ */
+/*4. BODY*/
 .modal-body {
   padding: 20px;
   max-height: 400px;
@@ -67,9 +61,7 @@
   font-style: italic;
 }
 
-/* ===============================
-   5. CART ROW
-================================ */
+/*  5. CART ROW*/
 .cart-row {
   display: grid;
   grid-template-columns: 2fr 1fr 1.5fr;
@@ -90,9 +82,7 @@
   object-fit: cover;
 }
 
-/* ===============================
-   6. PRICE & QUANTITY
-================================ */
+/* 6. PRICE & QUANTITY*/
 .cart-row span {
   font-weight: 500;
 }
@@ -105,9 +95,7 @@
   border-radius: 4px;
 }
 
-/* ===============================
-   7. BUTTONS
-================================ */
+/*7. BUTTONS*/
 .cart-row .remove {
   background: #961e1e; /* Màu chủ đạo */
   border: none;
@@ -121,9 +109,7 @@
   background: #7a1818; /* Màu đậm hơn khi hover */
 }
 
-/* ===============================
-   8. TOTAL
-================================ */
+/*8. TOTAL */
 .cart-total {
   display: flex;
   justify-content: space-between;
@@ -133,9 +119,7 @@
   font-weight: bold;
 }
 
-/* ===============================
-   9. FOOTER
-================================ */
+/* 9. FOOTER */
 .modal-footer {
   display: flex;
   justify-content: space-between;
@@ -172,9 +156,7 @@
   background: pink;
 }
 
-/* ===============================
-   10. CART BUTTON + BADGE
-================================ */
+/*10. CART BUTTON + BADGE*/
 #cart {
   position: relative;
   padding: 10px 16px;
@@ -192,9 +174,7 @@
   border-radius: 50%;
 }
 
-/* ===============================
-   11. ANIMATION
-================================ */
+/*11. ANIMATION */
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -205,10 +185,8 @@
   to   { transform: translateY(0); opacity: 1; }
 }
 
-/* ===============================
-   12. RESPONSIVE
-================================ */
-@media (max-width: 600px) {
+/* 12. RESPONSIVE */
+@media (max-width: 768px) {
   .modal-content {
     margin: 30px auto;
   }
