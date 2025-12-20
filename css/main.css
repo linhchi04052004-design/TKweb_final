@@ -1,5 +1,86 @@
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Đảm bảo header luôn nằm trên video slider và ảnh sản phẩm */
+    transition: all 0.3s ease;
+}
 body{
    background-color: #FEF6EB; 
+   padding-top: 140px;
+}
+.slider {
+    width: 100%;
+    max-width: 100vw;
+    /* Giả sử header+footer của bạn chiếm khoảng 250px, chỉnh lại số này cho khớp */
+    height: calc(100vh - 10px); 
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+.slider .list{
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.slider .list .item {
+    width: 100vw;
+    height: 100%;
+}
+.slider .list video, 
+.slider .list img {
+    width: 100vw;
+    height: 100%;
+    /* Quan trọng: phủ kín khung nhưng giữ đúng tỷ lệ không bị méo/khuất */
+    object-fit: cover; 
+}
+.slider .buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.slider .buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.slider .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.slider .dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.slider .dots li.active{
+    width: 30px;
+
 }
 .slider {
     width: 100%;
@@ -199,236 +280,193 @@ body{
     background: #000;
     transform: scale(1.2);
 }
-/* Tổng thể khu vực giới thiệu */
-.sushi-intro {
-    background-color: #FEF6EB; /* Màu kem chuẩn mẫu */
-    padding: 60px 0;
-    width: 100%;
+
+/* Carousel Doanh Nghiệp Hợp Tác */
+.partner-section {
+  background-color: #FEF6EB;
+  padding: 35px 0;
+}
+.carousel-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.intro-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center; /* Căn giữa nội dung theo chiều dọc */
-    justify-content: space-between;
-    gap: 40px;
+.carousel-logo {
+  width: 90%;
+  background: #ffffff;
+  border-radius: 70px;
+  padding: 12px 0;
+  overflow: hidden;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
 }
 
-/* Khối nội dung bên trái */
-.intro-content {
-    flex: 1; /* Chiếm 50% độ rộng */
-    text-align: center; /* Căn giữa văn bản theo chiều ngang */
-    padding: 20px;
+.carousel {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: slide 20s linear infinite;
+  will-change: transform;
 }
 
-.intro-brand {
-    font-family: 'Judson', serif; /* Font chữ có chân thanh lịch */
-    font-size: 36px;
-    color: #E64A19; /* Màu cam đỏ đặc trưng của thương hiệu */
-    margin-bottom: 15px;
+.carousel img {
+  width: 150px;
+  height: 100px;
+  margin: 0 10px;
+  object-fit: contain;
 }
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 1280px) {
 
-.intro-slogan {
-    font-style: italic;
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 25px;
-}
+  body {
+    padding-top: 120px;
+  }
 
-.intro-description {
-    line-height: 1.8;
-    font-size: 16px;
-    color: #444;
-    max-width: 500px;
-    margin: 0 auto;
-}
+  .slider {
+    height: calc(100vh - 120px);
+  }
 
-/* Khối hình ảnh bên phải */
-.intro-image {
-    flex: 1; /* Chiếm 50% độ rộng */
-}
+  .product-banner img {
+    height: 360px;
+  }
 
-.intro-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
+  .hot-slider-container {
+    flex: 0 0 55%;
+  }
 
-/* Responsive cho điện thoại */
-@media screen and (max-width: 768px) {
-    .intro-container {
-        flex-direction: column; /* Chuyển thành hàng dọc trên di động */
-    }
-    .intro-content {
-        order: 1;
-    }
-    .intro-image {
-        order: 2;
-    }
-}
-@media screen and (max-width: 768px){
-    .slider{
-        height: 400px;
-    }
-}
+  .item-hot img {
+    height: 160px;
+  }
 
-/* Dàn trang dạng lưới */
-.promotion-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+  .controls-hot {
+    margin-left: 45%;
+    width: 55%;
+  }
 
-/* Định dạng thẻ voucher */
-.promo-card {
-    display: flex;
+  .carousel img {
+    width: 130px;
+    height: 90px;
+  }
+}
+@media (max-width: 1024px) {
+
+  body {
+    padding-top: 100px;
+  }
+
+  .slider {
+    height: calc(100vh - 100px);
+  }
+
+  /* HOT PRODUCTS */
+  .list-hot {
     flex-direction: column;
-    height: 100%; /* Đảm bảo các card trong cùng một hàng có chiều cao bằng nhau */
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
+    gap: 30px;
+  }
 
-.promo-card:hover {
-    transform: translateY(-5px); /* Hiệu ứng bay lên khi di chuột */
-}
+  .product-banner {
+    flex: 0 0 100%;
+  }
 
-.promo-image {
-    position: relative;
-    height: 200px;
-}
+  .product-banner img {
+    height: 320px;
+  }
 
-.promo-image img {
+  .hot-slider-container {
+    flex: 0 0 100%;
+  }
+
+  .item-hot {
+    flex: 0 0 calc(33.33% - 10px);
+  }
+
+  .controls-hot {
+    margin-left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+  }
 
-.promo-tag {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: #ff4757;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
+  /* PARTNER */
+  .carousel-logo {
+    width: 95%;
+    border-radius: 50px;
+  }
 
-.promo-content {
-    padding: 20px;
-    
+  .carousel img {
+    width: 120px;
+    height: 80px;
+  }
 }
+@media (max-width: 768px) {
 
-.promo-content h3 {
-    margin: 0 0 10px 0;
-    color: #2f3542;
-}
+  body {
+    padding-top: 90px;
+  }
 
-.btn-container {
-    width: 100%;
-    margin-top: auto; /* Đẩy nút xuống đáy nếu nội dung p ngắn dài khác nhau */
-    padding-top: 15px;
-}.btn-detail {
-    display: block;           /* Biến thẻ a thành khối để nhận width 100% */
-    width: 100%;              /* Phủ kín chiều ngang của promo-content */
-    background-color: #4fcb87; /* Màu xanh lá chuẩn mẫu của bạn */
-    color: white !important;  /* Đảm bảo chữ luôn trắng */
-    text-align: center;       /* Căn giữa chữ */
-    padding: 12px 0;          /* Khoảng cách trên dưới cho nút dày lên */
-    border-radius: 5px;       /* Bo góc nhẹ */
-    text-decoration: none;    /* Bỏ gạch chân mặc định của liên kết */
-    font-weight: bold;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    box-sizing: border-box;   /* Quan trọng: Để padding không làm tràn khung */
-}
+  /* SLIDER */
+  .slider {
+    height: 70vh;
+  }
 
-.btn-detail:hover {
-    background-color: #3eb473; /* Tối màu hơn một chút khi di chuột */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+  .slider .buttons {
+    top: 50%;
+  }
 
-/* Đảm bảo nội dung card không bị dính sát mép */
-.promo-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Giúp các card cao bằng nhau */
-}
+  .slider .buttons button {
+    width: 40px;
+    height: 40px;
+  }
 
-/* Định dạng thẻ voucher */
-.promo-card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
+  /* SECTION TITLE */
+  .section-title h2 {
+    font-size: 28px;
+    text-align: center;
+  }
 
-.promo-card:hover {
-    transform: translateY(-5px); /* Hiệu ứng bay lên khi di chuột */
-}
+  /* HOT PRODUCTS */
+  .list-hot {
+    padding: 0 16px;
+  }
 
-.promo-image {
-    position: relative;
-    height: 200px;
-}
+  .product-banner img {
+    height: 260px;
+  }
 
-.promo-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+  .item-hot {
+    flex: 0 0 80%;
+  }
 
-.promo-tag {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: #ff4757;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
+  .item-hot img {
+    height: 150px;
+  }
 
-.promo-content {
-    padding: 20px;
-}
+  .controls-hot {
+    margin-top: 20px;
+    gap: 12px;
+  }
 
-.promo-content h3 {
-    margin: 0 0 10px 0;
-    color: #2f3542;
+  /* PARTNER LOGO */
+  .carousel-logo {
+    width: 95%;
+    padding: 8px 0;
+    border-radius: 40px;
+  }
+
+  .carousel img {
+    width: 100px;
+    height: 70px;
+    margin: 0 8px;
+
+  }
 }
 
 
-/* --- PHẦN CSS CHO TRANG CHI TIẾT --- */
-.detail-body {
-    background-color: #232a5e !important; /* Xanh đậm sang trọng */
-}
 
-.info-box {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 25px;
-    color: white;
-    border-left: 4px solid #f1b74a;
-}
 
-.btn-back-home {
-    background: #f1b74a;
-    color: #232a5e;
-    padding: 10px 30px;
-    border-radius: 25px;
-    font-weight: bold;
-    text-decoration: none;
-}
