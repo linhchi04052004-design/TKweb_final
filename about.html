@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Fuji | Câu Chuyện Của Chúng Tôi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; background-color: #f8f8f8; }
+        .serif { font-family: 'Playfair Display', serif; }
+        
+        /* Nền Núi Phú Sĩ */
+        .parallax-bg {
+            background-image: url("./assets/images/bannerblog2.png");
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Canvas Sushi phủ toàn màn hình */
+        #sushiCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Quan trọng để vẫn click được nút phía dưới */
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="parallax-bg">
+
+    <canvas id="sushiCanvas"></canvas>
+
+    <section class="min-h-screen flex items-center justify-center text-center px-6 bg-black/20">
+        <div data-aos="fade-up" data-aos-duration="1500" class="bg-white/80 p-12 rounded-3xl backdrop-blur-md shadow-2xl">
+            <span class="text-red-600 font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Ẩm Thực Tinh Hoa</span>
+            <h1 class="serif text-6xl md:text-8xl text-gray-900 mb-6">Sushi Fuji</h1>
+            <p class="text-xl italic text-gray-700 max-w-2xl mx-auto uppercase tracking-widest">
+                "Mang theo hơi thở của nhịp sống Nhật Bản"
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 md:px-20 bg-white/60 backdrop-blur-md relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center">
+            <div class="w-full lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left pr-0 lg:pr-12" data-aos="fade-right" data-aos-duration="1200">
+                <h2 class="serif text-4xl text-red-600 mb-6">Câu Chuyện Của Chúng Tôi</h2>
+                <p class="text-gray-800 leading-relaxed text-lg mb-6">
+                    Điều khách hàng ấn tượng với <strong>Sushi Fuji</strong> không nằm ở những khuôn khổ chuẩn mực, mà chính là sự giao thoa mộc mạc giữa tinh thần ẩm thực Việt và nét mỹ vị tinh tế của Nhật Bản.
+                </p>
+                <p class="text-gray-700 leading-relaxed italic border-l-4 border-red-600 pl-4">
+                    Sự kết hợp ấy tạo nên hương vị vừa thân thuộc, vừa thanh tao, khiến người ta phải nhớ nhung.
+                </p>
+            </div>
+
+            <div class="w-full lg:w-1/2 relative" data-aos="zoom-in-left" data-aos-duration="1200">
+                <div class="relative z-10 overflow-hidden rounded-lg shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80" alt="Sushi" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 container mx-auto px-6 text-center relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 bg-white/40 p-10 rounded-2xl backdrop-blur-sm">
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h3 class="serif text-5xl text-red-600 mb-2">0%</h3>
+                <p class="uppercase tracking-widest text-sm">Chất bảo quản</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h3 class="serif text-5xl text-red-600 mb-2">100%</h3>
+                <p class="uppercase tracking-widest text-sm">Cá tươi mỗi ngày</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="500">
+                <h3 class="serif text-5xl text-red-600 mb-2">Artisan</h3>
+                <p class="uppercase tracking-widest text-sm">Chế tác thủ công</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Khởi tạo AOS
+        AOS.init({ once: false, mirror: true });
+
+        // 2. Cấu hình Sushi Rơi
+        const canvas = document.getElementById('sushiCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const sushiImages = [
+                        './assets/images/sushi-icon.png',
+            'https://cdn-icons-png.flaticon.com/512/2252/2252076.png',
+      ];
+
+        let sushiArray = [];
+        const count = 50; // Số lượng miếng sushi
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Sushi {
+            constructor() {
+                this.init();
+            }
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height;
+                this.size = Math.random() * 30 + 25; 
+                this.speed = Math.random() * 1.5 + 1;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = (Math.random() - 1) * 2;
+                this.opacity = Math.random() * 0.4 + 0.6;
+                
+                this.img = new Image();
+                this.img.src = sushiImages[Math.floor(Math.random() * sushiImages.length)];
+            }
+            update() {
+                this.y += this.speed;
+                this.rotation += this.rotSpeed;
+                if (this.y > canvas.height + 50) this.init();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                if (this.img.complete) {
+                    ctx.drawImage(this.img, -this.size/2, -this.size/2, this.size, this.size);
+                }
+                ctx.restore();
+            }
+        }
+
+        for(let i=0; i<count; i++) sushiArray.push(new Sushi());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            sushiArray.forEach(s => { s.update(); s.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
