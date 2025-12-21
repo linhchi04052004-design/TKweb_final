@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // =========================================================
 
     const DANH_SACH_ANH = [
-        "assets/images/menu2.png", // Bỏ url() và kiểm tra lại cấp bậc thư mục
-    "assets/images/menu1.png",
+        "assets/images/menu5.png", // Bỏ url() và kiểm tra lại cấp bậc thư mục
+    "assets/images/menu66.png",
     "assets/images/menudoi.png",
     "assets/images/menu4.png",
-    "assets/images/menu5.png",
-    "assets/images/menu66.png",
+    "assets/images/menu2.png",
+    "assets/images/menu1.png",
     ];
 
     const screenWidth = window.innerWidth;
