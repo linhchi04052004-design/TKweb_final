@@ -83,4 +83,42 @@ body::before {
     background-size: 30px 30px !important;
     opacity: 0.03 !important; /* Cực kỳ mờ để tạo texture */
 }
+/* Chuyển tất cả chữ trong thẻ Card (khung đỏ) thành màu trắng */
+.card {
+    color: white !important;
+}
+
+/* Chỉnh màu cho các nhãn (label) của ô nhập liệu */
+.card label {
+    color: rgba(255, 255, 255, 0.9) !important; /* Trắng hơi mờ một chút cho sang */
+}
+
+/* Chỉnh màu cho các tiêu đề h3, p bên trong khung */
+.card h3, 
+.card p, 
+.card b,
+.card span {
+    color: white !important;
+}
+
+/* Tùy chỉnh các Tab (Thông tin, Đơn hàng...) */
+.tabs span {
+    color: rgba(255, 255, 255, 0.7) !important; /* Tab không hoạt động màu trắng mờ */
+}
+
+.tabs span.active {
+    color: white !important;
+    border-bottom-color: white !important; /* Gạch chân tab active màu trắng */
+}
+
+/* Đảm bảo chữ bên trong ô Input vẫn màu đen để dễ đọc trên nền trắng */
+input, textarea {
+    color: #2c2c2c !important;
+}
+
+/* Chỉnh lại đường kẻ ngang (hr) cho hợp với nền đỏ */
+hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
 
