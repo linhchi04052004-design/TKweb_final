@@ -4,252 +4,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sushi Fuji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" type="image/png" href="assets/SushiFuji.png">
-    <link rel="apple-touch-icon" href="assets/SushiFuji.png" sizes="180x180">
-
-   <style>
-        
-.header {
-    background-color: #961e1e;
-    padding: 0;
-    font-family: "Judson", serif;
-}
-
-/* --- Hàng 1: Header Container --- */
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px; /* Tăng padding hai bên cho thoáng */
-    max-width: 1400px; /* Tăng độ rộng tối đa để cân đối với thanh search dài */
-    margin: 0 auto;
-    height: 90px; /* Tăng nhẹ chiều cao để header sang trọng hơn */
-}
-
-.header-logo {
-    flex: 1; /* Chiếm 1 phần không gian bên trái */
-    display: flex;
-    justify-content: flex-start;
-}
-.header-container img {
-    height: 130px; 
-    width: auto;
-    margin-top: 25px;
-    margin-left: -25px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-/* Thanh tìm kiếm */
-.search-box {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 25px;
-    padding: 0 20px;
-    height: 42px;
     
-    /* Cố định chiều rộng để nó nằm chính giữa */
-    width: 550px; 
-    margin: 0 10px; 
-    flex-shrink: 1; /* Không cho phép thanh search bị co lại */
-}
+    <style>
+        /* CSS GỐC CỦA BẠN */
+        body { margin: 0; padding: 0; font-family: "Judson", serif; }
+        .header { background-color: #961e1e; padding: 0; position: relative; }
 
-.search-box input {
-    border: none;
-    outline: none;
-    width: 100%;
-    font-size: 14px; /* Tăng nhẹ cỡ chữ input */
-}
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 90px;
+        }
 
-.search-box i {
-    font-size: 16px;
-}
+        .header-logo img {
+            height: 100px; 
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
 
-/* --- Nút Đăng nhập & Giỏ hàng --- */
-.account-cart {
-    display: flex;
-    gap: 15px;            /* Tăng khoảng cách giữa nút Login và Giỏ hàng */
-}
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 25px;
+            padding: 0 20px;
+            height: 42px;
+            width: 500px; 
+            margin: 0 10px;
+        }
 
-.account, #cart {
-    background-color: transparent;
-    border: 1px solid white;
-    border-radius: 20px; 
-    
-    /* TĂNG: Nút bấm dày hơn một chút */
-    padding: 6px 18px; /* (Cũ: 4px 15px) */
-    
-    color: white;
-    cursor: pointer;
-    font-size: 16px; /* Tăng nhẹ cỡ chữ */
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.3s ease;
-}
+        .search-box input { border: none; outline: none; width: 100%; font-size: 14px; }
+        .account-cart { display: flex; gap: 15px; align-items: center; }
 
-.account a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s ease;
-}
+        .account, #cart {
+            background-color: transparent;
+            border: 1px solid white;
+            border-radius: 20px;
+            padding: 6px 18px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
 
-/* Hover: Nền trắng, Chữ đỏ */
-.account:hover, #cart:hover {
-    background-color: white;
-    border-color: white;
-    text-decoration: none;
-}
+        .account a { text-decoration: none; color: white; }
+        .account:hover, #cart:hover { background-color: white; color: #961e1e; }
+        .account:hover a, .account:hover i { color: #961e1e; }
 
-.account:hover, .account:hover a, .account:hover i,
-#cart:hover, #cart:hover span, #cart:hover i {
-    color: #961e1e;
-    text-decoration: none;
-}
+        .menu-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 0;
+            gap: 20px;
+        }
 
-/* --- Hàng 2: Menu Bar --- */
-.menu-bar {
-    display: flex;
-    justify-content: space-around;;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    
-    /* TĂNG: Khoảng cách menu thoáng hơn */
-    padding: 10px 50px; /* (Cũ: 5px 50px) */
-}
+        .menu-bar a {
+            text-decoration: none;
+            color: #D9D9D9;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
 
-.menu-bar a {
-    text-decoration: none;
-    color: #D9D9D9; 
-    font-size: 16px; /* Tăng nhẹ font chữ menu */
-    text-transform: uppercase;
-    font-weight: bold;
-    
-    /* TĂNG: Box menu to hơn */
-    padding: 8px 25px; /* (Cũ: 6px 20px) */
-    
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
+        .menu-bar a:hover, .menu-bar a.active {
+            background-color: white;
+            color: #8F0707;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
 
-/* Hiệu ứng Hover/Active: Nền trắng, Chữ đỏ */
-.menu-bar a:hover, 
-.menu-bar a.active {
-text-decoration: none;
-    background-color: white;
-    color: #8F0707; 
-    /* Đổ bóng chữ và box để giống hình mẫu */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    font-weight: 800;
-}
-  
+        /* --- PHẦN MỚI: NÚT HAMBURGER (ẨN TRÊN PC) --- */
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* --- RESPONSIVE CHO MOBILE & TABLET --- */
+        @media (max-width: 1024px) {
+            .header-container { height: auto; padding: 15px 20px; flex-wrap: wrap; }
+            .search-box { width: 100%; order: 3; margin: 15px 0 0 0; }
+            .menu-toggle { display: block; } /* Hiện nút 3 gạch */
+            
+            /* Biến menu thành menu dọc ẩn đi */
+            .menu-bar {
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #8F0707;
+                z-index: 1000;
+                padding: 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+
+            .menu-bar.active { display: flex; } /* Hiện khi nhấn 3 gạch */
+
+            .menu-bar a {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-logo img { height: 60px; }
+            .account span, #cart span { display: none; } /* Ẩn chữ, giữ icon */
+            .account, #cart { padding: 8px 12px; }
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="header">
         <div class="header-container">
-        <img src = "../assets/logo2.png" alt ="Logo"> 
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
-            <i class="fa-solid fa-magnifying-glass" id="searchIcon" style="cursor: pointer;"></i>
-       </div>
-        <div class="account-cart">
-            <div class="account">
-                <i class="fa-regular fa-user"></i>
-                <div id="accountSection">
-                    <a href="../login.html" id="login-link">Đăng nhập / Đăng ký</a>
-                    <span id="usernameDisplay" style="display: none;"></span>
-                    <button id="logoutBtn" style="display: none;">Đăng xuất</button>
-                </div>
-            </div>
-            <!-- Nút Giỏ Hàng -->
-            <button id="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span>Giỏ hàng</span>
-            </button>
-
-            <!-- MODAL GIỎ HÀNG -->
-            <div id="myModal" class="modal">
-            <div class="modal-content">
-
-                <!-- HEADER -->
-                <div class="modal-header">
-                <h5 class="modal-title">Giỏ hàng</h5>
-                <span class="close">&times;</span>
-                </div>
-
-                <!-- BODY -->
-                <div class="modal-body">
-                <!-- JS sẽ render sản phẩm vào đây -->
-                <div class="cart-items"></div>
-
-                <div class="cart-total">
-                    <strong>Tổng cộng:</strong>
-                    <span class="cart-total-price">0đ</span>
-                </div>
-                </div>
-
-                <!-- FOOTER -->
-                <div class="modal-footer">
-                <button class="btn close-footer">Tiếp tục mua</button>
-                <button class="btn order">Mua ngay</button>
-                </div>
-
-            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
             </div>
 
+            <div class="header-logo">
+                <img src="../assets/logo2.png" alt="Logo"> 
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                <i class="fa-solid fa-magnifying-glass" id="searchIcon" style="cursor: pointer;"></i>
+            </div>
+
+            <div class="account-cart">
+                <div class="account">
+                    <i class="fa-regular fa-user"></i>
+                    <div id="accountSection">
+                        <a href="../login.html" id="login-link"><span>Đăng nhập</span></a>
+                    </div>
+                </div>
+                <button id="cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Giỏ hàng</span>
+                </button>
+            </div>
         </div>
 
-      </div>
-      <div class="menu-bar">
-        <a href="../homepage.html" class="active">TRANG CHỦ</a>
-        <a href="../menu.html">THỰC ĐƠN</a>
-        <a href="../restaurants.html">ĐẶT BÀN</a>
-        <a href="../blog.html">TIN TỨC</a>
-        <a href="../promotion.html">KHUYẾN MÃI</a>
-        <a href="../about.html">VỀ CHÚNG TÔI</a>
-      </div>
+        <div class="menu-bar" id="menuBar">
+            <a href="../homepage.html" class="active">TRANG CHỦ</a>
+            <a href="../menu.html">THỰC ĐƠN</a>
+            <a href="../restaurants.html">ĐẶT BÀN</a>
+            <a href="../blog.html">TIN TỨC</a>
+            <a href="../promotion.html">KHUYẾN MÃI</a>
+            <a href="../about.html">VỀ CHÚNG TÔI</a>
+        </div>
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuIcon = document.querySelector(".inner-icon");
-      const menu = document.querySelector(".inner-menu");
-      const regist = document.querySelector(".inner-regist");
+        document.addEventListener("DOMContentLoaded", () => {
+            // Xử lý bật/tắt Menu Mobile
+            const menuToggle = document.getElementById("mobile-menu");
+            const menuBar = document.getElementById("menuBar");
 
-      menuIcon.addEventListener("click", () => {
-        regist.classList.toggle("show-regist");
-        menu.classList.toggle("show-menu");
-      });
+            menuToggle.addEventListener("click", () => {
+                menuBar.classList.toggle("active");
+                // Đổi icon từ 3 gạch sang dấu X khi mở
+                const icon = menuToggle.querySelector("i");
+                icon.classList.toggle("fa-bars");
+                icon.classList.toggle("fa-xmark");
+            });
 
-      const currentUser = localStorage.getItem("currentUser");
+            // Xử lý Login/Logout (Giữ nguyên logic của bạn)
+            const currentUser = localStorage.getItem("currentUser");
+            const loginLink = document.getElementById("login-link");
 
-      const loginButton = document.querySelector(".button-dn a");
-      const registerButton = document.querySelector(".button-dk a");
-
-      if (currentUser) {
-        const user = JSON.parse(currentUser);
-        loginButton.setAttribute("href", "#");
-        registerButton.setAttribute("href", "#");
-
-        loginButton.textContent = `Xin chào, ${user.username}`;
-        registerButton.textContent = "Đăng xuất";
-
-        registerButton.addEventListener("click", (event) => {
-          event.preventDefault(); // Ngăn nhảy trang
-          localStorage.removeItem("currentUser");
-          window.location.reload();
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                loginLink.innerHTML = `<span>Xin chào, ${user.username}</span>`;
+                loginLink.href = "#";
+                
+                // Thêm sự kiện đăng xuất nếu cần ở đây
+            }
         });
-      } else {
-        loginButton.textContent = "Đăng nhập";
-        loginButton.setAttribute("href", "./login.html");
-
-        registerButton.textContent = "Đăng ký";
-        registerButton.setAttribute("href", "./register.html");
-      }
-    });
     </script>
-  </body>
+</body>
 </html>

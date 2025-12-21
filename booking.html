@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chi tiết đặt bàn | Sushi Fuji</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/booking.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { fujiRed: '#8b1e1e', fujiGold: '#d4af37', fujiCream: '#faf7f2' }, fontFamily: { playfair: ['Playfair Display', 'serif'], inter: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+ <style>
+  body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), 
+                      url('./assets/images/restaurant.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  .main-card {
+    /* Đã chỉnh trong suốt hơn (0.😎 */
+    background-color: rgba(255, 255, 255, 0.75) !important; 
+    backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* Làm chữ "Khách người lớn" đậm hơn */
+  #guestCount + p {
+    color: #1f2937 !important; 
+    font-weight: 900 !important;
+    font-size: 15px ;
+  }
+
+  /* Các CSS giữ nguyên bên dưới... */
+  input, textarea, #timeTrigger {
+    transition: all 0.3s ease;
+    border: 1.5px solid rgba(0,0,0,0.1) !important;
+    background: rgba(255,255,255,0.5) !important;
+  }
+  input:focus, textarea:focus {
+    background-color: #fff !important;
+    border-color: #8b1e1e !important;
+  }
+  #timeOptions {
+    max-height: 250px; overflow-y: auto;
+    backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(139, 30, 30, 0.1);
+  }
+  .dropdown-open #timeOptions { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown-closed #timeOptions { opacity: 0; visibility: hidden; transform: translateY(-10px); }
+</style>
+</head>
+
+<body class="bg-fujiCream font-inter text-gray-800">
+
+  <header class="bg-fujiRed text-white py-4 shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="font-playfair text-2xl tracking-wider">Sushi Fuji</h1>
+      <a href="booking.html" class="text-xs border border-white/30 px-4 py-2 rounded-full hover:bg-white/10 transition">Quay lại</a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <div class="main-card bg-white rounded-[40px] overflow-hidden p-8 md:p-12">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        <div class="space-y-10">
+          <section>
+            <div class="flex items-center mb-6">
+              <span class="w-7 h-7 bg-fujiRed text-white rounded-full flex items-center justify-center text-[10px] mr-3 font-bold">1</span>
+              <h3 class="font-playfair text-lg text-fujiRed uppercase tracking-widest">Số lượng khách</h3>
+            </div>
+            <div class="flex items-center justify-center space-x-8 bg-gray-50/50 p-6 rounded-2xl border border-gray-100">
+              <button onclick="changeGuest(-1)" class="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center hover:border-fujiRed transition text-xl">-</button>
+              <div class="text-center min-w-[100px]">
+                <span id="guestCount" class="text-4xl font-bold text-fujiRed">2</span>
+                <p class="text-[9px] text-gray-400 uppercase mt-1 font-semibold">Khách người lớn</p>
+              </div>
+              <button onclick="changeGuest(1)" class="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center hover:border-fujiRed transition text-xl">+</button>
+            </div>
+          </section>
+
+          <section>
+            <div class="flex items-center mb-6">
+              <span class="w-7 h-7 bg-fujiRed text-white rounded-full flex items-center justify-center text-[10px] mr-3 font-bold">2</span>
+              <h3 class="font-playfair text-lg text-fujiRed uppercase tracking-widest">Thời gian đến</h3>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+              <div>
+                <label class="text-[10px] font-bold text-black-400 uppercase mb-2 block ml-1">Chọn ngày</label>
+                <input type="date" id="bookingDate" class="w-full p-3.5 rounded-xl bg-gray-50 outline-none">
+              </div>
+              <div class="relative" id="timeDropdownContainer">
+                <label class="text-[10px] font-bold text-black-400 uppercase mb-2 block ml-1">Chọn khung giờ</label>
+                <div id="timeTrigger" class="w-full p-3.5 rounded-xl bg-gray-50 cursor-pointer flex justify-between items-center">
+                  <span id="selectedTimeText" class="text-sm">Thời gian</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+                <div id="timeOptions" class="absolute left-0 right-0 mt-2 rounded-xl shadow-xl z-50 opacity-0 invisible transition-all duration-200 translate-y-[-10px]"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="flex flex-col">
+          <section class="h-full flex flex-col">
+            <div class="flex items-center mb-6">
+              <span class="w-7 h-7 bg-fujiRed text-white rounded-full flex items-center justify-center text-[10px] mr-3 font-bold">3</span>
+              <h3 class="font-playfair text-lg text-fujiRed uppercase tracking-widest">Thông tin liên hệ</h3>
+            </div>
+            <div class="space-y-4 flex-grow">
+              <input type="text" id="custName" placeholder="Họ và tên *" class="w-full p-4 rounded-xl bg-gray-50 outline-none">
+              <input type="tel" id="custPhone" placeholder="Số điện thoại *" class="w-full p-4 rounded-xl bg-gray-50 outline-none">
+              <textarea id="custNote" placeholder="Ghi chú (Vd: Ghế trẻ em, tổ chức tiệc...)" class="w-full p-4 rounded-xl bg-gray-50 outline-none h-full min-h-[140px]"></textarea>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="mt-[200px] pt-8 border-t border-gray-50 text-center">
+        <p class="text-[10px] text-gray-400 mb-6 italic">* Vui lòng kiểm tra kỹ thông tin liên hệ và khung giờ trước khi đặt.</p>
+        <button onclick="handleConfirm()" class="w-full py-5 rounded-2xl text-white font-bold uppercase tracking-[0.2em] text-lg shadow-xl shadow-red-100">
+          Xác nhận đặt bàn
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="summaryModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl">
+      <div class="bg-fujiRed p-6 text-white text-center">
+        <h4 class="font-playfair text-2xl italic tracking-wide">Xác nhận thông tin</h4>
+      </div>
+      <div id="modalBody" class="p-8 space-y-4 text-sm leading-relaxed"></div>
+      <div class="p-6 bg-gray-50 border-t border-gray-100 flex gap-3">
+        <button onclick="closeModal()" class="flex-1 py-3 border border-gray-200 rounded-xl font-bold text-gray-500 hover:bg-gray-100 transition">Sửa lại</button>
+        <button onclick="submitBooking()" class="flex-[2] py-3 bg-fujiRed text-white rounded-xl font-bold hover:bg-red-800 shadow-lg shadow-red-100 transition">Gửi đơn đặt bàn</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="successModal" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-md rounded-2xl overflow-hidden shadow-2xl text-center p-8">
+      <div class="flex justify-center mb-6">
+        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-100">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+      </div>
+      <h4 class="text-xl font-bold mb-3">Yêu cầu của bạn đã được tiếp nhận</h4>
+      <p class="text-gray-500 text-sm mb-4">Chúng tôi sẽ thông báo đến bạn sớm nhất. Cảm ơn bạn!</p>
+      <p class="text-fujiRed font-medium text-sm mb-8">Mã yêu cầu: <span id="displayBookingID">34121776</span></p>
+      <div class="flex gap-3">
+        <button onclick="window.location.href='restaurants.html'" class="flex-1 py-3 bg-amber-500 text-white rounded-lg font-bold hover:bg-amber-600 shadow-md shadow-amber-100">Về trang chủ</button>
+        <a href="booking_detail.html" class="flex-1 py-3 border border-gray-200 rounded-lg font-bold text-gray-600 hover:bg-gray-50 flex items-center justify-center">Theo dõi đặt bàn</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center py-10 text-gray-300 text-[10px] tracking-widest uppercase">
+    © 2025 Sushi Fuji – Japanese Dining
+  </footer>
+
+  <script src="js/booking.js" defer></script>
+</body>
+</html>
