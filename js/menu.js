@@ -72,8 +72,8 @@ else {
             const pageFlip = new St.PageFlip(bookContainer, {
                 width: pageWidth,
                 height: pageHeight,
-                size: "fixed",
-                usePortrait: screenWidth <= 430,
+                size: "stretch",
+                usePortrait: screenWidth <= 768,
 
                 showCover: false,
                 minWidth: 300,
