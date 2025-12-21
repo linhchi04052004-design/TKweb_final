@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sushi Fuji - Header Responsive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/SushiFuji.png">
     
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #FEF6EB;
-        }
-
-        /* --- HEADER CHÍNH --- */
-        .header {
-            background-color: #961e1e;
-            font-family: "Judson", serif;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
+        /* CSS GỐC CỦA BẠN */
+         body { margin: 0; padding: 0; font-family: "Judson", serif; }
+        .header { background-color: #961e1e; padding: 0; position: relative; }
 
         .header-container {
             display: flex;
@@ -34,15 +33,13 @@
             height: 90px;
         }
 
-        /* Logo */
         .header-logo img {
             height: 100px; 
             width: auto;
             object-fit: contain;
-            display: block;
+            transition: transform 0.3s ease;
         }
 
-        /* Thanh tìm kiếm - Ẩn trên Mobile */
         .search-box {
             display: flex;
             align-items: center;
@@ -50,145 +47,220 @@
             border-radius: 25px;
             padding: 0 20px;
             height: 42px;
-            width: 40%; /* Co giãn theo màn hình */
-            margin: 0 20px;
+            width: 500px; 
+            margin: 0 10px;
         }
 
-        .search-box input {
-            border: none;
-            outline: none;
-            width: 100%;
-            font-size: 14px;
-        }
-
-        /* Account & Cart */
-        .account-cart {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+        .search-box input { border: none; outline: none; width: 100%; font-size: 14px; }
+        .account-cart { display: flex; gap: 15px; align-items: center; }
 
         .account, #cart {
             background-color: transparent;
             border: 1px solid white;
-            border-radius: 20px; 
-            padding: 8px 18px;
+            border-radius: 20px;
+            padding: 6px 18px;
             color: white;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: 0.3s;
+            gap: 6px;
+            transition: all 0.3s ease;
             text-decoration: none;
-            white-space: nowrap;
         }
 
-        .account:hover, #cart:hover {
-            background-color: white;
-            color: #961e1e !important;
-        }
+        .account a { text-decoration: none; color: white; }
+        .account:hover, #cart:hover { background-color: white; color: #961e1e; }
+        .account:hover a, .account:hover i { color: #961e1e; }
 
-        /* Menu Bar - Danh sách link */
         .menu-bar {
             display: flex;
-            justify-content: center;
-            gap: 10px;
+            justify-content: space-evenly;
             padding: 10px 0;
-            background-color: #961e1e;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            gap: 20px;
         }
 
         .menu-bar a {
             text-decoration: none;
             color: #D9D9D9; 
-            font-size: 13px;
+            font-size: 16px;
             padding: 8px 15px;
             border-radius: 4px;
+            font-family: 'Judson';
             font-weight: bold;
-            transition: 0.3s;
+            padding: 8px 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
         .menu-bar a:hover, .menu-bar a.active {
             background-color: white;
-            color: #8F0707;
+            color: #961e1e;
         }
 
-        /* Nút Hamburger (Chỉ hiện trên Mobile) */
-        .mobile-menu-icon {
+        /* --- PHẦN MỚI: NÚT HAMBURGER (ẨN TRÊN PC) --- */
+        .menu-toggle {
             display: none;
             color: white;
             font-size: 24px;
             cursor: pointer;
         }
-
-        /* --- CẤU HÌNH RESPONSIVE --- */
-        @media screen and (max-width: 992px) {
-            .search-box { width: 30%; }
-            .header-container { padding: 0 20px; }
+        /* Overlay */
+        .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 3000;
+        font-family: 'Judson', sans-serif;
         }
 
-        @media screen and (max-width: 768px) {
-            .mobile-menu-icon { display: block; } /* Hiện nút 3 gạch */
-            
-            .search-box { display: none; } /* Ẩn search bar */
-            
-            .account-cart span { display: none; } /* Ẩn chữ "Giỏ hàng", chỉ hiện icon */
-            
-            .header-logo img { height: 70px; }
-            
-            .header-container { height: 70px; }
+        /* Hộp modal */
+        .modal-content {
+        background: #fff;
+        width: 450px;
+        max-width: 50%;
+        margin: 100px auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
 
-            /* Biến Menu Bar thành Sidebar trượt */
+        /* Header */
+        .modal-content h2 {
+        margin: 0;
+        padding: 16px 20px;
+        background: #961e1e;
+        color: white;
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        /* Nút X */
+        .modal-content .close {
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: bold;
+        }
+
+        /* Nội dung giỏ hàng */
+        .cart-items {
+        padding: 25px 20px;
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        min-height: 120px;
+        }
+
+        /* Tổng cộng */
+        .cart-footer {
+        border-top: 1px solid #eee;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        .cart-footer h3 {
+        margin: 0;
+        font-size: 16px;
+        }
+
+        .cart-total-price {
+        font-weight: bold;
+        font-size: 18px;
+        }
+
+        /* Nút */
+        .cart-footer button {
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        }
+
+        /* Tiếp tục mua */
+        .close-footer {
+        background: #ddd;
+        color: #333;
+        margin-right: 10px;
+        }
+
+        /* Mua ngay */
+        .order {
+        background: #961e1e;
+        color: white;
+        }
+
+        .order:hover {
+        background: #7f1414;
+        }
+
+
+        /* --- RESPONSIVE CHO MOBILE & TABLET --- */
+        @media (max-width: 1024px) {
+            .header-container { height: auto; padding: 15px 20px; flex-wrap: wrap; }
+            .search-box { width: 100%; order: 3; margin: 15px 0 0 0; }
+            .menu-toggle { display: block; } /* Hiện nút 3 gạch */
+            
+            /* Biến menu thành menu dọc ẩn đi */
             .menu-bar {
-                position: fixed;
-                top: 0;
-                left: -100%; /* Ẩn bên trái */
-                width: 260px;
-                height: 100vh;
+                display: none; 
                 flex-direction: column;
-                justify-content: flex-start;
-                padding-top: 80px;
-                transition: 0.4s ease-in-out;
-                z-index: 999;
-                background-color: #801a1a;
-                box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #8F0707;
+                z-index: 1000;
+                padding: 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
             }
 
-            .menu-bar.show {
-                left: 0; /* Hiện ra khi bấm nút */
-            }
+            .menu-bar.active { display: flex; } /* Hiện khi nhấn 3 gạch */
 
             .menu-bar a {
-                width: 80%;
-                margin: 5px auto;
-                padding: 15px;
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }
         }
+
+        @media (max-width: 768px) {
+            .header-logo img { height: 60px; }
+            .account span, #cart span { display: none; } /* Ẩn chữ, giữ icon */
+            .account, #cart { padding: 8px 12px; }
+        }
     </style>
 </head>
-<body>
 
+<body>
     <div class="header">
         <div class="header-container">
-            <div class="mobile-menu-icon" id="mobileMenuBtn">
+            <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
-
-            <a href="#" class="header-logo">
+            <a href="../homepage.html" class="header-logo">
                 <img src="../assets/logo2.png" alt="Logo">
             </a>
 
             <div class="search-box">
-                <input type="text" placeholder="Tìm kiếm...">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                <i class="fa-solid fa-magnifying-glass" id="searchIcon" style="cursor: pointer;"></i>
             </div>
 
             <div class="account-cart">
-                <a href="#" class="account">
+                <a href="../login.html" class="account" id="loginBtn">
                     <i class="fa-regular fa-user"></i>
-                    <span>Đăng nhập</span>
+                    <span id="loginText">Đăng nhập</span>
+                </a>
+                <a href="../register.html" class="account" id="registerBtn">
+                    <i class="fa-regular fa-user"></i>
+                    <span id="registerText">Đăng ký</span>
                 </a>
                 <button id="cart">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -197,10 +269,34 @@
             </div>
         </div>
 
+        <!--giỏ hàng-->
+        <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>
+            Giỏ hàng
+            <span class="close">&times;</span>
+            </h2>
+
+            <div class="cart-items">
+            Giỏ hàng trống, vui lòng thêm sản phẩm
+            </div>
+
+            <div class="cart-footer">
+            <h3>Tổng cộng: <span class="cart-total-price">0đ</span></h3>
+            <div>
+                <button class="close-footer">Tiếp tục mua</button>
+                <button class="order">MUA NGAY</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+
         <div class="menu-bar" id="menuBar">
-            <a href="../homepage.html">TRANG CHỦ</a>
+            <a href="../homepage.html" class="active">TRANG CHỦ</a>
             <a href="../menu.html">THỰC ĐƠN</a>
-            <a href="../booking.html">ĐẶT BÀN</a>
+            <a href="../restaurants.html">ĐẶT BÀN</a>
             <a href="../blog.html">TIN TỨC</a>
             <a href="../promotion.html">KHUYẾN MÃI</a>
             <a href="../about.html">VỀ CHÚNG TÔI</a>
@@ -209,21 +305,62 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+            // Xử lý bật/tắt Menu Mobile
+            const menuToggle = document.getElementById("mobile-menu");
             const menuBar = document.getElementById("menuBar");
 
-            // Bấm nút 3 gạch để mở/đóng menu
-            mobileMenuBtn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                menuBar.classList.toggle("show");
+            menuToggle.addEventListener("click", () => {
+                menuBar.classList.toggle("active");
+                // Đổi icon từ 3 gạch sang dấu X khi mở
+                const icon = menuToggle.querySelector("i");
+                icon.classList.toggle("fa-bars");
+                icon.classList.toggle("fa-xmark");
             });
 
             // Bấm ra ngoài vùng menu sẽ tự động đóng menu
             document.addEventListener("click", (e) => {
-                if (!menuBar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                    menuBar.classList.remove("show");
+                if (!menuBar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    menuBar.classList.remove("active");
                 }
             });
+
+            const loginBtn = document.getElementById("loginBtn");
+            const registerBtn = document.getElementById("registerBtn");
+
+            const loginText = document.getElementById("loginText");
+            const registerText = document.getElementById("registerText");
+
+            if (!loginBtn || !registerBtn || !loginText || !registerText) {
+                console.log("❌ Không tìm thấy element header");
+                return;
+            }
+
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            console.log("USER:", currentUser);
+
+            if (currentUser && currentUser.username) {
+                // Hiện tên user
+                loginText.textContent = currentUser.username;
+                loginBtn.href = "#";
+
+                // Đổi đăng ký → đăng xuất
+                registerText.textContent = "Đăng xuất";
+                registerBtn.href = "#";
+
+                //logout
+                registerBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    window.location.reload();
+                });
+            }
+             else {
+                loginText.textContent = "Đăng nhập";
+                registerText.textContent = "Đăng ký";
+
+                loginBtn.href = "../login.html";
+                registerBtn.href = "../register.html";
+            }
         });
     </script>
 </body>

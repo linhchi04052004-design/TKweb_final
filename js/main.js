@@ -230,9 +230,67 @@ if (document.readyState === 'loading') {
     });
   });
 });
+function initHeader() {
+  const menuToggle = document.getElementById("mobile-menu");
+  const menuBar = document.getElementById("menuBar");
+
+  if (!menuToggle || !menuBar) {
+    console.warn("❌ Không tìm thấy menu header");
+    return;
+  }
+
+  // Toggle menu mobile
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menuBar.classList.toggle("active");
+
+    const icon = menuToggle.querySelector("i");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+  });
+
+  // Click ra ngoài thì đóng
+  document.addEventListener("click", (e) => {
+    if (!menuBar.contains(e.target) && !menuToggle.contains(e.target)) {
+      menuBar.classList.remove("active");
+    }
+  });
+
+  // LOGIN STATE
+  const loginBtn = document.getElementById("loginBtn");
+  const registerBtn = document.getElementById("registerBtn");
+  const loginText = document.getElementById("loginText");
+  const registerText = document.getElementById("registerText");
+
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (currentUser && currentUser.username) {
+    loginText.textContent = currentUser.username;
+    loginBtn.href = "#";
+
+    registerText.textContent = "Đăng xuất";
+    registerBtn.href = "#";
+
+    registerBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("currentUser");
+      location.reload();
+    });
+  } else {
+    loginText.textContent = "Đăng nhập";
+    registerText.textContent = "Đăng ký";
+    loginBtn.href = "../login.html";
+    registerBtn.href = "../register.html";
+  }
+}
+
 
 document.addEventListener("headerLoaded", () => {
 
+  // 🔥 KHỞI TẠO MENU & LOGIN
+  initHeader();
+
+  // ACTIVE MENU
   const currentPage =
     window.location.pathname.split("/").pop() || "homepage.html";
 
@@ -240,8 +298,7 @@ document.addEventListener("headerLoaded", () => {
 
   menuLinks.forEach(link => {
     const linkPage = link.getAttribute("href").split("/").pop();
-
     link.classList.toggle("active", linkPage === currentPage);
   });
-
 });
+

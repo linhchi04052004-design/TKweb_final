@@ -32,8 +32,8 @@ body::before {
     padding: 60px;
     color: #fff;
 
-     position: relative;
-    z-index: 2;
+    position: relative;
+    z-index: 4;
 }
 
 .login-container h2 {
@@ -55,20 +55,19 @@ body::before {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
-    background: transparent;
+    background: transparent !important;
     border: none;
     border-bottom: 2px solid #fff;
     outline: none;
-    color: #fff;
     font-size: 20px;
-      transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease;
 }
-            .login-container input:focus {
-                border-bottom-color: #ffd54f;
+.login-container input:focus {
+    background-color: transparent !important;
 }
 
-.login-container input::placeholder {
-    color: #eee;
+.login-container input:not(:placeholder-shown) {
+    background-color: transparent !important;
 }
 
 /* ===== BUTTON ===== */
@@ -130,6 +129,7 @@ body::before {
     animation: fall linear infinite;
 }
 
+
 @keyframes fall {
     0% {
         top: -10%;
@@ -140,11 +140,4 @@ body::before {
         /* Tăng độ lệch ngang để hoa bay tạt mạnh hơn */
         transform: translateX(200px) rotate(720deg);
     }
-}
-
-/* Lưu ý: Đảm bảo .login-container có z-index cao hơn để hoa không đè lên chữ */
-.login-container {
-    position: relative;
-    z-index: 4; 
-
 }
