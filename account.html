@@ -319,18 +319,18 @@ hr {
     <hr style="margin:20px 0">
 
     <p><b>Tên đăng nhập:</b> <span id="usernameText"></span></p>
-    <p><b>Email:</b> <span id="emailText"></span></p>
-
+    
     
   </div>
 
   <div class="card">
-    <div class="tabs">
-      <span class="active">Thông tin chi tiết</span>
-      <span>Đơn hàng</span>
-      <span>Hóa đơn</span>
-    </div>
+  <div class="tabs">
+    <span class="active" id="tabProfile">Thông tin chi tiết</span>
+    <span id="tabOrders">Đơn hàng</span>
+  </div>
 
+  <!-- Form thông tin -->
+  <div id="profileTab">
     <div class="form-grid">
       <div>
         <label>Họ và tên</label>
@@ -348,16 +348,49 @@ hr {
         <label>Email</label>
         <input id="emailInput" />
       </div>
-
       <div>
         <label>Mật khẩu</label>
         <input type="password" id="passwordInput" />
       </div>
-      </div>
-      <button id="btnSaveProfile" style="margin-top:20px">
-        Cập nhật hồ sơ
-      </button>
+    </div>
+
+    <button id="btnSaveProfile" style="margin-top:20px">
+      Cập nhật hồ sơ
+    </button>
   </div>
+
+  <!-- Tab Đơn hàng -->
+  <div id="ordersTabContent" style="display:none; margin-top:20px;">
+    <h3>Đơn hàng của bạn</h3>
+    <div id="ordersList"></div>
+  </div>
+</div>
+
+  <!-- Nút cập nhật -->
+  <button id="btnSaveProfile" style="margin-top:20px">
+    Cập nhật hồ sơ
+  </button>
+
+  <!-- Tab Đơn hàng -->
+  <div id="ordersTab" style="display:none; margin-top:20px;">
+    <h3>Đơn hàng của bạn</h3>
+    <div id="ordersList"></div>
+  </div>
+</div>
+
+
+  <button id="btnSaveProfile" style="margin-top:20px">
+    Cập nhật hồ sơ
+  </button>
+
+  <!-- Tab Đơn hàng -->
+  <div id="ordersTab" style="display:none; margin-top:20px;">
+    <h3>Đơn hàng của bạn</h3>
+    <div id="ordersList"></div>
+  </div>
+</div>
+
+
 
 </section>
 
