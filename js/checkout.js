@@ -24,9 +24,29 @@ if (phoneInput) {
        3. DỮ LIỆU TỈNH / PHƯỜNG (MẪU VN)
     ============================= */
     const addressData = {
-        "Hà Nội": ["Phường Cầu Giấy", "Phường Dịch Vọng", "Phường Trung Hòa"],
-        "TP Hồ Chí Minh": ["Phường Bến Nghé", "Phường Thảo Điền", "Phường Linh Trung"],
-        "Đà Nẵng": ["Phường Hải Châu", "Phường Thanh Khê", "Phường Hòa Cường"]
+       "Hà Nội": [
+        "Phường Ba Đình",
+        "Phường Hoàn Kiếm",
+        "Phường Đống Đa",
+        "Phường Hai Bà Trưng",
+        "Phường Tây Hồ",
+        "Phường Cầu Giấy",
+        "Phường Thanh Xuân",
+        "Phường Hoàng Mai",
+        "Phường Long Biên",
+        "Phường Nam Từ Liêm",
+        "Phường Bắc Từ Liêm",
+        "Phường Hà Đông",
+        "Phường Sơn Tây",
+        "Phường Phúc La",
+        "Phường Yên Nghĩa",
+        "Phường Dịch Vọng",
+        "Phường Trung Hòa",
+        "Phường Kim Mã",
+        "Phường Nghĩa Tân",
+        "Phường Xuân La"
+    ]
+
     };
 
     const provinceSelect = document.getElementById("province");
