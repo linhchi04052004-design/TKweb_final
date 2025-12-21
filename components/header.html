@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sushi Fuji</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Fuji - Header Responsive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" type="image/png" href="assets/SushiFuji.png">
     
@@ -64,19 +75,17 @@
 
         .menu-bar {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            justify-content: space-evenly;
             padding: 10px 0;
             gap: 20px;
         }
 
         .menu-bar a {
             text-decoration: none;
-            color: #D9D9D9;
+            color: #D9D9D9; 
             font-size: 16px;
-            text-transform: uppercase;
+            padding: 8px 15px;
+            border-radius: 4px;
             font-weight: bold;
             padding: 8px 20px;
             border-radius: 4px;
@@ -85,8 +94,7 @@
 
         .menu-bar a:hover, .menu-bar a.active {
             background-color: white;
-            color: #8F0707;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            color: #961e1e;
         }
 
         /* --- PHẦN MỚI: NÚT HAMBURGER (ẨN TRÊN PC) --- */
@@ -96,6 +104,100 @@
             font-size: 24px;
             cursor: pointer;
         }
+        /* Overlay */
+        .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 3000;
+        font-family: 'Judson', sans-serif;
+        }
+
+        /* Hộp modal */
+        .modal-content {
+        background: #fff;
+        width: 450px;
+        max-width: 50%;
+        margin: 100px auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Header */
+        .modal-content h2 {
+        margin: 0;
+        padding: 16px 20px;
+        background: #961e1e;
+        color: white;
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        /* Nút X */
+        .modal-content .close {
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: bold;
+        }
+
+        /* Nội dung giỏ hàng */
+        .cart-items {
+        padding: 25px 20px;
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        min-height: 120px;
+        }
+
+        /* Tổng cộng */
+        .cart-footer {
+        border-top: 1px solid #eee;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        .cart-footer h3 {
+        margin: 0;
+        font-size: 16px;
+        }
+
+        .cart-total-price {
+        font-weight: bold;
+        font-size: 18px;
+        }
+
+        /* Nút */
+        .cart-footer button {
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        }
+
+        /* Tiếp tục mua */
+        .close-footer {
+        background: #ddd;
+        color: #333;
+        margin-right: 10px;
+        }
+
+        /* Mua ngay */
+        .order {
+        background: #961e1e;
+        color: white;
+        }
+
+        .order:hover {
+        background: #7f1414;
+        }
+
 
         /* --- RESPONSIVE CHO MOBILE & TABLET --- */
         @media (max-width: 1024px) {
@@ -141,10 +243,10 @@
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
-
-            <div class="header-logo">
-                <img src="../assets/logo2.png" alt="Logo"> 
-            </div>
+            <a href="../homepage.html" class="header-logo">
+                <img src="../assets/logo2.png" alt="Logo">
+            </a>
+>>>>>>> 10c80ae (update header login logout)
 
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
@@ -152,18 +254,44 @@
             </div>
 
             <div class="account-cart">
-                <div class="account">
+                <a href="../login.html" class="account" id="loginBtn">
                     <i class="fa-regular fa-user"></i>
-                    <div id="accountSection">
-                        <a href="../login.html" id="login-link"><span>Đăng nhập</span></a>
-                    </div>
-                </div>
+                    <span id="loginText">Đăng nhập</span>
+                </a>
+                <a href="../register.html" class="account" id="registerBtn">
+                    <i class="fa-regular fa-user"></i>
+                    <span id="registerText">Đăng ký</span>
+                </a>
                 <button id="cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>Giỏ hàng</span>
                 </button>
             </div>
         </div>
+
+        <!--giỏ hàng-->
+        <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>
+            Giỏ hàng
+            <span class="close">&times;</span>
+            </h2>
+
+            <div class="cart-items">
+            Giỏ hàng trống, vui lòng thêm sản phẩm
+            </div>
+
+            <div class="cart-footer">
+            <h3>Tổng cộng: <span class="cart-total-price">0đ</span></h3>
+            <div>
+                <button class="close-footer">Tiếp tục mua</button>
+                <button class="order">MUA NGAY</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
 
         <div class="menu-bar" id="menuBar">
             <a href="../homepage.html" class="active">TRANG CHỦ</a>
@@ -189,16 +317,49 @@
                 icon.classList.toggle("fa-xmark");
             });
 
-            // Xử lý Login/Logout (Giữ nguyên logic của bạn)
-            const currentUser = localStorage.getItem("currentUser");
-            const loginLink = document.getElementById("login-link");
+            // Bấm ra ngoài vùng menu sẽ tự động đóng menu
+            document.addEventListener("click", (e) => {
+                if (!menuBar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    menuBar.classList.remove("show");
+                }
+            });
 
-            if (currentUser) {
-                const user = JSON.parse(currentUser);
-                loginLink.innerHTML = `<span>Xin chào, ${user.username}</span>`;
-                loginLink.href = "#";
-                
-                // Thêm sự kiện đăng xuất nếu cần ở đây
+            const loginBtn = document.getElementById("loginBtn");
+            const registerBtn = document.getElementById("registerBtn");
+
+            const loginText = document.getElementById("loginText");
+            const registerText = document.getElementById("registerText");
+
+            if (!loginBtn || !registerBtn || !loginText || !registerText) {
+                console.log("❌ Không tìm thấy element header");
+                return;
+            }
+
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            console.log("USER:", currentUser);
+
+            if (currentUser && currentUser.username) {
+                // Hiện tên user
+                loginText.textContent = currentUser.username;
+                loginBtn.href = "#";
+
+                // Đổi đăng ký → đăng xuất
+                registerText.textContent = "Đăng xuất";
+                registerBtn.href = "#";
+
+                //logout
+                registerBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    window.location.reload();
+                });
+            }
+             else {
+                loginText.textContent = "Đăng nhập";
+                registerText.textContent = "Đăng ký";
+
+                loginBtn.href = "../login.html";
+                registerBtn.href = "../register.html";
             }
         });
     </script>

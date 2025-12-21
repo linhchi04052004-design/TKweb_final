@@ -7,18 +7,14 @@ document.addEventListener("headerLoaded", () => {
         return;
     }
 
-  /* ===============================
-     1. KHAI BÁO PHẦN TỬ HTML
-  =============================== */
+  /*1. KHAI BÁO PHẦN TỬ HTML*/
   const closeBtn = modal.querySelector(".close");
   const closeFooterBtn = modal.querySelector(".close-footer");
   const orderBtn = modal.querySelector(".order");
   const cartItemsContainer = modal.querySelector(".cart-items");
   const cartTotalPriceEl = modal.querySelector(".cart-total-price");
 
-  /* ===============================
-     2. LOCAL STORAGE
-  =============================== */
+  /* 2. LOCAL STORAGE */
   function getCart() {
     const cart = localStorage.getItem("cartProducts");
     return cart ? JSON.parse(cart) : [];
@@ -28,9 +24,7 @@ document.addEventListener("headerLoaded", () => {
     localStorage.setItem("cartProducts", JSON.stringify(cart));
   }
 
-  /* ===============================
-     3. BADGE SỐ LƯỢNG
-  =============================== */
+  /* 3. BADGE SỐ LƯỢNG */
   function updateCartBadge() {
     const cart = getCart();
     const total = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -46,9 +40,7 @@ document.addEventListener("headerLoaded", () => {
     badge.style.display = total > 0 ? "inline-block" : "none";
   }
 
-  /* ===============================
-     4. HIỂN THỊ GIỎ HÀNG
-  =============================== */
+  /*4. HIỂN THỊ GIỎ HÀNG */
   function displayCartItems() {
     cartItemsContainer.innerHTML = "";
     const cart = getCart();
@@ -103,9 +95,7 @@ document.addEventListener("headerLoaded", () => {
       total.toLocaleString("vi-VN") + "đ";
   }
 
-  /* ===============================
-     5. THÊM SẢN PHẨM
-  =============================== */
+  /*  5. THÊM SẢN PHẨM */
   function addProductToCart(product) {
     const cart = getCart();
     const exist = cart.find(p => p.title === product.title);
@@ -122,9 +112,7 @@ document.addEventListener("headerLoaded", () => {
     modal.style.display = "block";
   }
 
-  /* ===============================
-     6. XÓA SẢN PHẨM
-  =============================== */
+  /* 6. XÓA SẢN PHẨM*/
   function removeItem(title) {
     let cart = getCart().filter(p => p.title !== title);
     saveCart(cart);
@@ -132,9 +120,7 @@ document.addEventListener("headerLoaded", () => {
     updateCartBadge();
   }
 
-  /* ===============================
-     7. MỞ / ĐÓNG MODAL
-  =============================== */
+  /*  7. MỞ / ĐÓNG MODAL */
   cartBtn.addEventListener("click", () => {
     displayCartItems();
     modal.style.display = "block";
@@ -147,9 +133,7 @@ document.addEventListener("headerLoaded", () => {
     if (e.target === modal) modal.style.display = "none";
   });
 
-  /* ===============================
-     8. THANH TOÁN
-  =============================== */
+  /*8. THANH TOÁN */
   orderBtn.addEventListener("click", () => {
     if (getCart().length === 0) {
       alert("Giỏ hàng trống, vui lòng thêm sản phẩm");
@@ -159,11 +143,8 @@ document.addEventListener("headerLoaded", () => {
   });
 
 
-  //9. LOAD BAN ĐẦU
   updateCartBadge();
-  /* ===============================
-   9. NHẬN SỰ KIỆN TỪ TRANG MENU
-=============================== */
+  /*  9. NHẬN SỰ KIỆN TỪ TRANG MENU */
 document.addEventListener("addToCart", (e) => {
   const product = e.detail;
   addProductToCart(product);

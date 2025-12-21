@@ -3,17 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const usernameInput = document.getElementById("username");
     const passwordInput = document.getElementById("password");
     const btnRegister = document.querySelector(".btn-register");
+    if (!btnRegister) return;
 
-    /* ===============================
-       1. CHỈ CHO NHẬP SỐ ĐIỆN THOẠI
-    =============================== */
+    /* 1. CHỈ CHO NHẬP SỐ ĐIỆN THOẠI */
     phoneInput.addEventListener("keypress", (e) => {
         if (!/[0-9]/.test(e.key)) e.preventDefault();
     });
 
-    /* ===============================
-       2. KIỂM TRA MẬT KHẨU
-    =============================== */
+    /*  2. KIỂM TRA MẬT KHẨU*/
     function checkPassword() {
         const val = passwordInput.value;
 
@@ -45,16 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     passwordInput.addEventListener("input", checkPassword);
 
-    /* ===============================
-       3. KIỂM TRA SỐ ĐIỆN THOẠI VN
-    =============================== */
+    /* 3. KIỂM TRA SỐ ĐIỆN THOẠI VN */
     function validatePhone(phone) {
         return /^(03|05|07|08|09)\d{8}$/.test(phone);
     }
 
-    /* ===============================
-       4. XỬ LÝ ĐĂNG KÝ
-    =============================== */
+    /* 4. XỬ LÝ ĐĂNG KÝ*/
     btnRegister.addEventListener("click", (e) => {
         e.preventDefault();
 
@@ -85,9 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        /* ===============================
-           5. LƯU USER (GIẢ LẬP DATABASE)
-        =============================== */
+        /*  5. LƯU USER (GIẢ LẬP DATABASE) */
         let users = JSON.parse(localStorage.getItem("users")) || [];
 
         const isExist = users.find(
@@ -105,30 +96,25 @@ document.addEventListener("DOMContentLoaded", () => {
             password: password
         };
 
+        // LƯU USER
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
 
-        /* ===============================
-           6. TỰ ĐỘNG ĐĂNG NHẬP
-        =============================== */
-        localStorage.setItem("userLogin", JSON.stringify({
-            isLoggedIn: true,
-            phone: phone,
+        // TỰ ĐỘNG LOGIN
+        localStorage.setItem("currentUser", JSON.stringify({
             username: username
         }));
 
-        alert("Đăng ký thành công!");
 
-        /* ===============================
-           7. QUAY LẠI TRANG TRƯỚC (NẾU CÓ)
-        =============================== */
+        /*  7. QUAY LẠI TRANG TRƯỚC (NẾU CÓ) */
         const redirect = localStorage.getItem("redirectAfterLogin");
 
         if (redirect) {
             localStorage.removeItem("redirectAfterLogin");
             window.location.href = redirect;
         } else {
-            window.location.href = "checkout.html";
+            window.location.href = "homepage.html"; 
         }
+
     });
 });

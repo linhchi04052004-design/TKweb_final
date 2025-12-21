@@ -8,21 +8,33 @@
 <body>
     <div id="sakura-container"></div> 
 
-    <div class="login-container">
+    <form id="loginForm" class="login-container">
         <h2>LOGIN</h2>
 
-        <input type="text" placeholder="Tên đăng nhập">
-        <input type="password" placeholder="Mật khẩu">
+        <input 
+        type="text" 
+        id="loginUsername" 
+        name="loginUsername" 
+        placeholder="Tên đăng nhập"
+        >
 
-        <a href="homepage.html" style="text-decoration: none;">
-    <button type="button">ĐĂNG NHẬP</button>
-</a>
+        <input 
+        type="password" 
+        id="loginPassword" 
+        name="loginPassword" 
+        placeholder="Mật khẩu"
+        >
+
+        <button type="submit">ĐĂNG NHẬP</button>
+
+        <p id="loginMessage" class="message"></p>
 
         <p>
             Bạn chưa có tài khoản?
             <a href="register.html">Đăng ký ngay</a>
         </p>
-    </div>
+    </form>
+
 
    <script>
     function createSakura() {
@@ -55,5 +67,6 @@
     // 3. TĂNG ĐỘ DÀY: Giảm thời gian chờ từ 200ms xuống 50ms (tạo hoa liên tục hơn)
     setInterval(createSakura, 60); 
 </script>
+<script src="./js/login.js"></script>
 </body>
 </html>
