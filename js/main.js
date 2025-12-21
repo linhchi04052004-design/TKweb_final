@@ -266,7 +266,7 @@ function initHeader() {
 
   if (currentUser && currentUser.username) {
     loginText.textContent = currentUser.username;
-    loginBtn.href = "#";
+    loginBtn.href = "../account.html";
 
     registerText.textContent = "Đăng xuất";
     registerBtn.href = "#";
