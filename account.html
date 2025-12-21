@@ -72,10 +72,11 @@
 
     /* ===== LAYOUT ===== */
     .container {
-      padding: 50px 60px;
+      padding: 40px 60px;
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 40px;
+      align-items: stretch;
     }
 
     .card {
@@ -96,7 +97,7 @@
       text-align: center;
     }
     .avatar {
-      width: 200px;
+      width: 150;
       height: 200px;
       border-radius: 50%;
       object-fit: cover;
@@ -136,7 +137,59 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
+      
     }
+
+    .form-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 550px; /* Ép khung cao lên để cân đối với bên trái */
+    padding: 40px !important; /* Tăng padding bên trong */
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 30px; /* Tăng khoảng cách giữa các ô */
+    flex-grow: 1; /* Đẩy nội dung chiếm không gian giữa */
+}
+
+
+/* Ô mật khẩu dàn hàng ngang cho đầy đặn */
+.full-width {
+    grid-column: span 2;
+}
+
+.input-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* Chỉnh lại nút bấm */
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#btnSaveProfile {
+    background: white;
+    color: #8b1e1e;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btnSaveProfile:hover {
+    transform: scale(1.05);
+    background: #f8f8f8;
+}
+
+
 
 
     label { font-size: 13px; }
@@ -242,7 +295,7 @@ button[onclick^="changeGuest"]:hover {
     color: white !important;
 }
 
-/* 7. Họa tiết chìm kiểu Nhật (Omi-pattern) - Thêm vào background chính */
+ /*7. Họa tiết chìm kiểu Nhật (Omi-pattern) - Thêm vào background chính 
 body::before {
     content: "" !important;
     position: fixed !important;
@@ -251,7 +304,7 @@ body::before {
     background-image: radial-gradient(#8b1e1e 0.5px, transparent 0.5px) !important;
     background-size: 30px 30px !important;
     opacity: 0.03 !important; /* Cực kỳ mờ để tạo texture */
-}
+
 /* Chuyển tất cả chữ trong thẻ Card (khung đỏ) thành màu trắng */
 .card {
     color: white !important;
@@ -292,6 +345,48 @@ hr {
 }
 
 
+/* Tablet (iPad) */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr; /* Chuyển về 1 cột dọc */
+        padding: 30px;
+    }
+    
+    .card.profile {
+        min-height: auto;
+    }
+}
+
+/* Điện thoại di động */
+@media (max-width: 768px) {
+    .hero {
+        padding-left: 20px;
+        height: 300px;
+    }
+    
+    .hero-card {
+        max-width: 90%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr; /* Form xếp thành 1 hàng dọc */
+        gap: 20px;
+    }
+    
+    .avatar {
+        width: 150px; /* Thu nhỏ avatar một chút trên mobile */
+        height: 150px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .card.form-container {
+        padding: 25px !important;
+    }
+}
+
   </style>
 </head>
 <body>
@@ -311,15 +406,13 @@ hr {
 
     <img src="assets/user.png" class="avatar" alt="Avatar" />
 
-    <img class="avatar" src="" />
-
     <h3>Khách hàng Fuji</h3>
   
 
     <hr style="margin:20px 0">
 
     <p><b>Tên đăng nhập:</b> <span id="usernameText"></span></p>
-    <p><b>Email:</b> <span id="emailText"></span></p>
+    
 
     
   </div>
