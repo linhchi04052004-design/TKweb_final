@@ -161,5 +161,13 @@ document.addEventListener("headerLoaded", () => {
 
   //9. LOAD BAN ĐẦU
   updateCartBadge();
+  /* ===============================
+   9. NHẬN SỰ KIỆN TỪ TRANG MENU
+=============================== */
+document.addEventListener("addToCart", (e) => {
+  const product = e.detail;
+  addProductToCart(product);
+});
+
 
 });

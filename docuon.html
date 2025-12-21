@@ -255,19 +255,27 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.add-btn');
-            
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Lấy tên sản phẩm từ thẻ h3 cùng cấp
-                    const productItem = this.closest('.product-item');
-                    const productName = productItem.querySelector('.product-name').innerText;
-                  
-                });
-            });
-        });
-    </script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".add-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const item = this.closest(".product-item");
+
+      const product = {
+        title: item.querySelector(".product-name").innerText.trim(),
+        price: item.querySelector(".product-price").innerText.trim(),
+        img: item.querySelector("img").src,
+        quantity: 1
+      };
+
+      // Gửi sự kiện sang cart.js
+      document.dispatchEvent(
+        new CustomEvent("addToCart", { detail: product })
+      );
+    });
+  });
+});
+</script>
+
 <!-- Nhúng footer -->
 <div id="footer"></div>
 </body>
