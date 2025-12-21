@@ -14,9 +14,29 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-    const pageWidth = Math.floor(screenWidth * 0.43);
-    const pageHeight = Math.floor(screenHeight * 0.60);
+const screenHeight = window.innerHeight;
+
+// TỈ LỆ ẢNH MENU (913 x 701)
+const IMAGE_RATIO = 913 / 701;
+
+let pageWidth, pageHeight;
+
+/* MÀN HÌNH LỚN (LAPTOP, PC) */
+if (screenWidth > 1024) {
+    pageHeight = Math.floor(screenHeight * 0.65);
+    pageWidth = Math.floor(pageHeight * IMAGE_RATIO);
+}
+/* IPAD */
+else if (screenWidth > 430) {
+    pageHeight = Math.floor(screenHeight * 0.55);
+    pageWidth = Math.floor(pageHeight * IMAGE_RATIO);
+}
+/* ĐIỆN THOẠI */
+else {
+    pageWidth = Math.floor(screenWidth * 0.95);
+    pageHeight = Math.floor(pageWidth / IMAGE_RATIO);
+}
+
 
     const bookContainer = document.getElementById('book');
     
@@ -30,7 +50,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 htmlContent += `
                     <div class="page" style="background-color: #fdfdfd;">
                         <div class="page-content" style="width: 100%; height: 100%; overflow: hidden;">
-                            <img src="${imgUrl}" alt="Menu" style="width: 100%; height: 100%; object-fit: cover;">
+                           <img 
+    src="${imgUrl}" 
+    alt="Menu"
+    style="
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background-color: #fff;
+    "
+>
+
                         </div>
                     </div>
                 `;
@@ -43,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 width: pageWidth,
                 height: pageHeight,
                 size: "fixed",
-                usePortrait: false,
+                usePortrait: screenWidth <= 430,
+
                 showCover: false,
                 minWidth: 300,
                 maxWidth: 1000,
