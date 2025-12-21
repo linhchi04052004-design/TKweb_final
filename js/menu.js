@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // =========================================================
 
     const DANH_SACH_ANH = [
-        "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80",
-        "https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80",
-        "https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80",
-        "https://images.unsplash.com/photo-1615361200141-f45040f367be?w=600&q=80",
-        "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=600&q=80",
-        "https://images.unsplash.com/photo-1558985250-27a406d64cb3?w=600&q=80"
+        "assets/images/menu2.png", // Bỏ url() và kiểm tra lại cấp bậc thư mục
+    "assets/images/menu1.png",
+    "assets/images/menudoi.png",
+    "assets/images/menu4.png",
+    "assets/images/menu5.png",
+    "assets/images/menu66.png",
     ];
 
     const screenWidth = window.innerWidth;
