@@ -1,29 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    /* =============================
-       1. KIỂM TRA ĐĂNG NHẬP
-    ============================= */
-    const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+if (!currentUser) {
+    localStorage.setItem("redirectAfterLogin", "checkout.html");
+    window.location.href = "login.html";
+    return;
+}
 
-    if (!userLogin || !userLogin.isLoggedIn) {
-        localStorage.setItem("redirectAfterLogin", "checkout.html");
-        window.location.href = "login.html";
-        return;
-    }
+// AUTO ĐIỀN THÔNG TIN
+const fullnameInput = document.getElementById("fullname");
+const phoneInput = document.getElementById("phone");
 
-    /* =============================
-       2. LOAD THÔNG TIN USER
-    ============================= */
-    document.getElementById("fullname").value = userLogin.username || "";
-    document.getElementById("phone").value = userLogin.phone || "";
+if (fullnameInput) {
+    fullnameInput.value = currentUser.username || "";
+}
+
+if (phoneInput) {
+    phoneInput.value = currentUser.phone || "";
+}
+   
 
     /* =============================
        3. DỮ LIỆU TỈNH / PHƯỜNG (MẪU VN)
     ============================= */
     const addressData = {
-        "Hà Nội": ["Phường Cầu Giấy", "Phường Dịch Vọng", "Phường Trung Hòa"],
-        "TP Hồ Chí Minh": ["Phường Bến Nghé", "Phường Thảo Điền", "Phường Linh Trung"],
-        "Đà Nẵng": ["Phường Hải Châu", "Phường Thanh Khê", "Phường Hòa Cường"]
+       "Hà Nội": [
+        "Phường Ba Đình",
+        "Phường Hoàn Kiếm",
+        "Phường Đống Đa",
+        "Phường Hai Bà Trưng",
+        "Phường Tây Hồ",
+        "Phường Cầu Giấy",
+        "Phường Thanh Xuân",
+        "Phường Hoàng Mai",
+        "Phường Long Biên",
+        "Phường Nam Từ Liêm",
+        "Phường Bắc Từ Liêm",
+        "Phường Hà Đông",
+        "Phường Sơn Tây",
+        "Phường Phúc La",
+        "Phường Yên Nghĩa",
+        "Phường Dịch Vọng",
+        "Phường Trung Hòa",
+        "Phường Kim Mã",
+        "Phường Nghĩa Tân",
+        "Phường Xuân La"
+    ]
+
     };
 
     const provinceSelect = document.getElementById("province");
@@ -104,6 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
        5. ĐẶT HÀNG
     ============================= */
     document.getElementById("btn-order").addEventListener("click", () => {
+if (!currentUser || !currentUser.username) {
+    alert("Vui lòng đăng nhập để đặt hàng!");
+    return;
+}
 
         const fullname = document.getElementById("fullname").value.trim();
         const phone = document.getElementById("phone").value.trim();
@@ -123,28 +150,37 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const order = {
-            customer: {
-                fullname,
-                phone,
-                address: `${addressDetail}, ${ward}, ${province}`
-            },
-            items: cart,
-            totalQty,
-            totalPrice,
-            createdAt: new Date().toISOString()
-        };
+       const order = {
+    orderId: "SF" + Date.now(),
+    username: currentUser.username,
+    customer: {
+        fullname,
+        phone,
+        address: `${addressDetail}, ${ward}, ${province}`
+    },
+    items: cart,
+    totalQty,
+    totalPrice,
+    status: "Đang xử lý",
+    createdAt: new Date().toISOString()
+};
 
-        // 🔥 LƯU ĐƠN HÀNG ĐỂ XEM LẠI
-        localStorage.setItem("orderLast", JSON.stringify(order));
 
-        // Xóa giỏ hàng
-        localStorage.removeItem("cartProducts");
+        let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || {};
 
-        alert("🎉 Đặt hàng thành công!");
+if (!orderHistory[currentUser.username]) {
+    orderHistory[currentUser.username] = [];
+}
 
-        // 👉 Trang thành công
-        window.location.href = "order_sucess.html";
+orderHistory[currentUser.username].push(order);
+
+localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+localStorage.setItem("orderLast", JSON.stringify(order));
+
+localStorage.removeItem("cartProducts");
+
+window.location.href = "order_sucess.html";
+
     });
 
 });

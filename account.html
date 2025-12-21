@@ -137,6 +137,8 @@
       grid-template-columns: 1fr 1fr;
       gap: 18px;
     }
+
+
     label { font-size: 13px; }
     input, textarea {
       width: 100%;
@@ -316,8 +318,9 @@ hr {
 
     <hr style="margin:20px 0">
 
-    <p><b>Tên đăng nhập:</b> sushifuji_user</p>
-    <p><b>Email:</b> user@sushifuji.vn</p>
+    <p><b>Tên đăng nhập:</b> <span id="usernameText"></span></p>
+    <p><b>Email:</b> <span id="emailText"></span></p>
+
     
   </div>
 
@@ -331,34 +334,34 @@ hr {
     <div class="form-grid">
       <div>
         <label>Họ và tên</label>
-        <input value="Khách hàng Fuji" />
+        <input id="fullnameInput" />
       </div>
       <div>
         <label>Ngày sinh</label>
         <input type="date" />
       </div>
       <div>
-        <label>Email</label>
-        <input value="user@sushifuji.vn" />
+        <label>Số điện thoại</label>
+        <input id="phoneInput" />
       </div>
       <div>
-        <label>Số điện thoại</label>
-        <input />
+        <label>Email</label>
+        <input id="emailInput" />
       </div>
+
       <div>
         <label>Mật khẩu</label>
-        <input type="password" value="123456" />
+        <input type="password" id="passwordInput" />
       </div>
-      <div>
-        <label>Giới tính</label>
-        <input placeholder="Nam / Nữ" />
       </div>
-      <label>Quote ẩm thực của bạn</label>
-      <textarea rows="3" placeholder="Cảm nhận của bạn về Sushi Fuji..."></textarea>
-    </div>
+      <button id="btnSaveProfile" style="margin-top:20px">
+        Cập nhật hồ sơ
+      </button>
   </div>
 
 </section>
+
+<script src="js/account.js"></script>
 
 
 </body>

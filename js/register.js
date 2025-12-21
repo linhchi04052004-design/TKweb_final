@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const phoneInput = document.getElementById("phone");
     const usernameInput = document.getElementById("username");
+    const fullnameInput = document.getElementById("fullname");
+    const phoneInput = document.getElementById("phone");
+    const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const btnRegister = document.querySelector(".btn-register");
     if (!btnRegister) return;
@@ -54,6 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const phone = phoneInput.value.trim();
         const username = usernameInput.value.trim();
         const password = passwordInput.value;
+        const fullname = fullnameInput.value.trim();
+        const email = emailInput.value.trim();
+
+        if (!fullname || !email) {
+            alert("Vui lòng nhập đầy đủ họ tên và email!");
+            return;
+        }
+
 
         if (!phone || !username || !password) {
             alert("Vui lòng nhập đầy đủ thông tin!");
@@ -93,7 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const newUser = {
             phone: phone,
             username: username,
-            password: password
+            password: password,
+            fullname: fullname,
+            email: email
         };
 
         // LƯU USER

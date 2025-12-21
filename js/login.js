@@ -30,9 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 4. Lưu trạng thái đăng nhập
-        localStorage.setItem("currentUser", JSON.stringify({
-            username: user.username
-        }));
+        localStorage.setItem("currentUser", JSON.stringify(user));
 
         // 5. Chuyển về trang chủ
         window.location.href = "homepage.html";
