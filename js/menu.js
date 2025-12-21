@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    // =========================================================
-    // PHẦN 1: CẤU HÌNH SÁCH LẬT (GIỮ NGUYÊN CODE CŨ CỦA BẠN)
-    // =========================================================
-
     const DANH_SACH_ANH = [
         "assets/images/menu5.png", // Bỏ url() và kiểm tra lại cấp bậc thư mục
     "assets/images/menu66.png",
