@@ -38,7 +38,7 @@ body{
     height: 100%;
     /* Quan trọng: phủ kín khung nhưng giữ đúng tỷ lệ không bị méo/khuất */
     object-fit: cover;
-    padding-top: 100px;
+    padding-top: 120px;
     height: calc(100vh - 90px);  
 }
 .slider .buttons{

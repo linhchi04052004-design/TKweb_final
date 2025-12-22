@@ -106,55 +106,56 @@ async function loadConfig() {
 }
 
 function initDate(config) {
-    const el = document.getElementById('bookingDate');
-    if (!el) return;
-    const today = getLocalTodayString();
-    el.value = today;
-    el.min = today; 
-    el.onchange = (e) => {
-        bookingState.date = e.target.value;
-        bookingState.time = ""; 
-        document.getElementById('selectedTimeText').innerText = "Thời gian";
-        generateTimeSlots(config);
+    const el = document.getElementById('bookingDate'); // Lấy input chọn ngày
+    if (!el) return; // Nếu không tìm thấy element, thoát hàm
+    const today = getLocalTodayString(); // Lấy ngày hôm nay theo định dạng YYYY-MM-DD
+    el.value = today; // Mặc định chọn ngày hôm nay
+    el.min = today; // Chặn không cho chọn ngày trước hôm nay
+    el.onchange = (e) => { // Khi người dùng chọn ngày mới
+        bookingState.date = e.target.value; // Cập nhật ngày trong state
+        bookingState.time = ""; // Reset giờ đã chọn
+        document.getElementById('selectedTimeText').innerText = "Thời gian"; // Reset hiển thị dropdown giờ
+        generateTimeSlots(config); // Tạo lại các khung giờ theo ngày mới
     };
 }
 
 function generateTimeSlots(config) {
-    const optionsContainer = document.getElementById('timeOptions');
-    if (!optionsContainer) return;
-    const now = new Date();
-    const todayStr = getLocalTodayString();
+    const optionsContainer = document.getElementById('timeOptions'); // Lấy container chứa các slot giờ
+    if (!optionsContainer) return; // Nếu không tìm thấy, thoát
+    const now = new Date(); // Lấy thời gian hiện tại
+    const todayStr = getLocalTodayString(); // Lấy ngày hôm nay để so sánh
     
-    optionsContainer.innerHTML = '';
-    let hasSlots = false;
+    optionsContainer.innerHTML = ''; // Xóa các slot cũ
+    let hasSlots = false; // Biến kiểm tra còn slot nào không
 
-    for (let h = config.openingHour; h < config.closingHour; h++) {
-        ["00", "30"].forEach(m => {
-            const timeStr = `${h.toString().padStart(2, '0')}:${m}`;
-            const slot = new Date(bookingState.date + 'T' + timeStr);
-            const buffer = new Date(now.getTime() + (config.bufferMinutes * 60000));
-            const isToday = bookingState.date === todayStr;
+    for (let h = config.openingHour; h < config.closingHour; h++) { // Duyệt từ giờ mở cửa đến giờ đóng cửa
+        ["00", "30"].forEach(m => { // Tạo slot mỗi 30 phút
+            const timeStr = `${h.toString().padStart(2, '0')}:${m}`; // Chuyển giờ/phút sang chuỗi dạng HH:MM
+            const slot = new Date(bookingState.date + 'T' + timeStr); // Tạo object Date cho slot
+            const buffer = new Date(now.getTime() + (config.bufferMinutes * 60000)); // Tạo thời gian buffer (VD: cách giờ hiện tại 30 phút)
+            const isToday = bookingState.date === todayStr; // Kiểm tra slot có phải hôm nay không
 
-            if (!isToday || slot > buffer) {
-                const item = document.createElement('div');
-                item.className = "p-3 hover:bg-fujiRed hover:text-white cursor-pointer transition text-center border-b border-gray-50 last:border-none";
-                item.innerText = timeStr;
-                item.onclick = (e) => {
-                    e.stopPropagation();
-                    bookingState.time = timeStr;
-                    document.getElementById('selectedTimeText').innerText = timeStr;
-                    optionsContainer.classList.add('invisible', 'opacity-0', 'translate-y-[-10px]');
+            if (!isToday || slot > buffer) { // Nếu slot không phải hôm nay hoặc còn đủ buffer
+                const item = document.createElement('div'); // Tạo div cho slot giờ
+                item.className = "p-3 hover:bg-fujiRed hover:text-white cursor-pointer transition text-center border-b border-gray-50 last:border-none"; // Style slot
+                item.innerText = timeStr; // Hiển thị giờ
+                item.onclick = (e) => { // Khi click vào slot
+                    e.stopPropagation(); // Ngăn click lan ra ngoài
+                    bookingState.time = timeStr; // Lưu giờ đã chọn vào state
+                    document.getElementById('selectedTimeText').innerText = timeStr; // Cập nhật hiển thị dropdown
+                    optionsContainer.classList.add('invisible', 'opacity-0', 'translate-y-[-10px]'); // Ẩn dropdown sau khi chọn
                 };
-                optionsContainer.appendChild(item);
-                hasSlots = true;
+                optionsContainer.appendChild(item); // Thêm slot vào container
+                hasSlots = true; // Có ít nhất một slot
             }
         });
     }
 
-    if (!hasSlots) {
-        optionsContainer.innerHTML = '<div class="p-4 text-gray-400 text-sm text-center">Hết chỗ hôm nay</div>';
+    if (!hasSlots) { // Nếu không còn slot nào
+        optionsContainer.innerHTML = '<div class="p-4 text-gray-400 text-sm text-center">Hết chỗ hôm nay</div>'; // Hiển thị thông báo
     }
 }
+
 
 // --- 1. XÁC NHẬN THÔNG TIN (HIỆN MODAL ĐỎ) ---
 window.handleConfirm = () => {

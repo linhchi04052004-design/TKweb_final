@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.text())
     .then(data => {
         document.getElementById("header").innerHTML = data;
-        
-        // CHỈNH SỬA Ở ĐÂY: Phát một sự kiện để báo rằng Header đã sẵn sàng
         document.dispatchEvent(new Event("headerLoaded"));
     })
     .catch(err => console.error("Không load được header", err));
@@ -24,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let next = document.getElementById('next');
     let prev = document.getElementById('prev');
     let dots = document.querySelectorAll('.slider .dots li');
-    let video = document.getElementById('introVideo'); // Lấy video
+    let video = document.getElementById('introVideo'); 
 
     let lengthItems = items.length - 1;
     let active = 0;
