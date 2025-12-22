@@ -95,7 +95,7 @@ else {
                     } else {
                         pageFlip.turnToPage(0); 
                     }
-                }, 3500);
+                }, 3000);
             };
 
             bookContainer.addEventListener('mouseenter', () => { isUserInteracting = true; });

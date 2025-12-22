@@ -17,6 +17,7 @@ body{
     height: 100vh;
     position: relative;
     overflow: hidden;
+    
 }
 .slider .list{
     position: absolute;
@@ -36,7 +37,9 @@ body{
     width: 100vw;
     height: 100%;
     /* Quan trọng: phủ kín khung nhưng giữ đúng tỷ lệ không bị méo/khuất */
-    object-fit: cover; 
+    object-fit: cover;
+    padding-top: 100px;
+    height: calc(100vh - 90px);  
 }
 .slider .buttons{
     position: absolute;

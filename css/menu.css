@@ -38,6 +38,7 @@ h1, h2, h3, p { margin: 0; }
 /* --- SÁCH MENU (FLIP BOOK) --- */
 .book-wrapper {
     margin-top: 170px;
+    height: calc(100vh-80px);
     margin-bottom: 40px;
     display: flex;
     justify-content: center;
