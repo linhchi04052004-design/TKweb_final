@@ -1,16 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    // =========================================================
-    // PHẦN 1: CẤU HÌNH SÁCH LẬT (GIỮ NGUYÊN CODE CŨ CỦA BẠN)
-    // =========================================================
-
     const DANH_SACH_ANH = [
-        "assets/images/menu5.png", // Bỏ url() và kiểm tra lại cấp bậc thư mục
-    "assets/images/menu66.png",
+        "assets/images/menu2.png", // Bỏ url() và kiểm tra lại cấp bậc thư mục
+    "assets/images/menu1.png",
     "assets/images/menudoi.png",
     "assets/images/menu4.png",
-    "assets/images/menu2.png",
-    "assets/images/menu1.png",
+    "assets/images/menu5.png",
+    "assets/images/menu66.png",
     ];
 
     const screenWidth = window.innerWidth;
@@ -72,8 +67,8 @@ else {
             const pageFlip = new St.PageFlip(bookContainer, {
                 width: pageWidth,
                 height: pageHeight,
-                size: "stretch",
-                usePortrait: screenWidth <= 768,
+                size: "fixed",
+                usePortrait: screenWidth <= 430,
 
                 showCover: false,
                 minWidth: 300,

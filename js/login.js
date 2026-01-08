@@ -30,10 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 4. Lưu trạng thái đăng nhập
+
         localStorage.setItem("currentUser", JSON.stringify({
     username: user.username,
     phone: user.phone
 }));
+
 
 
         // 5. Chuyển về trang chủ

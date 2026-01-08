@@ -73,6 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (orders.length === 0) {
             ordersList.innerHTML = "<p>Bạn chưa có đơn hàng nào.</p>";
+            return;
+
 return;
         }
 
@@ -96,4 +98,6 @@ return;
         });
     }
 
+
 });
+
